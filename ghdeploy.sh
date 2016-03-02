@@ -10,7 +10,7 @@ echo ""
 
 npm run deploy
 git checkout gh-pages
-cp -a $HOME/Desktop/Tinderlicht/build/* $HOME/Desktop/Tinderlicht/
+cp -a $HOME/Desktop/geluk/build/* $HOME/Desktop/geluk/
 git status
 git add -A
 git commit -m "gh page deploy"
