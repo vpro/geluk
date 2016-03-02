@@ -7,13 +7,16 @@ import Model from './config/model.json';
 class Introduction extends React.Component{
   constructor(props){
     super(props);
+
     this.state = {
+      userId: Math.floor(Date.now()),
       userData: Model
     }
   }
+
   componentWillMount(){
     var firebase = Rebase.createClass('https://geluk.firebaseio.com');
-    firebase.push('bears', {
+    firebase.post('bears/'+ this.state.userId, {
       data: this.state.userData
     })
     this.setState(function(state){
