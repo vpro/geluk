@@ -1,4 +1,5 @@
 import React from 'react';
+import Rebase from 're-base';
 
 /* Data */
 import Model from './config/model.json';
@@ -11,6 +12,10 @@ class Introduction extends React.Component{
     }
   }
   componentWillMount(){
+    var base = Rebase.createClass('https://geluk.firebaseio.com');
+    base.push('bears', {
+      data: this.state.userData
+    })
     this.setState(function(state){
       state.userData.age = 10;
     });
