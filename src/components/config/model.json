@@ -1,4 +1,34 @@
 {
-	"age": 0,
-	"fiets": ""
+	"userStats": {
+		"age": 0,
+		"gender": "male",
+		"marital_status": "married",
+		"children": 0,
+		"geographical": 0,
+		"income": 0,
+		"housing": "flat",
+		"education": "basisschool",
+		"vpro_member": false,
+		"gids_member": false,
+		"score": {
+			"core_module": 0,
+			"affect_module": 0,
+			"eudaimonic_module": 0,
+			"overall": 0
+		}
+	},
+	"core_module": {
+		"q_1": 0,
+		"q_2": 0,
+		"q_3": 0,
+		"q_4": 0,
+		"q_5": 0
+	},
+	"affect_module": {
+		"q_1": 0,
+		"q_2": 0,
+		"q_3": 0,
+		"q_4": 0,
+		"q_5": 0	
+	}
 }

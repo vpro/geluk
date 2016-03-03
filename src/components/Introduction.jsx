@@ -1,8 +1,14 @@
 import React from 'react';
 import Rebase from 're-base';
 
+/* Components */
+import Gelukmodule from './interface/Gelukmodule.jsx';
+
 /* Data */
 import Model from './config/model.json';
+
+// const firebase = Rebase.createClass('https://geluk.firebaseio.com');
+
 
 class Introduction extends React.Component{
   constructor(props){
@@ -19,20 +25,47 @@ class Introduction extends React.Component{
     firebase.post('users/'+ this.state.userId, {
       data: this.state.userData
     })
-    this.setState(function(state){
-      state.userData.age = 10;
-    });
   }
 
   componentDidMount(){
     console.log(this.state);
   }
+
+
+
+  setHappiness(happiness, type){
+    var geluk = happiness;
+    var gelukstype = type;
+    console.log("parent", this)
+
+    this.setState( function(state){
+      state.userData.core_module[gelukstype] = geluk;
+    }, this.updateFirebase)
+  }
+
+  updateFirebase(){
+    var firebase = Rebase.createClass('https://geluk.firebaseio.com');
+    firebase.post('users/'+ this.state.userId, {
+      data: this.state.userData
+    })
+  }
+
   render() {
   		return (
   			<div>
-  				<h1>Geluksmeter</h1>
-          <p>Bladiebladiebla</p>
-          <span>Klik hier om te beginnen</span>
+          <Gelukmodule 
+            currentValue={this.state.userData.core_module.q_2} 
+            setHappy={this.setHappiness.bind(this)} 
+          />
+        {    // <input 
+            //   type="range"
+            //   min={0}
+            //   max={10}
+            //   value={this.state.userData.age}
+            //   onChange={this.setHappiness.bind(this, "q_1")} 
+            // />
+          }
+            {this.state.userData.age}
   			</div>
   		)
 		}
