@@ -16,7 +16,7 @@ class Introduction extends React.Component{
 
   componentWillMount(){
     var firebase = Rebase.createClass('https://geluk.firebaseio.com');
-    firebase.post('bears/'+ this.state.userId, {
+    firebase.post('users/'+ this.state.userId, {
       data: this.state.userData
     })
     this.setState(function(state){
