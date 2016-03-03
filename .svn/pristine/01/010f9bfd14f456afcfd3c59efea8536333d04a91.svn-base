@@ -1,0 +1,25 @@
+@import 'normalize.scss';
+@import 'fonts.scss';
+
+@import 'gelukmodule.scss';
+
+
+h1 {
+	font-family: SimplisticSans-Bold;
+	color: black;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+}
+
+#app {
+	min-height: 100%;
+	width: 100%;
+}
+
+.app-container {
+	width: 100%;
+	min-height: 100%;
+}

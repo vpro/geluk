@@ -1,0 +1,15 @@
+
+--This line, and those below, will be ignored--
+
+M    .git/COMMIT_EDITMSG
+M    .git/index
+M    .git/logs/HEAD
+M    .git/logs/refs/heads/master
+M    .git/logs/refs/remotes/origin/master
+M    .git/refs/heads/master
+M    .git/refs/remotes/origin/master
+M    package.json
+M    src/assets/styling/app.scss
+M    src/components/App.jsx
+M    src/components/Introduction.jsx
+M    src/components/config/model.json

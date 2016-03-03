@@ -1,0 +1,49 @@
+{
+	"core_module": [	
+		{
+			"name": "q_1",
+			"oeso_meta": "Box B.1 A1",
+			"question": "Overall, how satisfied are you with life as a whole these days?",
+			"lowest_scale": 0,
+			"lowest_scale_desc": "not at all satisfied", 
+			"highest_scale": 10,
+			"highest_scale_desc": "completely satisfied"
+		},
+		{
+			"name": "q_2",
+			"oeso_meta": "Box B.1 A2",
+			"question": "Overall, to what extent do you feel the things you do in your life are worthwhile?",
+			"lowest_scale": 0,
+			"lowest_scale_desc": "not at all worthwile", 
+			"highest_scale": 10,
+			"highest_scale_desc": "completely worthwhile"
+		},
+		{
+			"name": "q_3",
+			"oeso_meta": "Box B.1 A3",
+			"question": "How about happy? [Hoe vrolijk voelde je je gisteren?]",
+			"lowest_scale": 0,
+			"lowest_scale_desc": "not at all", 
+			"highest_scale": 10,
+			"highest_scale_desc": "all the time"
+		},
+		{
+			"name": "q_4",
+			"oeso_meta": "Box B.1 A4",
+			"question": "How about worried? [gisteren]",
+			"lowest_scale": 0,
+			"lowest_scale_desc": "not at all", 
+			"highest_scale": 10,
+			"highest_scale_desc": "all the time"
+		},
+		{
+			"name": "q_5",
+			"oeso_meta": "Box B.1 A5",
+			"question": "How about depressed? [gisteren]",
+			"lowest_scale": 0,
+			"lowest_scale_desc": "not at all", 
+			"highest_scale": 10,
+			"highest_scale_desc": "all the time"
+		}
+	]
+}

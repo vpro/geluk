@@ -6,7 +6,6 @@ import Gelukmodule from './interface/Gelukmodule.jsx';
 
 /* Data */
 import Model from './config/model.json';
-import Questionnaire from './config/questions.json';
 
 const firebase = Rebase.createClass('https://geluk.firebaseio.com');
 
@@ -17,8 +16,7 @@ class Introduction extends React.Component{
 
     this.state = {
       userId: Math.floor(Date.now()),
-      userData: Model,
-      questions: Questionnaire
+      userData: Model
     }
   }
 
@@ -50,18 +48,12 @@ class Introduction extends React.Component{
   render() {
   		return (
   			<div>
-        { this.state.questions.core_module.map((question, key) => { return (
-          <Gelukmodule
-            happinessValue={this.state.userData.core_module[question.name]}
-            happinessQuestion={question.name}
-            lowestScale={question.lowest_scale}
-            highestScale={question.highest_scale}
-            questionDescription={question.question} 
-            setHappy={this.setHappiness.bind(this)}
-            key={key} 
+          <Gelukmodule 
+            happinessValue={this.state.userData.core_module.q_2}
+            happinessQuestion="q_2"
+            questionDescription="Bla die bladie bladiebla?" 
+            setHappy={this.setHappiness.bind(this)} 
           />
-          );
-        })} 
 
   			</div>
   		)
