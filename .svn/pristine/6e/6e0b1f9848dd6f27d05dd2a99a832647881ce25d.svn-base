@@ -1,0 +1,39 @@
+0000000000000000000000000000000000000000 a2722b28078a2f51e394d75890287f5d3d22c314 evanzummeren <erikvanzummeren@gmail.com> 1456913105 +0100	clone: from https://github.com/evanzummeren/reactstarter.git
+a2722b28078a2f51e394d75890287f5d3d22c314 d8cf1ecf83cfae3365cadb639e424b8419f171fd evanzummeren <erikvanzummeren@gmail.com> 1456933684 +0100	commit: eerste echte commit
+d8cf1ecf83cfae3365cadb639e424b8419f171fd b0f0a56c4d7a216b873be5bcc004748ae8ee72f2 evanzummeren <erikvanzummeren@gmail.com> 1456933762 +0100	pull: checkout b0f0a56c4d7a216b873be5bcc004748ae8ee72f2
+b0f0a56c4d7a216b873be5bcc004748ae8ee72f2 7be1d5c3322e34eccd29a9d63eee92b3cf640942 evanzummeren <erikvanzummeren@gmail.com> 1456934041 +0100	commit: bla
+7be1d5c3322e34eccd29a9d63eee92b3cf640942 345e7856714058c94559a865bda829edf423611c evanzummeren <erikvanzummeren@gmail.com> 1456934397 +0100	commit: bla
+345e7856714058c94559a865bda829edf423611c d8cf1ecf83cfae3365cadb639e424b8419f171fd evanzummeren <erikvanzummeren@gmail.com> 1456934444 +0100	rebase: aborting
+d8cf1ecf83cfae3365cadb639e424b8419f171fd 76d07e586955494bc43913785ecfc07ff03343de evanzummeren <erikvanzummeren@gmail.com> 1456934456 +0100	pull: checkout 76d07e586955494bc43913785ecfc07ff03343de
+76d07e586955494bc43913785ecfc07ff03343de 76d07e586955494bc43913785ecfc07ff03343de evanzummeren <erikvanzummeren@gmail.com> 1456934468 +0100	rebase finished: returning to refs/heads/master
+76d07e586955494bc43913785ecfc07ff03343de 6ff201b9ab5c1338201f5d7c76b707a6ac73ace2 evanzummeren <erikvanzummeren@gmail.com> 1456934589 +0100	commit: merge ellende
+6ff201b9ab5c1338201f5d7c76b707a6ac73ace2 d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 evanzummeren <erikvanzummeren@gmail.com> 1456934638 +0100	commit: semi-initial commit
+d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 evanzummeren <erikvanzummeren@gmail.com> 1456935465 +0100	checkout: moving from master to gh-pages
+d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 evanzummeren <erikvanzummeren@gmail.com> 1456935485 +0100	checkout: moving from gh-pages to master
+d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 b88e1c15dcf210409ec7d0b91a41c9644f4fa48d evanzummeren <erikvanzummeren@gmail.com> 1456935504 +0100	commit: add github deploy
+b88e1c15dcf210409ec7d0b91a41c9644f4fa48d d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 evanzummeren <erikvanzummeren@gmail.com> 1456935524 +0100	checkout: moving from master to gh-pages
+d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 b88e1c15dcf210409ec7d0b91a41c9644f4fa48d evanzummeren <erikvanzummeren@gmail.com> 1456935524 +0100	checkout: moving from gh-pages to master
+b88e1c15dcf210409ec7d0b91a41c9644f4fa48d d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 evanzummeren <erikvanzummeren@gmail.com> 1456935540 +0100	checkout: moving from master to gh-pages
+d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 b88e1c15dcf210409ec7d0b91a41c9644f4fa48d evanzummeren <erikvanzummeren@gmail.com> 1456935559 +0100	checkout: moving from gh-pages to master
+b88e1c15dcf210409ec7d0b91a41c9644f4fa48d d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 evanzummeren <erikvanzummeren@gmail.com> 1456935572 +0100	checkout: moving from master to gh-pages
+d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 b88e1c15dcf210409ec7d0b91a41c9644f4fa48d evanzummeren <erikvanzummeren@gmail.com> 1456935575 +0100	checkout: moving from gh-pages to master
+b88e1c15dcf210409ec7d0b91a41c9644f4fa48d d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 evanzummeren <erikvanzummeren@gmail.com> 1456936032 +0100	checkout: moving from master to gh-pages
+d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 b88e1c15dcf210409ec7d0b91a41c9644f4fa48d evanzummeren <erikvanzummeren@gmail.com> 1456936033 +0100	checkout: moving from gh-pages to master
+b88e1c15dcf210409ec7d0b91a41c9644f4fa48d f1f0da623830f52090d72568505b48c74cdb0883 evanzummeren <erikvanzummeren@gmail.com> 1456936101 +0100	commit: edit
+f1f0da623830f52090d72568505b48c74cdb0883 d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 evanzummeren <erikvanzummeren@gmail.com> 1456936124 +0100	checkout: moving from master to gh-pages
+d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 f1f0da623830f52090d72568505b48c74cdb0883 evanzummeren <erikvanzummeren@gmail.com> 1456936126 +0100	checkout: moving from gh-pages to master
+f1f0da623830f52090d72568505b48c74cdb0883 d9d5170aca6528f1cdb65cc70f91c6da45386d5a evanzummeren <erikvanzummeren@gmail.com> 1456936321 +0100	commit (amend): change tinderlicht > geluk
+d9d5170aca6528f1cdb65cc70f91c6da45386d5a 6ea2dc6abf9b5fd1edcc7b0b4bbc1e28ab4c89f7 evanzummeren <erikvanzummeren@gmail.com> 1456936354 +0100	commit: tinderlicht > geluk
+6ea2dc6abf9b5fd1edcc7b0b4bbc1e28ab4c89f7 f1f0da623830f52090d72568505b48c74cdb0883 evanzummeren <erikvanzummeren@gmail.com> 1456936360 +0100	pull: checkout f1f0da623830f52090d72568505b48c74cdb0883
+f1f0da623830f52090d72568505b48c74cdb0883 d84b43782f80cf54f1fdb4eae3aee271ec49803a evanzummeren <erikvanzummeren@gmail.com> 1456936360 +0100	pull: tinderlicht > geluk
+d84b43782f80cf54f1fdb4eae3aee271ec49803a d84b43782f80cf54f1fdb4eae3aee271ec49803a evanzummeren <erikvanzummeren@gmail.com> 1456936360 +0100	rebase finished: returning to refs/heads/master
+d84b43782f80cf54f1fdb4eae3aee271ec49803a d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 evanzummeren <erikvanzummeren@gmail.com> 1456936381 +0100	checkout: moving from master to gh-pages
+d83ef93e5c2e773a613e9cfc1b11aec1a5337d69 d3bb2d44f94d9b25eb180cef8caa72309a9d20c5 evanzummeren <erikvanzummeren@gmail.com> 1456936381 +0100	commit: gh page deploy
+d3bb2d44f94d9b25eb180cef8caa72309a9d20c5 d84b43782f80cf54f1fdb4eae3aee271ec49803a evanzummeren <erikvanzummeren@gmail.com> 1456936390 +0100	checkout: moving from gh-pages to master
+d84b43782f80cf54f1fdb4eae3aee271ec49803a 96af3f271f0d4b32815d9cd6f54ea7c1188b13c9 evanzummeren <erikvanzummeren@gmail.com> 1456937095 +0100	commit: basic firebase
+96af3f271f0d4b32815d9cd6f54ea7c1188b13c9 a229d76979a3a12da7752b158f4ccd5722d5249f evanzummeren <erikvanzummeren@gmail.com> 1456937194 +0100	commit: geen idee
+a229d76979a3a12da7752b158f4ccd5722d5249f a815bff278f2022a6586b5c99e2662b5687baadf evanzummeren <erikvanzummeren@gmail.com> 1456942940 +0100	commit: unique key
+a815bff278f2022a6586b5c99e2662b5687baadf e893a657c35a7695e257add41b08f7a265713811 evanzummeren <erikvanzummeren@gmail.com> 1456998325 +0100	commit: intro
+e893a657c35a7695e257add41b08f7a265713811 5228481975b64a681425f4f1779b1819cb42686a evanzummeren <erikvanzummeren@gmail.com> 1457018478 +0100	commit: verzekering
+5228481975b64a681425f4f1779b1819cb42686a 692009f247c0939a440f3ef8fb59ce3ef77c0857 evanzummeren <erikvanzummeren@gmail.com> 1457022632 +0100	commit: verzekeringh
+692009f247c0939a440f3ef8fb59ce3ef77c0857 2107de062ceed7aaed3c8e861e320b434d6da98f evanzummeren <erikvanzummeren@gmail.com> 1457086446 +0100	commit: before fuckup

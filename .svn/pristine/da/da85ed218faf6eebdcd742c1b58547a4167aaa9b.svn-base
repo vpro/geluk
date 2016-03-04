@@ -6,7 +6,6 @@ import Gelukmodule from './interface/Gelukmodule.jsx';
 
 /* Data */
 import Model from './config/model.json';
-import Innersettings from './config/innersettings.json';
 import Questionnaire from './config/questions.json';
 
 const firebase = Rebase.createClass('https://geluk.firebaseio.com');
@@ -17,7 +16,6 @@ class Introduction extends React.Component{
 
     this.state = {
       userId: Math.floor(Date.now()),
-      innerSettings: Innersettings,
       userData: Model,
       questions: Questionnaire
     }
@@ -38,13 +36,6 @@ class Introduction extends React.Component{
     }, this.updateFirebase)
   }
 
-  setOverlay(overlayType){
-    console.log('doe jij het?')
-    this.setState( function(state){
-      state.innerSettings.overlays[overlayType] = true;
-    })
-  }
-
   updateFirebase(){
     firebase.post('users/'+ this.state.userId, {
       data: this.state.userData
@@ -62,8 +53,6 @@ class Introduction extends React.Component{
             highestScale={question.highest_scale}
             questionDescription={question.question} 
             setHappy={this.setHappiness.bind(this)}
-            setOverlay={this.setOverlay.bind(this)}
-            overlayStatus={this.state.innerSettings.overlays[question.name]}
             key={key} 
           />
           );

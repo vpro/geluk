@@ -19,17 +19,20 @@ class Gelukmodule extends React.Component{
     this.props.setHappy(givenHappiness, currentQuestion);
   }
 
-  setOverlay(){
-    console.log('doe jij het?')
-    var showOverlay = true;
-    this.forceUpdate();
+  submitOverlay(event){
+    console.log('ben ik klikbaar?');
+    console.log(this.props);
+    var currentOverlay = this.props.happinessQuestion;
+    console.log(currentOverlay);
+    this.props.setOverlay(currentOverlay);
   }
+
 
   render() {
     var showOverlay = false;
 		return (
 			<div className="questions__single">
-        <Gelukoverlay display={showOverlay} />
+        <Gelukoverlay display={this.props.overlayStatus} />
 				<p className="questions__singledescription">{this.props.questionDescription}</p>
         <input 
           type="range"
@@ -40,7 +43,7 @@ class Gelukmodule extends React.Component{
           ref={this.setRef} />
         {this.props.happinessValue}
 
-        <span className="questions__next" onClick={this.setOverlay.bind(this)}>Verder</span>
+        <span className="questions__next" onClick={this.submitOverlay.bind(this)}>Verder</span>
 			</div>
 		)
 	}
@@ -49,7 +52,8 @@ class Gelukmodule extends React.Component{
 Gelukmodule.propTypes = {
   happinessValue: React.PropTypes.number.isRequired,
   happinessQuestion: React.PropTypes.string.isRequired,
-  setHappy: React.PropTypes.func.isRequired
+  setHappy: React.PropTypes.func.isRequired,
+  setOverlay: React.PropTypes.func.isRequired
 }
 
 export default Gelukmodule;
