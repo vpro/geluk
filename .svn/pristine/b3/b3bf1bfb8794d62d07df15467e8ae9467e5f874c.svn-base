@@ -3,7 +3,6 @@ import Rebase from 're-base';
 
 /* Components */
 import Gelukmodule from './interface/Gelukmodule.jsx';
-import Geluksummary from './interface/Geluksummary.jsx';
 
 /* Data */
 import Model from './config/model.json';
@@ -40,12 +39,9 @@ class Introduction extends React.Component{
   }
 
   setOverlay(overlayType){
-    /* TO DO, deze zou ook plus een moeten doen? */
-    /* Wellicht ook animatie naar links? */
+    console.log('doe jij het?')
     this.setState( function(state){
       state.innerSettings.overlays[overlayType] = true;
-      state.innerSettings.currentPosition++;
-      console.log(state);
     })
   }
 
@@ -58,22 +54,16 @@ class Introduction extends React.Component{
   render() {
   		return (
   			<div className="questions">
-          <Geluksummary 
-            moduleHeadline="eudaimonisch geluk"
-            moduleDescription="I propose to treat of Poetry in itself and of its various kinds, noting the essential quality of each; to inquire into the structure of the plot as requisite to a good poem; into the number and nature of the parts of which a poem is composed; and similarly into whatever else falls within the same inquiry. Following, then, the order of nature, let us begin with the principles which come first."/>
         { this.state.questions.core_module.map((question, key) => { return (
           <Gelukmodule
             happinessValue={this.state.userData.core_module[question.name]}
             happinessQuestion={question.name}
-            currentQuestion={this.state.innerSettings.currentPosition}
-            questionNumber={question.number}
             lowestScale={question.lowest_scale}
             highestScale={question.highest_scale}
             questionDescription={question.question} 
             setHappy={this.setHappiness.bind(this)}
             setOverlay={this.setOverlay.bind(this)}
             overlayStatus={this.state.innerSettings.overlays[question.name]}
-            overlayText={this.state.innerSettings.message[question.name]}
             key={key} 
           />
           );

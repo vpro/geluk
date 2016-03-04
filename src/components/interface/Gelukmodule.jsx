@@ -20,20 +20,25 @@ class Gelukmodule extends React.Component{
   }
 
   submitOverlay(event){
-    console.log('ben ik klikbaar?');
-    console.log(this.props);
     var currentOverlay = this.props.happinessQuestion;
-    console.log(currentOverlay);
+
     this.props.setOverlay(currentOverlay);
   }
 
 
   render() {
-    var showOverlay = false;
+    if(this.props.currentQuestion < this.props.questionNumber){
+      var style = {
+        backgroundColor: 'pink',
+        textShadow: '0 0 12px white',
+        color: 'transparent'
+      }
+    } 
+
 		return (
-			<div className="questions__single">
-        <Gelukoverlay display={this.props.overlayStatus} />
-				<p className="questions__singledescription">{this.props.questionDescription}</p>
+			<div className="questions__single" style={style}>
+        <Gelukoverlay display={this.props.overlayStatus} text={this.props.overlayText} />
+				<p className="questions__singledescription" style={style}>{this.props.questionDescription}</p>
         <input 
           type="range"
           min={this.props.lowestScale}

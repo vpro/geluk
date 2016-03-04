@@ -2,6 +2,7 @@
 	"core_module": [	
 		{
 			"name": "q_1",
+			"number": 0,
 			"oeso_meta": "Box B.1 A1",
 			"question": "Overall, how satisfied are you with life as a whole these days?",
 			"lowest_scale": 0,
@@ -11,6 +12,7 @@
 		},
 		{
 			"name": "q_2",
+			"number": 1,
 			"oeso_meta": "Box B.1 A2",
 			"question": "Overall, to what extent do you feel the things you do in your life are worthwhile?",
 			"lowest_scale": 0,
@@ -20,6 +22,7 @@
 		},
 		{
 			"name": "q_3",
+			"number": 2,
 			"oeso_meta": "Box B.1 A3",
 			"question": "How about happy? [Hoe vrolijk voelde je je gisteren?]",
 			"lowest_scale": 0,
@@ -29,6 +32,7 @@
 		},
 		{
 			"name": "q_4",
+			"number": 3,
 			"oeso_meta": "Box B.1 A4",
 			"question": "How about worried? [gisteren]",
 			"lowest_scale": 0,
@@ -38,6 +42,7 @@
 		},
 		{
 			"name": "q_5",
+			"number": 4,
 			"oeso_meta": "Box B.1 A5",
 			"question": "How about depressed? [gisteren]",
 			"lowest_scale": 0,

@@ -18,13 +18,14 @@ class Gelukoverlay extends React.Component{
     }
 		return (
 			<div className="questions__overlay" style={style}>
-				<p>Hiep hoi hiep hoi a pirate life for me</p>
+				<p className="questions__overlaytext">{this.props.text}</p>
 			</div>
 		)
 	}
 }
 
 Gelukoverlay.propTypes = {
+  text: React.PropTypes.string.isRequired
 }
 
 export default Gelukoverlay;

@@ -1,9 +1,17 @@
 {
+	"currentPosition": 0,
 	"overlays": {
 		"q_1": false,
 		"q_2": false,
 		"q_3": false,
 		"q_4": false,
 		"q_5": false
+	},
+	"message": {
+		"q_1": "Wist je dat een olifant geen vlieg is?",
+		"q_2": "Jij bent 81% gelukkiger dan de rest",
+		"q_3": "Een Belg, een Nederlander en een Duitser lopen over straat...",
+		"q_4": "zegt de Belg tegen de Nederland",
+		"q_5": "wat ben jij slechts in het bedenken van teksten"
 	}
 }
