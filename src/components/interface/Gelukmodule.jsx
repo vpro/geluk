@@ -1,6 +1,5 @@
 import React from 'react';
-import InputRange from 'react-input-range';
-
+import Gelukoverlay from './Gelukoverlay.jsx';
 
 class Gelukmodule extends React.Component{
   constructor(props){
@@ -20,19 +19,28 @@ class Gelukmodule extends React.Component{
     this.props.setHappy(givenHappiness, currentQuestion);
   }
 
+  setOverlay(){
+    console.log('doe jij het?')
+    var showOverlay = true;
+    this.forceUpdate();
+  }
+
   render() {
+    var showOverlay = false;
 		return (
-			<div className="gelukmodule">
-				<p>{this.props.questionDescription}</p>
+			<div className="questions__single">
+        <Gelukoverlay display={showOverlay} />
+				<p className="questions__singledescription">{this.props.questionDescription}</p>
         <input 
           type="range"
           min={this.props.lowestScale}
           max={this.props.highestScale}
           value={this.props.happinessValue}
           onChange={this.submitHappiness} 
-          ref={this.setRef}
-        />
+          ref={this.setRef} />
         {this.props.happinessValue}
+
+        <span className="questions__next" onClick={this.setOverlay.bind(this)}>Verder</span>
 			</div>
 		)
 	}

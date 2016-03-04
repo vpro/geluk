@@ -10,7 +10,6 @@ import Questionnaire from './config/questions.json';
 
 const firebase = Rebase.createClass('https://geluk.firebaseio.com');
 
-
 class Introduction extends React.Component{
   constructor(props){
     super(props);
@@ -26,10 +25,6 @@ class Introduction extends React.Component{
     firebase.post('users/'+ this.state.userId, {
       data: this.state.userData
     })
-  }
-
-  componentDidMount(){
-    console.log(this.state);
   }
 
   setHappiness(happiness, type){
@@ -49,7 +44,7 @@ class Introduction extends React.Component{
 
   render() {
   		return (
-  			<div>
+  			<div className="questions">
         { this.state.questions.core_module.map((question, key) => { return (
           <Gelukmodule
             happinessValue={this.state.userData.core_module[question.name]}
