@@ -16,13 +16,13 @@ class Gelukoverlay extends React.Component{
       width: 0,
       padding: 0,
       display: 'block',
-      ease: Power1.easeInOut
+      ease: Power1.ease
     })
 
     TweenLite.from(text, .4, {
       y: 20,
       delay: .4,
-      ease: Power1.easeInOut,
+      ease: Power1.ease,
       display: 'none'
     })
   }
