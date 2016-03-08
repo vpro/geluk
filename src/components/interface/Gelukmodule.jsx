@@ -27,28 +27,33 @@ class Gelukmodule extends React.Component{
 
 
   render() {
+    console.log(this.state);
     if(this.props.currentQuestion < this.props.questionNumber){
       var style = {
-        backgroundColor: 'pink',
-        textShadow: '0 0 12px white',
+        textShadow: '0 0 12px black',
         color: 'transparent'
+      }
+      var displayElem = {
+        display: 'none'
       }
     } 
 
 		return (
 			<div className="questions__single" style={style}>
-        <Gelukoverlay display={this.props.overlayStatus} text={this.props.overlayText} />
+        { this.props.overlayStatus ? <Gelukoverlay text={this.props.overlayText} /> : null }
+
 				<p className="questions__singledescription" style={style}>{this.props.questionDescription}</p>
+        <span className="questions__singlerating">{this.props.happinessValue}/{this.props.highestScale}</span>
+          <br/>
         <input 
           type="range"
           min={this.props.lowestScale}
           max={this.props.highestScale}
           value={this.props.happinessValue}
           onChange={this.submitHappiness} 
-          ref={this.setRef} />
-        {this.props.happinessValue}
-
-        <span className="questions__next" onClick={this.submitOverlay.bind(this)}>Verder</span>
+          ref={this.setRef}
+          style={displayElem} />
+        <span className="questions__next" style={displayElem} onClick={this.submitOverlay.bind(this)}>verder</span>
 			</div>
 		)
 	}

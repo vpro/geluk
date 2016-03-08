@@ -1,24 +1,36 @@
+// import GSAP from 'react-gsap-enhancer'
 import React from 'react';
+import GSAP from 'gsap';
+import ReactDOM from 'react-dom';
 
 class Gelukoverlay extends React.Component{
   constructor(props){
     super(props);
+  }
 
+  componentDidMount(){
+    var node = ReactDOM.findDOMNode(this);
+    var text = this.refs.text;
+
+    TweenLite.from(node, .4, {
+      width: 0,
+      padding: 0,
+      display: 'block',
+      ease: Power1.easeInOut
+    })
+
+    TweenLite.from(text, .4, {
+      y: 20,
+      delay: .4,
+      ease: Power1.easeInOut,
+      display: 'none'
+    })
   }
 
   render() {
-    if(this.props.display === false) {
-      var style = {
-        display: 'none'
-      }
-    } else {
-      var style = {
-        display: 'block'
-      }
-    }
 		return (
-			<div className="questions__overlay" style={style}>
-				<p className="questions__overlaytext">{this.props.text}</p>
+			<div className="questions__overlay">
+				<p className="questions__overlaytext" ref="text">{this.props.text}</p>
 			</div>
 		)
 	}

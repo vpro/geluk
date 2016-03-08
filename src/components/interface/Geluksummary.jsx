@@ -2,7 +2,6 @@ import React from 'react';
 
 class Geluksummary extends React.Component{
   render() {
-
 		return (
 			<div className="questions__summary" >
         <h4 className="questions__heading">{this.props.moduleHeadline}</h4>
