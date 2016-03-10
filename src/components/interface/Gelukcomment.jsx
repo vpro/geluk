@@ -1,6 +1,8 @@
 import React from 'react';
 import Rebase from 're-base';
 
+import Message from './Gelukmessage.jsx';
+
 const firebase = Rebase.createClass('https://geluk.firebaseio.com');
 
 class Comment extends React.Component{
@@ -8,7 +10,8 @@ class Comment extends React.Component{
 		super(props);
 
 		this.state = {
-			posts: null
+			posts: null,
+			word: false
 		}
 	}
 
@@ -30,15 +33,25 @@ class Comment extends React.Component{
 				currentModule = this.props.module,
 				currentHappiness = this.props.happinessValue;
 
+		this.setState(function(state){state.word = true});
+
 		this.props.setAnswer(message, currentQuestion, currentModule, currentHappiness);
 	}
 
 	submitComment(event){
+    if(event.keyCode == 13){
+			this.props.submitCommentOverlay();
+    }
 		console.log("submitten")
+
 	}
 
   render() {
   	var placeholder = "Ik gaf mijzelf een " + this.props.happinessValue + " omdat ik...";
+  	var enterElem;
+  	if(this.state.word){
+  		enterElem = (<p className="commentbox__entermessage">Of druk enter</p>)
+  	}
   	console.log(this.state)
 		return (
 			<div className="commentbox">
@@ -48,9 +61,13 @@ class Comment extends React.Component{
         	maxLength="140"
         	placeholder={placeholder}
         	onChange={this.changeString.bind(this)}
+        	onKeyUp={this.submitComment.bind(this)}
         />
         <br/>
+        <div className="commentbox__container">
         <span className="commentbox__next--white" onClick={this.submitComment.bind(this)}>verder</span>
+        {enterElem}
+        </div>
 			</div>
 		)
 	}
@@ -58,6 +75,7 @@ class Comment extends React.Component{
 
 Comment.propTypes = {
 	submitString: React.PropTypes.func.isRequired,
+	submitCommentOverlay: React.PropTypes.func.isRequired,
 	comment: React.PropTypes.string.isRequired,
 	currentQuestion: React.PropTypes.string.isRequired
 }

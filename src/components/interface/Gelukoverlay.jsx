@@ -64,6 +64,7 @@ class Gelukoverlay extends React.Component{
         ease: Power1.ease
       });
      });
+    console.log('bla');
     TweenLite.to(comment, 1, {
       width: 0,
       padding: 0,
@@ -76,6 +77,19 @@ class Gelukoverlay extends React.Component{
 
   submitNext(event){
     this.props.setNext();
+  }
+
+  submitComment(event){
+    var comment = ReactDOM.findDOMNode(this.refs.comment);
+    TweenLite.to(comment, .3, {
+      width: 0,
+      padding: 0,
+      delay: .2,
+      y: 20,
+      display: "none",
+      opacity: 0,
+      ease: Power1.ease
+    })
   }
 
   render() {
@@ -99,6 +113,7 @@ class Gelukoverlay extends React.Component{
           <Comment 
             module={this.props.module}
             comment={this.props.comment} 
+            submitCommentOverlay={this.submitComment.bind(this)}
             setAnswer={this.props.setAnswer.bind(this)}
             happinessValue={this.props.happinessValue} 
             ref="comment"
