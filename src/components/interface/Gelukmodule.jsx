@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import Gelukoverlay from './Gelukoverlay.jsx';
 
 class Gelukmodule extends React.Component{
@@ -6,6 +8,17 @@ class Gelukmodule extends React.Component{
     super(props);
     this.submitHappiness = this.submitHappiness.bind(this);
     this.setRef = this.setRef.bind(this);
+
+    this.state = {
+      DOMnode: null
+    }
+  }
+
+  componentDidMount(){
+    var DOMnode = ReactDOM.findDOMNode(this);
+    this.setState(function(state){
+      state.DOMnode = DOMnode;
+    })
   }
 
   setRef(ref){
@@ -26,7 +39,6 @@ class Gelukmodule extends React.Component{
 
 
   render() {
-    console.log(this.props);
     if(this.props.currentQuestion < this.props.questionNumber){
       var style = {
         textShadow: '0 0 12px black',
@@ -42,16 +54,20 @@ class Gelukmodule extends React.Component{
 
         { this.props.overlayStatus ? 
           <Gelukoverlay 
+            module={this.props.module}
+            moduleDOM={this.state.DOMnode}
             text={this.props.overlayText} 
-            showCommentBox={this.props.overlayComment}
+            happinessValue={this.props.happinessValue}
+            showComment={this.props.overlayComment}
             setAnswer={this.props.setAnswer.bind(this)}
+            setNext={this.props.setNext.bind(this)}
             currentQuestion={this.props.happinessQuestion}
             comment={this.props.overlayAnswer} 
           /> : null }
 
 				<p className="questions__singledescription" style={style}>{this.props.questionDescription}</p>
         <span className="questions__singlerating">{this.props.happinessValue}/{this.props.highestScale}</span>
-        
+
           <br/>
         <input 
           type="range"

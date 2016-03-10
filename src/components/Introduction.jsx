@@ -15,6 +15,8 @@ import Questionnaire from './config/questions.json';
 const firebase = Rebase.createClass('https://geluk.firebaseio.com');
 const width = window.innerWidth;
 
+const boxWidth = 300;
+
 /* Hier vermoedelijk een if else maken */
 
 class Introduction extends React.Component{
@@ -48,22 +50,29 @@ class Introduction extends React.Component{
     this.setState( function(state){
       state.innerSettings.overlays[overlayType] = true;
       state.innerSettings.currentPosition++;
-      state.innerSettings.widthOffset = state.innerSettings.widthOffset - 300;
-      console.log(width);
-    })
+    }, this.setNext)
   }
 
-  setAnswer(givenString, type){
-    console.log(givenString);
-    console.log(type);
+  setNext(){
+     this.setState( function(state){
+      state.innerSettings.widthOffset = state.innerSettings.widthOffset - boxWidth;
+      console.log(width);
+    })   
+  }
 
-    var string = givenString,
-        typeOfHappiness = type;
+  setAnswer(answer, typeOfHappiness, currentModule, amountOfHappiness){
+    function hasWhiteSpace(s) {
+      return s.indexOf(' ') >= 0;
+    }
 
+    /* Kijken of dit eigenlijk nog wel noodzakelijk is */
     this.setState( function(state){
-      state.userData.core_module[typeOfHappiness + "_answer"] = string;
+      state.userData.core_module[typeOfHappiness + "_answer"] = answer;
     }, this.updateFirebase)
 
+    if(hasWhiteSpace(answer) === true){
+      this.updateFirebaseAnswer(currentModule, typeOfHappiness, amountOfHappiness, answer);
+    }
   }
 
   updateFirebase(){
@@ -72,18 +81,26 @@ class Introduction extends React.Component{
     })
   }
 
+  updateFirebaseAnswer(happinessModule, typeOfHappiness, amountOfHappiness, answer){
+    var userStats = this.state.userData.userStats;
+    firebase.post('users/answers/' + happinessModule + '/' + typeOfHappiness + '/' + amountOfHappiness + '/' + this.state.userId, {
+      data: {answer: answer, gender: userStats.gender, age: userStats.age}
+    })
+  }  
+
   render() {
       var margin = {
         "marginLeft": this.state.innerSettings.widthOffset
       }
-      console.log(this.state)
   		return (
   			<div className="questions" style={margin}>
-        <Geluksummary 
+          <Geluksummary 
             moduleHeadline="eudaimonisch geluk"
-            moduleDescription="I propose to treat of Poetry in itself and of its various kinds, noting the essential quality of each; to inquire into the structure of the plot as requisite to a good poem; into the number and nature of the parts of which a poem is composed; and similarly into whatever else falls within the same inquiry. Following, then, the order of nature, let us begin with the principles which come first."/>
+            moduleDescription="I propose to treat of Poetry in itself and of its various kinds, noting the essential quality of each; to inquire into the structure of the plot as requisite to a good poem; into the number and nature of the parts of which a poem is composed; and similarly into whatever else falls within the same inquiry. Following, then, the order of nature, let us begin with the principles which come first."
+          />
         { this.state.questions.core_module.map((question, key) => { return (
           <Gelukmodule
+            module={question.module}
             happinessValue={this.state.userData.core_module[question.name]}
             happinessQuestion={question.name}
             currentQuestion={this.state.innerSettings.currentPosition}
@@ -94,6 +111,7 @@ class Introduction extends React.Component{
             setHappy={this.setHappiness.bind(this)}
             setOverlay={this.setOverlay.bind(this)}
             setAnswer={this.setAnswer.bind(this)}
+            setNext={this.setNext.bind(this)}
             overlayStatus={this.state.innerSettings.overlays[question.name]}
             overlayText={this.state.innerSettings.feedback[question.name]}
             overlayComment={this.state.innerSettings.comment[question.name]}

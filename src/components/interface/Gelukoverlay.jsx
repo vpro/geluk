@@ -3,7 +3,7 @@ import React from 'react';
 import GSAP from 'gsap';
 import ReactDOM from 'react-dom';
 
-import Commentbox from './Gelukcommentbox.jsx';
+import Comment from './Gelukcomment.jsx';
 
 class Gelukoverlay extends React.Component{
   constructor(props){
@@ -12,6 +12,7 @@ class Gelukoverlay extends React.Component{
 
   componentDidMount(){
     var node = ReactDOM.findDOMNode(this);
+    var buttons = this.refs.overlaybuttons;
     var text = this.refs.text;
 
     TweenLite.from(node, .4, {
@@ -19,20 +20,62 @@ class Gelukoverlay extends React.Component{
       padding: 0,
       display: 'block',
       ease: Power1.ease
-    })
+    });
 
     TweenLite.from(text, .4, {
       y: 20,
       delay: .4,
       ease: Power1.ease,
       display: 'none'
+    });
+
+    if (this.props.text === "comment") {
+      TweenLite.to(buttons, .4, {
+        y: -20,
+        delay: .4,
+        ease: Power1.ease,
+        display: 'block'
+      });
+    }
+
+  }
+
+  showBox(event){
+    var parentNode = this.props.moduleDOM,
+        thisNode = ReactDOM.findDOMNode(this),
+        text = this.refs.text,
+        buttons = this.refs.overlaybuttons,
+        comment = ReactDOM.findDOMNode(this.refs.comment),
+        fullWidth = window.innerWidth;
+
+    [parentNode, thisNode].map(function(elements){
+      return TweenLite.to(elements, .4, {
+        minWidth: fullWidth,
+        delay: .5,
+        display: 'block',
+        ease: Power1.ease
+      });
+     });        
+    [text, buttons].map(function(elements){
+      return TweenLite.to(elements, .4, {
+        opacity: 0,
+        y: 20,
+        display: 'none',
+        ease: Power1.ease
+      });
+     });
+    TweenLite.to(comment, 1, {
+      width: 0,
+      padding: 0,
+      delay: 1,
+      y: -20,
+      display: 'block',
+      ease: Power1.ease
     })
   }
 
-  showBox(){
-    this.setState(function(state){
-      state.showCommentBox = true;
-    })
+  submitNext(event){
+    this.props.setNext();
   }
 
   render() {
@@ -45,16 +88,31 @@ class Gelukoverlay extends React.Component{
 		return (
 			<div className="questions__overlay">
 				<p className="questions__overlaytext" ref="text">{tekst}</p>
-        {showButtons ? <div><span className="questions__next--yellow">Liever niet</span>
-          <span className="questions__next--yellow" onClick={this.showBox.bind(this)}>Ja</span></div> : null}
-        {this.props.showCommentBox ? <Commentbox comment={this.props.comment} setAnswer={this.props.setAnswer.bind(this)} currentQuestion={this.props.currentQuestion}/> : null }
+        { showButtons ? 
+          <div className="questions__overlaybuttons" ref="overlaybuttons">
+            <span className="questions__next--yellow" onClick={this.submitNext.bind(this)}>Liever niet</span>
+            <span className="questions__next--yellow" onClick={this.showBox.bind(this)}>Ja</span>
+          </div> : null
+        }
+        
+        { this.props.showComment ? 
+          <Comment 
+            module={this.props.module}
+            comment={this.props.comment} 
+            setAnswer={this.props.setAnswer.bind(this)}
+            happinessValue={this.props.happinessValue} 
+            ref="comment"
+            currentQuestion={this.props.currentQuestion}
+          /> : null 
+        }
 			</div>
 		)
 	}
 }
 
 Gelukoverlay.propTypes = {
-  text: React.PropTypes.string
+  text: React.PropTypes.string,
+  comment: React.PropTypes.string
 }
 
 export default Gelukoverlay;
