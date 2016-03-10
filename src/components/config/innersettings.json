@@ -8,10 +8,15 @@
 		"q_4": false,
 		"q_5": false
 	},
-	"message": {
+	"comment": {
+		"q_2": true,
+		"q_4": false,
+		"q_5": false
+	},
+	"feedback": {
 		"q_1": "Andere mensen scoren 30% lager op deze vraag",
-		"q_2": "Jij bent 81% gelukkiger dan de rest",
-		"q_3": "Een Belg, een Nederlander en een Duitser lopen over straat...",
+		"q_2": "comment",
+		"q_3": "Jij bent 81% gelukkiger dan de rest",
 		"q_4": "zegt de Belg tegen de Nederland",
 		"q_5": "wat ben jij slechts in het bedenken van teksten"
 	}

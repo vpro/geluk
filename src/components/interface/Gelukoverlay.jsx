@@ -3,6 +3,8 @@ import React from 'react';
 import GSAP from 'gsap';
 import ReactDOM from 'react-dom';
 
+import Commentbox from './Gelukcommentbox.jsx';
+
 class Gelukoverlay extends React.Component{
   constructor(props){
     super(props);
@@ -27,17 +29,32 @@ class Gelukoverlay extends React.Component{
     })
   }
 
+  showBox(){
+    this.setState(function(state){
+      state.showCommentBox = true;
+    })
+  }
+
   render() {
+    if (this.props.text === "comment"){
+      var tekst = "Wil je vertellen waarom je gisteren zo ongelukkig was?";
+      var showButtons = true;
+    } else {
+      var tekst = this.props.text
+    }
 		return (
 			<div className="questions__overlay">
-				<p className="questions__overlaytext" ref="text">{this.props.text}</p>
+				<p className="questions__overlaytext" ref="text">{tekst}</p>
+        {showButtons ? <div><span className="questions__next--yellow">Liever niet</span>
+          <span className="questions__next--yellow" onClick={this.showBox.bind(this)}>Ja</span></div> : null}
+        {this.props.showCommentBox ? <Commentbox comment={this.props.comment} setAnswer={this.props.setAnswer.bind(this)} currentQuestion={this.props.currentQuestion}/> : null }
 			</div>
 		)
 	}
 }
 
 Gelukoverlay.propTypes = {
-  text: React.PropTypes.string.isRequired
+  text: React.PropTypes.string
 }
 
 export default Gelukoverlay;

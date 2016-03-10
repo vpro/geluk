@@ -5,6 +5,8 @@ import Rebase from 're-base';
 import Gelukmodule from './interface/Gelukmodule.jsx';
 import Geluksummary from './interface/Geluksummary.jsx';
 
+import Truefalse from './interface/Truefalse.jsx'
+
 /* Data */
 import Model from './config/model.json';
 import Innersettings from './config/innersettings.json';
@@ -51,6 +53,19 @@ class Introduction extends React.Component{
     })
   }
 
+  setAnswer(givenString, type){
+    console.log(givenString);
+    console.log(type);
+
+    var string = givenString,
+        typeOfHappiness = type;
+
+    this.setState( function(state){
+      state.userData.core_module[typeOfHappiness + "_answer"] = string;
+    }, this.updateFirebase)
+
+  }
+
   updateFirebase(){
     firebase.post('users/'+ this.state.userId, {
       data: this.state.userData
@@ -61,9 +76,10 @@ class Introduction extends React.Component{
       var margin = {
         "marginLeft": this.state.innerSettings.widthOffset
       }
+      console.log(this.state)
   		return (
   			<div className="questions" style={margin}>
-          <Geluksummary 
+        <Geluksummary 
             moduleHeadline="eudaimonisch geluk"
             moduleDescription="I propose to treat of Poetry in itself and of its various kinds, noting the essential quality of each; to inquire into the structure of the plot as requisite to a good poem; into the number and nature of the parts of which a poem is composed; and similarly into whatever else falls within the same inquiry. Following, then, the order of nature, let us begin with the principles which come first."/>
         { this.state.questions.core_module.map((question, key) => { return (
@@ -77,8 +93,11 @@ class Introduction extends React.Component{
             questionDescription={question.question} 
             setHappy={this.setHappiness.bind(this)}
             setOverlay={this.setOverlay.bind(this)}
+            setAnswer={this.setAnswer.bind(this)}
             overlayStatus={this.state.innerSettings.overlays[question.name]}
-            overlayText={this.state.innerSettings.message[question.name]}
+            overlayText={this.state.innerSettings.feedback[question.name]}
+            overlayComment={this.state.innerSettings.comment[question.name]}
+            overlayAnswer={this.state.userData.core_module[question.name + "_answer"]}
             key={key} 
           />
           );

@@ -60,10 +60,28 @@
   padding: 7px 11px;
   display: inline-flex;
   margin-top: 100px;
+  cursor: pointer;
   &:hover {
     border: 3px solid white;
     color: white;
     cursor: pointer;
+  }
+}
+
+.questions__next--yellow {
+  @extend .questions__next;
+  border: 3px solid $darkyellow;
+  color: $darkyellow;
+  display: inline-flex;
+  margin-top: 0px;
+  cursor: pointer;
+  &:hover {
+    border: 3px solid white;
+    color: white;
+    cursor: pointer;
+  }
+  &:nth-child(2){
+    margin-left: 10px;
   }
 }
 

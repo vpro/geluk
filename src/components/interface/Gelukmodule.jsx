@@ -21,13 +21,12 @@ class Gelukmodule extends React.Component{
 
   submitOverlay(event){
     var currentOverlay = this.props.happinessQuestion;
-
     this.props.setOverlay(currentOverlay);
   }
 
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     if(this.props.currentQuestion < this.props.questionNumber){
       var style = {
         textShadow: '0 0 12px black',
@@ -40,10 +39,19 @@ class Gelukmodule extends React.Component{
 
 		return (
 			<div className="questions__single" style={style}>
-        { this.props.overlayStatus ? <Gelukoverlay text={this.props.overlayText} /> : null }
+
+        { this.props.overlayStatus ? 
+          <Gelukoverlay 
+            text={this.props.overlayText} 
+            showCommentBox={this.props.overlayComment}
+            setAnswer={this.props.setAnswer.bind(this)}
+            currentQuestion={this.props.happinessQuestion}
+            comment={this.props.overlayAnswer} 
+          /> : null }
 
 				<p className="questions__singledescription" style={style}>{this.props.questionDescription}</p>
         <span className="questions__singlerating">{this.props.happinessValue}/{this.props.highestScale}</span>
+        
           <br/>
         <input 
           type="range"
@@ -52,8 +60,13 @@ class Gelukmodule extends React.Component{
           value={this.props.happinessValue}
           onChange={this.submitHappiness} 
           ref={this.setRef}
-          style={displayElem} />
-        <span className="questions__next" style={displayElem} onClick={this.submitOverlay.bind(this)}>verder</span>
+          style={displayElem} 
+        />
+        <span 
+          className="questions__next" 
+          style={displayElem} 
+          onClick={this.submitOverlay.bind(this)}
+        >verder</span>
 			</div>
 		)
 	}

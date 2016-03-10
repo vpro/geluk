@@ -1,15 +1,12 @@
 {
 	"userStats": {
 		"age": 0,
-		"gender": "male",
-		"marital_status": "married",
+		"male": true,
+		"married": true,
 		"children": 0,
-		"geographical": 0,
 		"income": 0,
-		"housing": "flat",
 		"education": "basisschool",
 		"vpro_member": false,
-		"gids_member": false,
 		"score": {
 			"core_module": 0,
 			"affect_module": 0,
@@ -20,9 +17,12 @@
 	"core_module": {
 		"q_1": 0,
 		"q_2": 0,
+		"q_2_answer": "Een beetje", 
 		"q_3": 0,
 		"q_4": 0,
-		"q_5": 0
+		"q_4_answer": "Geen beetje", 
+		"q_5": 0,
+		"q_5_answer": "Klein beetje"
 	},
 	"affect_module": {
 		"q_1": 0,

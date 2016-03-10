@@ -4,6 +4,7 @@
 @import 'vpro.scss';
 
 @import 'gelukmodule.scss';
+@import 'truefalse.scss';
 
 
 h1 {
@@ -24,4 +25,5 @@ body {
 .app-container {
 	width: 100%;
 	min-height: 100%;
+	overflow: hidden;
 }
