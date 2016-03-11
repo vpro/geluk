@@ -5,7 +5,8 @@ import Rebase from 're-base';
 import Gelukmodule from './interface/Gelukmodule.jsx';
 import Geluksummary from './interface/Geluksummary.jsx';
 
-import Truefalse from './interface/Truefalse.jsx'
+import Truefalse from './interface/Truefalse.jsx';
+import SpriteAnimator from './interface/Sprite.jsx';
 
 /* Data */
 import Model from './config/model.json';
@@ -15,8 +16,6 @@ import Questionnaire from './config/questions.json';
 const firebase = Rebase.createClass('https://geluk.firebaseio.com');
 const width = window.innerWidth;
 
-const boxWidth = 300;
-
 /* Hier vermoedelijk een if else maken */
 
 class Introduction extends React.Component{
@@ -25,6 +24,8 @@ class Introduction extends React.Component{
 
     this.state = {
       userId: Math.floor(Date.now()),
+      boxWidth: 300,
+      widthCompensator: 0,
       innerSettings: Innersettings,
       userData: Model,
       questions: Questionnaire
@@ -55,7 +56,7 @@ class Introduction extends React.Component{
 
   setNext(){
      this.setState( function(state){
-      state.innerSettings.widthOffset = state.innerSettings.widthOffset - boxWidth;
+      state.innerSettings.widthOffset = state.innerSettings.widthOffset - this.state.boxWidth;
       console.log(width);
     })   
   }
@@ -94,6 +95,11 @@ class Introduction extends React.Component{
       }
   		return (
   			<div className="questions" style={margin}>
+        { /* <SpriteAnimator
+            sprite='http://blaiprat.github.io/jquery.animateSprite/img/scottpilgrim_multiple.png'
+            width={100}
+            height={100}
+          /> */ }
           <Geluksummary 
             moduleHeadline="eudaimonisch geluk"
             moduleDescription="I propose to treat of Poetry in itself and of its various kinds, noting the essential quality of each; to inquire into the structure of the plot as requisite to a good poem; into the number and nature of the parts of which a poem is composed; and similarly into whatever else falls within the same inquiry. Following, then, the order of nature, let us begin with the principles which come first."
@@ -116,6 +122,7 @@ class Introduction extends React.Component{
             overlayText={this.state.innerSettings.feedback[question.name]}
             overlayComment={this.state.innerSettings.comment[question.name]}
             overlayAnswer={this.state.userData.core_module[question.name + "_answer"]}
+            boxWidth={this.state.boxWidth}
             key={key} 
           />
           );

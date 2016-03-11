@@ -1,30 +1,14 @@
 import React from 'react';
 import Rebase from 're-base';
 
-import Message from './Gelukmessage.jsx';
-
-const firebase = Rebase.createClass('https://geluk.firebaseio.com');
 
 class Comment extends React.Component{
 	constructor(props){
 		super(props);
 
 		this.state = {
-			posts: null,
 			word: false
 		}
-	}
-
-	componentWillMount(){
-	  firebase.fetch('users/answers/' + this.props.module + '/' + this.props.currentQuestion + '/' + this.props.happinessValue, {
-	    context: this,
-	    asArray: true,
-	    then(data){
-	      this.setState(function(state){
-	      	state.posts = data
-	      });
-	    }
-	  });
 	}
 
 	changeString(event){
@@ -34,16 +18,19 @@ class Comment extends React.Component{
 				currentHappiness = this.props.happinessValue;
 
 		this.setState(function(state){state.word = true});
-
 		this.props.setAnswer(message, currentQuestion, currentModule, currentHappiness);
 	}
 
 	submitComment(event){
     if(event.keyCode == 13){
 			this.props.submitCommentOverlay();
+			this.props.setShowMessage(true);
     }
-		console.log("submitten")
+	}
 
+	submitCommentClick(event){
+  	this.props.submitCommentOverlay();
+		this.props.setShowMessage(true);
 	}
 
   render() {
@@ -65,7 +52,7 @@ class Comment extends React.Component{
         />
         <br/>
         <div className="commentbox__container">
-        <span className="commentbox__next--white" onClick={this.submitComment.bind(this)}>verder</span>
+        <span className="commentbox__next--white" onClick={this.submitCommentClick.bind(this)}>verder</span>
         {enterElem}
         </div>
 			</div>
@@ -74,8 +61,8 @@ class Comment extends React.Component{
 }
 
 Comment.propTypes = {
-	submitString: React.PropTypes.func.isRequired,
 	submitCommentOverlay: React.PropTypes.func.isRequired,
+	setShowMessage: React.PropTypes.func.isRequired,
 	comment: React.PropTypes.string.isRequired,
 	currentQuestion: React.PropTypes.string.isRequired
 }

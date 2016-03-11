@@ -1,3 +1,11 @@
+h4 {
+  color: orange !important;
+}
+p { 
+  color: black;
+}
+
+
 .questions {
   height: 100vh;
   width: 100%;
@@ -32,14 +40,15 @@
 .questions__single {
 	height: 100%;
 	min-width: 300px;
-	background: $darkyellow;
+  color: black;
+	background: $steunkleur-een;
   position: relative;
   padding: 40px;
   padding-top: 100px;
 }
 
 .questions__single:nth-child(odd) {
-  background: $lightyellow !important;
+  background: $steunkleur-twee !important;
 }
 
 .questions__singledescription {
@@ -62,16 +71,16 @@
   margin-top: 100px;
   cursor: pointer;
   &:hover {
-    border: 3px solid white;
-    color: white;
+    background: black;
+    color: $steunkleur-een;
     cursor: pointer;
   }
 }
 
 .questions__next--yellow {
   @extend .questions__next;
-  border: 3px solid $darkyellow;
-  color: $darkyellow;
+  border: 3px solid $steunkleur-een;
+  color: $steunkleur-een;
   display: inline-flex;
   margin-top: 0px;
   cursor: pointer;
@@ -100,7 +109,7 @@
 .questions__overlaytext {
   font-family: SimplisticSans-Bold;
   font-size: 32px;
-  color: $darkyellow;
+  color: $steunkleur-een;
 }
 
 /* Overlay: Comments */
@@ -133,9 +142,6 @@
 }
 
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-
-
-
 
 .commentbox__entermessage {
   width: 300px;
@@ -173,6 +179,37 @@
     color: white;
     cursor: pointer;
   }
+}
+
+/* Message */
+.message__loader {
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: $greybat;
+  display: block;
+  height: 20px;
+  width: 0;
+}
+
+.message__container {
+  margin-left: 40px;
+  margin-top: 120px;
+}
+
+.message__profile {
+  display: none;
+  opacity: 0;
+  color: $greymouse;
+}
+
+.message__message {
+  display: none;
+  font-family: SimplisticSans-Medium;
+  font-size: 48px;
+  line-height: 44px;
+  color: $darkyellow;
+  opacity: 0;
 }
 
 /* Slider */

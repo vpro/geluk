@@ -63,6 +63,7 @@ class Gelukmodule extends React.Component{
             setNext={this.props.setNext.bind(this)}
             currentQuestion={this.props.happinessQuestion}
             comment={this.props.overlayAnswer} 
+            boxWidth={this.props.boxWidth}
           /> : null }
 
 				<p className="questions__singledescription" style={style}>{this.props.questionDescription}</p>
