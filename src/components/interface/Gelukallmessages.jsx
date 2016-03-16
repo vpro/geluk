@@ -12,7 +12,6 @@ class Allmessages extends React.Component{
     super(props);
 
     this.state = {
-    	messages: null,
     	lowestAnswer: null,
     	lowestNumber: null,
     	lowestGender: null,
@@ -28,12 +27,11 @@ class Allmessages extends React.Component{
 		console.log(this.props.module);
 		console.log(this.props.currentQuestion);
 
-    firebase.fetch('users/answers/' + this.props.module + '/' + this.props.currentQuestion, {
+    firebase.fetch('answers/' + this.props.module + '/' + this.props.currentQuestion, {
       context: this,
       asArray: true,
       then(data){
         this.setState(function(state){
-        	state.messages = 'bla';
         	var length = data.length-1;
         	var lowest = _.values(data[0]);
         	var highest = _.values(data[length]);
@@ -53,14 +51,16 @@ class Allmessages extends React.Component{
     }); 
 	}
 
-	componentDidMount(){
-		console.log(this.state);
+	/* Dit is voor later */
+	generateNewRandomAnswer(){
+		console.log('bla');
 	}
 
   render() {
 		return (
 			<div className="messages">
 				<div>
+				<p>Ok&#233;, geen probleem. Dit is wat andere mensen achterlieten:</p>
 				{ ['lowest','highest'].map( (elements, key) => { return (
 				 <SingleMessage
 						gender={this.state[elements + "Gender"]}

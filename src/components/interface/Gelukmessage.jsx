@@ -3,10 +3,8 @@ import GSAP from 'gsap';
 
 class Message extends React.Component{
 	componentDidMount(){
-		var loader = this.refs.loader,
-				profile = this.refs.profile,
-				message = this.refs.message,
-				duur = 8;
+		const {loader, profile, message} = this.refs;
+		var duur = 8;
 
 		TweenLite.to(loader, duur, {
       minWidth: '100%',
@@ -41,6 +39,7 @@ class Message extends React.Component{
 	}
 
   render() {
+  	const {age, rating, comment} = this.props;
   	if(this.props.gender === 'male'){
   		var gender = 'man';
   	} else {
@@ -53,8 +52,8 @@ class Message extends React.Component{
 			<div className="message">
 				<div className="message__loader" ref="loader"></div>
 				<div className="message__container">
-					<p className="message__profile" ref="profile">een {this.props.age}-jarige {gender} gaf zichzelf ook een {this.props.rating} omdat:</p>
-					<p className="message__message" ref="message">{this.props.comment}</p>
+					<p className="message__profile" ref="profile">een {age}-jarige {gender} gaf zichzelf ook een {rating} omdat:</p>
+					<p className="message__message" ref="message">{comment}</p>
 				</div>
 			</div>
 		)
@@ -66,7 +65,6 @@ Message.propTypes = {
 	age: React.PropTypes.any.isRequired,
 	gender: React.PropTypes.string.isRequired,
 	comment: React.PropTypes.string.isRequired
-
 }
 
 export default Message;

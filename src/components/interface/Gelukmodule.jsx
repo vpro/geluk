@@ -37,20 +37,22 @@ class Gelukmodule extends React.Component{
     this.props.setOverlay(currentOverlay);
   }
 
-
   render() {
     if(this.props.currentQuestion < this.props.questionNumber){
-      var style = {
-        textShadow: '0 0 12px black',
-        color: 'transparent'
-      }
-      var displayElem = {
-        display: 'none'
-      }
-    } 
+      var displayElem = { display: 'none' }
+      var blurStyle = "questions__singledescription questions__blur--add";
+      var secondBlurStyle = "questions__singlerating questions__blur--add";
+    } else {
+      var blurStyle = "questions__singledescription questions__blur--remove";
+      var secondBlurStyle = "questions__singlerating questions__blur--remove";
+    }
+
+    var width = {
+      minWidth: this.props.boxWidth + 'px'
+    }
 
 		return (
-			<div className="questions__single" style={style}>
+			<div className="questions__single" style={width}>
 
         { this.props.overlayStatus ? 
           <Gelukoverlay 
@@ -65,9 +67,9 @@ class Gelukmodule extends React.Component{
             comment={this.props.overlayAnswer} 
             boxWidth={this.props.boxWidth}
           /> : null }
-
-				<p className="questions__singledescription" style={style}>{this.props.questionDescription}</p>
-        <span className="questions__singlerating">{this.props.happinessValue}/{this.props.highestScale}</span>
+        { /* <p>1/20</p> */ }
+				<p className={blurStyle}>{this.props.questionDescription}</p>
+        <span className={secondBlurStyle}>{this.props.happinessValue}/{this.props.highestScale}</span>
 
           <br/>
         <input 

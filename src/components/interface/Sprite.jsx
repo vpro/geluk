@@ -1,4 +1,5 @@
 const React = require('react')
+
 const {PropTypes, Component} = React
 const noop = () => {}
 const propTypes = {
@@ -30,6 +31,7 @@ const defaultProps = {
 class SpriteAnimator extends Component {
   constructor (props) {
     super(props)
+    
     this.state = {
       currentFrame: props.startFrame
     }

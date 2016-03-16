@@ -5,6 +5,36 @@ p {
   color: black;
 }
 
+/* VIDEO SHEISSSS */
+.video{
+  position:absolute;
+  width:100%;
+  margin:0px;
+  opacity:0;
+  z-index:-1;
+}
+
+.introduction {
+  background-image: url('../images/footer.png');
+  background-repeat: repeat;
+  height: 100vh;
+  min-width: 700px;
+  background-size: 900px;
+  padding: 100px;
+}
+.introduction__logo {
+  max-width: 300px;
+}
+
+.introduction__tagline {
+  font-size: 72px;
+  color: white;
+  margin-top: 20px;
+}
+
+.introduction__text {
+  color: white;
+}
 
 .questions {
   height: 100vh;
@@ -30,16 +60,17 @@ p {
     width: 200px;
     position: fixed;
     z-index: 100;
+    margin-top: 106px;
   }
 
   .questions__summarytext {
-    margin-top: 80px; /* Temporary fix */
+   /* margin-top: 80px;*/ /* Temporary fix */
+    margin-top: 200px;
   }
 
 /* Single Happiness Module */
 .questions__single {
 	height: 100%;
-	min-width: 300px;
   color: black;
 	background: $steunkleur-een;
   position: relative;
@@ -51,10 +82,31 @@ p {
   background: $steunkleur-twee !important;
 }
 
+@-webkit-keyframes blurAnim {
+    0% { 
+      -webkit-filter: blur(6px);
+      filter: blur(6px);
+    }
+    100% { 
+      -webkit-filter: blur(0px);
+      filter: blur(0px);
+    }
+}
+
 .questions__singledescription {
   font-family: SimplisticSans-Bold;
   font-size: 24px;
   margin-top: 20px;
+}
+
+.questions__blur--add {
+  -webkit-filter: blur(6px);
+  filter: blur(6px);
+}
+
+.questions__blur--remove {
+  -webkit-animation: blurAnim 2s; 
+  animation: blurAnim 2s;
 }
 
 .questions__singlerating {
@@ -210,6 +262,18 @@ p {
   line-height: 44px;
   color: $darkyellow;
   opacity: 0;
+}
+
+/* MessageSSSSSS */
+.singlemessage {
+}
+
+.singlemessage__meta {
+  color: white;
+}
+
+.singlemessage__message {
+  color: white;
 }
 
 /* Slider */

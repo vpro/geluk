@@ -12,10 +12,8 @@ class Comment extends React.Component{
 	}
 
 	changeString(event){
-		var message = event.target.value,
-				currentQuestion = this.props.currentQuestion,
-				currentModule = this.props.module,
-				currentHappiness = this.props.happinessValue;
+		const {currentQuestion, currentModule, currentHappiness} = this.props;
+		var message = event.target.value;
 
 		this.setState(function(state){state.word = true});
 		this.props.setAnswer(message, currentQuestion, currentModule, currentHappiness);
@@ -34,12 +32,13 @@ class Comment extends React.Component{
 	}
 
   render() {
-  	var placeholder = "Ik gaf mijzelf een " + this.props.happinessValue + " omdat ik...";
-  	var enterElem;
+  	var placeholder = "Ik gaf mijzelf een " + this.props.happinessValue + " omdat ik...",
+  			enterElem;
+
   	if(this.state.word){
-  		enterElem = (<p className="commentbox__entermessage">Of druk enter</p>)
+  		enterElem = (<p className="commentbox__entermessage">of druk enter</p>)
   	}
-  	console.log(this.state)
+
 		return (
 			<div className="commentbox">
         <input type="text" 
@@ -50,7 +49,7 @@ class Comment extends React.Component{
         	onChange={this.changeString.bind(this)}
         	onKeyUp={this.submitComment.bind(this)}
         />
-        <br/>
+       	 <br/>
         <div className="commentbox__container">
         <span className="commentbox__next--white" onClick={this.submitCommentClick.bind(this)}>verder</span>
         {enterElem}

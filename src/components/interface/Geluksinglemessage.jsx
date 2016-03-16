@@ -1,6 +1,9 @@
 import React from 'react';
 
 class SingleMessage extends React.Component{
+  componentDidMount(){
+    console.log('bla');
+  }
   render() {
     if(this.props.gender === 'male'){
       var gender = 'man';
@@ -9,8 +12,8 @@ class SingleMessage extends React.Component{
     }
 		return (
 			<div className="singlemessage">
-					<p>Een {this.props.age}-jarige {gender} gaf zichzelf een {this.props.number}</p>
-          <p>{this.props.answer}</p>
+					<p className="singlemessage__meta">Een {this.props.age}-jarige {gender} gaf zichzelf een {this.props.number}</p>
+          <p className="singlemessage__message">{this.props.answer}</p>
 			</div>
 		)
 	}

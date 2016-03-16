@@ -17,6 +17,7 @@ class Gelukoverlay extends React.Component{
 
     this.state = {
       showMessage: false,
+      showAllMessages: false,
       posts: null
     }
   }
@@ -132,6 +133,11 @@ class Gelukoverlay extends React.Component{
     var switcher = switcher;
     this.setState(function(state){
       state.showMessage = switcher;
+      if(switcher === true){
+        setTimeout(function(){
+        state.showAllMessages = true;
+      }, 8000)
+      }
     })
     if(switcher === false){
       this.resetWidth();
@@ -149,6 +155,7 @@ class Gelukoverlay extends React.Component{
     var chosenPost = this.state.chosenPost;
 		return (
 			<div className="questions__overlay">
+        <p>1/20</p>
 				<p className="questions__overlaytext" ref="text">{tekst}</p>
         { showButtons ? 
           <div className="questions__overlaybuttons" ref="overlaybuttons">
@@ -179,10 +186,11 @@ class Gelukoverlay extends React.Component{
         /> : null
       }
 
-      { this.props.showComment ?       <Allmessages
-        module={this.props.module}
-        currentQuestion={this.props.currentQuestion}
-      /> : null}
+      { this.state.showAllMessages ? 
+        <Allmessages
+          module={this.props.module}
+          currentQuestion={this.props.currentQuestion}
+        /> : null}
 
 			</div>
 		)
