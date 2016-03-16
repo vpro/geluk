@@ -13,8 +13,10 @@ class VideoFS extends React.Component{
 
   render() {
 		return (
-      <video autoPlay className="video" src="https://onedrive.live.com/download?resid=78F211D646E63BBD!5026&authkey=!AEU8kraxXh3ouqk&ithint=video%2c.mp4">
+			<div>
+      <video autoPlay className="video" loop src="https://onedrive.live.com/download?resid=78F211D646E63BBD!5026&authkey=!AEU8kraxXh3ouqk&ithint=video%2c.mp4">
       </video>
+      </div>
     )
 }
 }
