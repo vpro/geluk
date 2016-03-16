@@ -1,6 +1,7 @@
 // Load json file
-
-var users = require('./users.json');
+const https = require('https');
+const fs = require('fs');
+var users={};
 
 function Stats( name ) {
         this.name = name;
@@ -88,17 +89,47 @@ function process_quality_scores( obj, stats ) {
     }
 }
 
-var qstats = genStatsContainer( users );
-for ( var key in users ) {
-    process_quality_scores( users[key], qstats );
+function writeJson( obj ) {
+    fs.writeFile("./stats.json", JSON.stringify( obj ), function ( err ) {
+        if (err) {
+            console.log( 'Error saving file:', err );
+        } else {
+            console.log( 'stats.json was saved' );
+        }
+    });
 }
-console.log(qstats.married);
-console.log(qstats.vpro_member);
-console.log(qstats.children);
-//console.log(qstats.married.avg());
-return;
 
-var qs = {
+function parse() {
+    var qstats = genStatsContainer( users );
+    for ( var key in users ) {
+        process_quality_scores( users[key], qstats );
+    }
+    console.log(qstats.married);
+    //console.log(qstats.vpro_member);
+    //console.log(qstats.children);
+    console.log(qstats.married.true.avg());
+    writeJson( qstats );
+    return;
+}
+
+https.get('https://geluk.firebaseio.com/users.json', function(res) {
+    var body = '';
+    res.on('data', function(chunk) {
+        body+= chunk;
+    });
+    
+    res.on('end', function() {
+        users = JSON.parse(body);
+        console.log("Got " + Object.keys(users).length + " responses from firebase");
+        parse();
+    });
+}).on('error', function(e) {
+    console.log("Got an error acquiring data from firebase:", e);
+    users = require('./users.json');
+});
+
+
+/*var qs = {
     married : { true: new Stats(), false: new Stats()},
     age : [new Stats(), new Stats(), new Stats(), new Stats(), new Stats()], 
     all : new Stats()
@@ -141,3 +172,4 @@ console.log(qs.all.avg());// = qs.all[key].avg / count;
 //}
 qs.married[true].avg();
 //console.log(qs);
+*/
