@@ -5,7 +5,7 @@ import Rebase from 're-base';
 import Gelukmodule from './interface/Gelukmodule.jsx';
 import Geluksummary from './interface/Geluksummary.jsx';
 
-import VideoFS from './interface/VideoFS.jsx';
+import VideoFS from './interface/video/VideoFS.jsx';
 
 import SpriteAnimator from './interface/Sprite.jsx';
 
