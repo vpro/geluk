@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Rebase from 're-base';
 
 /* Components */
@@ -25,8 +26,15 @@ class IntegerMeasure extends React.Component{
     this.state = {
       widthCompensator: 0,
       innerSettings: Innersettings,
-      questions: Questionnaire
+      questions: Questionnaire,
+      showVideo: true
     }
+  }
+
+  closeVideo(){
+    this.setState(function(state){
+      state.showVideo = false;
+    })
   }
 
   setOverlay(overlayType){
@@ -50,7 +58,9 @@ class IntegerMeasure extends React.Component{
   		return (
   			<div className="questions" style={margin}>
 
-         { /* <VideoFS /> */ }
+         {this.state.showVideo ? <VideoFS 
+          closeVideo={this.closeVideo.bind(this)}
+         /> : null }
 
           <LamelSummary 
             moduleHeadline="eudaimonisch geluk"
