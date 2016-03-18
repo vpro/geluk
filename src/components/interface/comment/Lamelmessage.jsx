@@ -1,7 +1,7 @@
 import React from 'react';
 import GSAP from 'gsap';
 
-class Message extends React.Component{
+class SimilarComment extends React.Component{
 	componentDidMount(){
 		const {loader, profile, message} = this.refs;
 		var duur = 8;
@@ -40,14 +40,18 @@ class Message extends React.Component{
 
   render() {
   	const {age, rating, comment} = this.props;
+
   	if(this.props.gender === 'male'){
   		var gender = 'man';
   	} else {
   		var gender = 'vrouw';
   	}
+
+  	/* Oplossing zoeken wat er moet gebeuren wanneer er een undefined is */
   	if(typeof this.props.age == 'undefined'){
   		console.log('geen comment');
   	}
+
 		return (
 			<div className="message">
 				<div className="message__loader" ref="loader"></div>
@@ -60,11 +64,11 @@ class Message extends React.Component{
 	}
 }
 
-Message.propTypes = {
+SimilarComment.propTypes = {
 	setShowMessage: React.PropTypes.func.isRequired,
 	age: React.PropTypes.any.isRequired,
 	gender: React.PropTypes.string.isRequired,
 	comment: React.PropTypes.string.isRequired
 }
 
-export default Message;
+export default SimilarComment;

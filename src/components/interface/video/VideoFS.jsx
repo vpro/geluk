@@ -15,11 +15,12 @@ class VideoFS extends React.Component{
 		return (
 			<div className="video">
 				<VideoOverlay
-					headline="kerngeluk"
-					tekst="De module kerngeluk is volgens de OESO de meest essentiele meettool"
+					headline="Aaron Hirsch"
+					tekst="Schrijver van het boek Purpose Economy"
 				/>
       <video autoPlay className="video__element" loop src="https://onedrive.live.com/download?resid=78F211D646E63BBD!5026&authkey=!AEU8kraxXh3ouqk&ithint=video%2c.mp4">
       </video>
+
       </div>
     )
 }

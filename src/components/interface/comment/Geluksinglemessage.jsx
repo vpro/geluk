@@ -1,9 +1,6 @@
 import React from 'react';
 
 class SingleMessage extends React.Component{
-  componentDidMount(){
-    console.log('bla');
-  }
   render() {
     if(this.props.gender === 'male'){
       var gender = 'man';

@@ -5,13 +5,13 @@ import ReactDOM from 'react-dom';
 
 import Rebase from 're-base';
 
-import Comment from './Gelukcomment.jsx';
-import Message from './Gelukmessage.jsx';
-import Allmessages from './Gelukallmessages.jsx';
+import InputComment from './comment/Lamelinput.jsx';
+import SimilarComment from './comment/Lamelmessage.jsx';
+import Allmessages from './comment/Gelukallmessages.jsx';
 
 const firebase = Rebase.createClass('https://geluk.firebaseio.com');
 
-class Gelukoverlay extends React.Component{
+class Lameloverlay extends React.Component{
   constructor(props){
     super(props);
 
@@ -23,6 +23,7 @@ class Gelukoverlay extends React.Component{
   }
 
   componentDidMount(){
+    console.log(this.props);
     var node = ReactDOM.findDOMNode(this);
     var buttons = this.refs.overlaybuttons;
     var text = this.refs.text;
@@ -49,7 +50,7 @@ class Gelukoverlay extends React.Component{
         display: 'block'
       });
       /* Fetch posts */
-      firebase.fetch('users/answers/' + this.props.module + '/' + this.props.currentQuestion + '/' + this.props.happinessValue, {
+      firebase.fetch('answers/' + this.props.module + '/' + this.props.currentQuestion + '/' + this.props.happinessValue, {
         context: this,
         asArray: true,
         then(data){
@@ -146,60 +147,60 @@ class Gelukoverlay extends React.Component{
 
   render() {
     if (this.props.text === "comment"){
-      var cijfer = this.props.happinessValue;
-      var tekst = "Wil je vertellen waarom je jezelf een " + cijfer + " gaf?";
-      var showButtons = true;
+      var cijfer = this.props.happinessValue,
+          tekst = "Wil je vertellen waarom je jezelf een " + cijfer + " gaf?",
+          showButtons = true;
     } else {
       var tekst = this.props.text;
     }
     var chosenPost = this.state.chosenPost;
+
 		return (
 			<div className="questions__overlay">
         <p>1/20</p>
 				<p className="questions__overlaytext" ref="text">{tekst}</p>
+
         { showButtons ? 
           <div className="questions__overlaybuttons" ref="overlaybuttons">
             <span className="questions__next--yellow" onClick={this.submitNext.bind(this)}>Liever niet</span>
             <span className="questions__next--yellow" onClick={this.showBox.bind(this)}>Ja</span>
-          </div> : null
-        }
+          </div> : null }
         
         { this.props.showComment ? 
-          <Comment 
-            module={this.props.module}
+          <InputComment 
             comment={this.props.comment} 
             submitCommentOverlay={this.submitComment.bind(this)}
             setAnswer={this.props.setAnswer.bind(this)}
             setShowMessage={this.setShowMessage.bind(this)}
-            happinessValue={this.props.happinessValue} 
-            ref="comment"
+            currentModule={this.props.module}
+            currentHappiness={this.props.happinessValue} 
             currentQuestion={this.props.currentQuestion}
-          /> : null 
-        }
+            ref="comment"
+          /> : null }
+
       { this.state.showMessage ? 
-        <Message 
+        <SimilarComment 
           age={this.state.posts[chosenPost].age} 
           gender={this.state.posts[chosenPost].gender} 
           rating={this.props.happinessValue} 
           comment={this.state.posts[chosenPost].answer} 
           setShowMessage={this.setShowMessage.bind(this)}
-        /> : null
-      }
+        /> : null }
 
-      { this.state.showAllMessages ? 
+      { /* this.state.showAllMessages ? 
         <Allmessages
           module={this.props.module}
           currentQuestion={this.props.currentQuestion}
-        /> : null}
+        /> : null */ }
 
 			</div>
 		)
 	}
 }
 
-Gelukoverlay.propTypes = {
+Lameloverlay.propTypes = {
   text: React.PropTypes.string,
   comment: React.PropTypes.string
 }
 
-export default Gelukoverlay;
+export default Lameloverlay;

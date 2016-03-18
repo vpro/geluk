@@ -40,8 +40,9 @@ class VideoOverlay extends React.Component{
 			<div className="video__boxcontent">
         <span className="video__orangecover" ref="cover"></span>
         <span ref="tekst">
-				<span className="video__tagline">{this.props.headline}</span>
-				<span className="video__meta">{this.props.tekst}</span>
+  				<span className="video__tagline">{this.props.headline}</span>
+  				<span className="video__meta">{this.props.tekst}</span>
+          <span className="video__button"></span>
         </span>
   		</div>
   	</div>

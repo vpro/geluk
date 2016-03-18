@@ -17,12 +17,9 @@
 	"core_module": {
 		"q_1": 0,
 		"q_2": 0,
-		"q_2_answer": "", 
 		"q_3": 0,
 		"q_4": 0,
-		"q_4_answer": "", 
-		"q_5": 0,
-		"q_5_answer": ""
+		"q_5": 0
 	},
 	"affect_module": {
 		"q_1": 0,

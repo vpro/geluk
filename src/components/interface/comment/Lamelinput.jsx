@@ -2,7 +2,7 @@ import React from 'react';
 import Rebase from 're-base';
 
 
-class Comment extends React.Component{
+class InputComment extends React.Component{
 	constructor(props){
 		super(props);
 
@@ -32,7 +32,7 @@ class Comment extends React.Component{
 	}
 
   render() {
-  	var placeholder = "Ik gaf mijzelf een " + this.props.happinessValue + " omdat ik...",
+  	var placeholder = "Ik gaf mijzelf een " + this.props.currentHappiness + " omdat ik...",
   			enterElem;
 
   	if(this.state.word){
@@ -59,11 +59,11 @@ class Comment extends React.Component{
 	}
 }
 
-Comment.propTypes = {
+InputComment.propTypes = {
 	submitCommentOverlay: React.PropTypes.func.isRequired,
 	setShowMessage: React.PropTypes.func.isRequired,
 	comment: React.PropTypes.string.isRequired,
 	currentQuestion: React.PropTypes.string.isRequired
 }
 
-export default Comment;
+export default InputComment;

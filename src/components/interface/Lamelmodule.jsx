@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Gelukoverlay from './Gelukoverlay.jsx';
+import Lameloverlay from './Lameloverlay.jsx';
 
-class Gelukmodule extends React.Component{
+class LamelModule extends React.Component{
   constructor(props){
     super(props);
     this.submitHappiness = this.submitHappiness.bind(this);
@@ -55,7 +55,7 @@ class Gelukmodule extends React.Component{
 			<div className="questions__single" style={width}>
 
         { this.props.overlayStatus ? 
-          <Gelukoverlay 
+          <Lameloverlay 
             module={this.props.module}
             moduleDOM={this.state.DOMnode}
             text={this.props.overlayText} 
@@ -72,6 +72,7 @@ class Gelukmodule extends React.Component{
         <span className={secondBlurStyle}>{this.props.happinessValue}/{this.props.highestScale}</span>
 
           <br/>
+          
         <input 
           type="range"
           min={this.props.lowestScale}
@@ -81,6 +82,7 @@ class Gelukmodule extends React.Component{
           ref={this.setRef}
           style={displayElem} 
         />
+
         <span 
           className="questions__next" 
           style={displayElem} 
@@ -91,11 +93,11 @@ class Gelukmodule extends React.Component{
 	}
 }
 
-Gelukmodule.propTypes = {
+LamelModule.propTypes = {
   happinessValue: React.PropTypes.number.isRequired,
   happinessQuestion: React.PropTypes.string.isRequired,
   setHappy: React.PropTypes.func.isRequired,
   setOverlay: React.PropTypes.func.isRequired
 }
 
-export default Gelukmodule;
+export default LamelModule;

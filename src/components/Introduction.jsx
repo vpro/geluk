@@ -2,11 +2,7 @@ import React from 'react';
 import Rebase from 're-base';
 
 /* Components */
-import Gelukmodule from './interface/Gelukmodule.jsx';
-import Geluksummary from './interface/Geluksummary.jsx';
-
-import VideoFS from './interface/video/VideoFS.jsx';
-
+import IntegerMeasure from './IntegerMeasure.jsx';
 import SpriteAnimator from './interface/Sprite.jsx';
 
 /* Data */
@@ -29,9 +25,7 @@ class Introduction extends React.Component{
       userId: Math.floor(Date.now()),
       boxWidth: 300,
       widthCompensator: 0,
-      innerSettings: Innersettings,
-      userData: Model,
-      questions: Questionnaire
+      userData: Model
     }
   }
 
@@ -70,29 +64,11 @@ class Introduction extends React.Component{
     }, this.updateFirebase)
   }
 
-  setOverlay(overlayType){
-    this.setState( function(state){
-      state.innerSettings.overlays[overlayType] = true;
-      state.innerSettings.currentPosition++;
-    }, this.setNext)
-  }
-
-  setNext(){
-     this.setState( function(state){
-      state.innerSettings.widthOffset = state.innerSettings.widthOffset - this.state.boxWidth;
-      console.log(width);
-    })   
-  }
 
   setAnswer(answer, typeOfHappiness, currentModule, amountOfHappiness){
     function hasWhiteSpace(s) {
       return s.indexOf(' ') >= 0;
     }
-
-    /* Kijken of dit eigenlijk nog wel noodzakelijk is */
-    this.setState( function(state){
-      state.userData.core_module[typeOfHappiness + "_answer"] = answer;
-    }, this.updateFirebase)
 
     if(hasWhiteSpace(answer) === true){
       this.updateFirebaseAnswer(currentModule, typeOfHappiness, amountOfHappiness, answer);
@@ -113,11 +89,8 @@ class Introduction extends React.Component{
   }  
 
   render() {
-      var margin = {
-        "marginLeft": this.state.innerSettings.widthOffset
-      }
   		return (
-  			<div className="questions" style={margin}>
+  			<div className="questions">
 
         { /* <SpriteAnimator
             sprite='http://blaiprat.github.io/jquery.animateSprite/img/scottpilgrim_multiple.png'
@@ -150,37 +123,14 @@ class Introduction extends React.Component{
         <p className="questions__summarytext">Vul hier al je shit in</p>
       </div> */ }
 
-      <VideoFS />
+      <IntegerMeasure 
+        uid={this.state.userId}
+        boxWidth={this.state.boxWidth}
+        userData={this.state.userData}
+        setHappy={this.setHappiness.bind(this)}
+        setAnswer={this.setAnswer.bind(this)}
+      />
 
-          <Geluksummary 
-            moduleHeadline="eudaimonisch geluk"
-            moduleDescription="I propose to treat of Poetry in itself and of its various kinds, noting the essential quality of each; to inquire into the structure of the plot as requisite to a good poem; into the number and nature of the parts of which a poem is composed; and similarly into whatever else falls within the same inquiry. Following, then, the order of nature, let us begin with the principles which come first."
-          />
-
-        { this.state.questions.core_module.map((question, key) => { 
-            return (
-              <Gelukmodule
-                module={question.module}
-                happinessValue={this.state.userData.core_module[question.name]}
-                happinessQuestion={question.name}
-                currentQuestion={this.state.innerSettings.currentPosition}
-                questionNumber={question.number}
-                lowestScale={question.lowest_scale}
-                highestScale={question.highest_scale}
-                questionDescription={question.question} 
-                setHappy={this.setHappiness.bind(this)}
-                setOverlay={this.setOverlay.bind(this)}
-                setAnswer={this.setAnswer.bind(this)}
-                setNext={this.setNext.bind(this)}
-                overlayStatus={this.state.innerSettings.overlays[question.name]}
-                overlayText={this.state.innerSettings.feedback[question.name]}
-                overlayComment={this.state.innerSettings.comment[question.name]}
-                overlayAnswer={this.state.userData.core_module[question.name + "_answer"]}
-                boxWidth={this.state.boxWidth}
-                key={key} />
-              );
-            })
-        } 
 
   			</div>
   		)

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Geluksummary extends React.Component{
+class LamelSummary extends React.Component{
   render() {
 		return (
 			<div className="questions__summary" >
@@ -11,9 +11,9 @@ class Geluksummary extends React.Component{
 	}
 }
 
-Geluksummary.propTypes = {
+LamelSummary.propTypes = {
   moduleHeadline: React.PropTypes.string.isRequired,
   moduleDescription: React.PropTypes.string.isRequired
 }
 
-export default Geluksummary;
+export default LamelSummary;
