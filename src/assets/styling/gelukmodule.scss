@@ -36,6 +36,16 @@ p {
   background-color: $orange;
 }
 
+.video__imagecontainer {
+    overflow: hidden;
+    display: flex;
+    width: 33.33%;
+}
+
+.video__imageholder {
+  margin-left: -600px;
+}
+
 .video__orangecover {
   background: $orange;
   height: 100%;

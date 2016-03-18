@@ -29,6 +29,15 @@ class Introduction extends React.Component{
     }
   }
 
+  componentWillMount(){
+    firebase.post('users/'+ this.state.userId, {
+      data: this.state.userData
+    })
+    // Have to make sure that is only invoked once
+    // this.determineBoxWidth();
+
+  }
+
   determineBoxWidth(){
     /*
      *  Keep smartphone width as the width for one box
@@ -44,16 +53,7 @@ class Introduction extends React.Component{
         state.boxWidth = 300;
       }
     })
-  }
-
-  componentWillMount(){
-    firebase.post('users/'+ this.state.userId, {
-      data: this.state.userData
-    })
-    // Have to make sure that is only invoked once
-    // this.determineBoxWidth();
-
-  }
+  }  
 
   setHappiness(happiness, type){
     var geluk = happiness,
