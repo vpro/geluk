@@ -7,7 +7,7 @@ import placeholderOne from '../../../assets/images/logo.svg';
 import image from '../../../assets/images/screen.png';
 import VideoOverlay from './VideoOverlay.jsx'
 
-class VideoFS extends React.Component{
+class VideoQuestion extends React.Component{
   constructor(props){
     super(props);
 
@@ -37,7 +37,7 @@ class VideoFS extends React.Component{
         if (videoElem.readyState === 4) {
           videoContainer.removeChild(preloader);
           that.activateOverlay();
-          setTimeout(that.closeVideo.bind(that), 10000)
+          setTimeout(that.closeVideo.bind(that), 100000)
         } else {
           setTimeout(checkLoad, 100);
         }
@@ -61,7 +61,21 @@ class VideoFS extends React.Component{
 					headline="Aaron Hirsch"
 					tekst="Schrijver van het boek Purpose Economy"
 				  /> : null }
-        <video autoPlay className="video__element" ref="videoElement" loop src="https://onedrive.live.com/download?resid=78F211D646E63BBD!5026&authkey=!AEU8kraxXh3ouqk&ithint=video%2c.mp4"> 
+          <span className="video__imagecontainer">
+          <img className="video__imageholder" src={image}/>
+          </span>
+          <div className="video__questioncontainer">
+            <div className="video__border">
+              <h1 className="video__question">Wat is jouw voornaamste drijfveer om te werken?</h1>
+              <hr className="video__line"/>
+              <ul className="video__multiplechoice">
+              <li>a) noodzakelijk kwaad</li>
+              <li>b) maken van carriere</li>
+              <li>c) innerlijke roeping</li>
+              </ul>
+            </div>
+          </div>
+        <video autoPlay className="video__element" ref="videoElement" loop src="fragment.mp4"> 
       </video>
 
       </div>
@@ -69,4 +83,4 @@ class VideoFS extends React.Component{
 }
 }
 
-export default VideoFS;
+export default VideoQuestion;

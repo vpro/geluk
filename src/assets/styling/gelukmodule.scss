@@ -7,7 +7,7 @@ p {
 
 /* VIDEO SHEISSSS */
 .video {
-  background: black;
+  background: black url('../images/footer.png');
   min-width: 100%;
   height: 100%;
 }
@@ -39,11 +39,43 @@ p {
 .video__imagecontainer {
     overflow: hidden;
     display: flex;
-    width: 33.33%;
+    width: 50%;
 }
 
 .video__imageholder {
   margin-left: -600px;
+}
+
+.video__border {
+  /*width: calc(100% - 30px);*/
+  height: 85vh;
+  margin: 50px;
+  padding: 50px;
+  border: 2px solid $orange;
+  text-align: center;
+}
+
+.video__questioncontainer {
+  position: absolute;
+  margin-left: 50%;
+  width: 50%;
+  top: 0;
+}
+
+.video__question {
+  color: white;
+  width: 300px;
+  line-height: 32px;
+  margin: auto;
+  margin-top: 20px;
+  font-size: 36px;
+}
+
+.video__line {
+  border: 2px solid $orange;
+  width: 200px;
+  margin: auto;
+  margin-top: 30px;
 }
 
 .video__orangecover {
@@ -75,6 +107,18 @@ p {
   line-height: 1.2em;
   max-width: 300px;
 }
+
+.video__multiplechoice {
+  color: white;
+  font-family: SimplisticSans-Bold;
+  font-size: 24px;
+  margin-top: 40px;
+}
+
+.video__multiplechoice li {
+  margin-top: 30px;
+}
+
 .video__tagline {
     display: block;
     margin-bottom: 0.05em;

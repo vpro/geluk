@@ -7,6 +7,7 @@ import LamelModule from './interface/Lamelmodule.jsx';
 import LamelSummary from './interface/Lamelsummary.jsx';
 
 import VideoFS from './interface/video/VideoFS.jsx';
+import VideoQuestion from './interface/video/VideoQuestion.jsx';
 
 
 /* Data */
@@ -58,7 +59,11 @@ class IntegerMeasure extends React.Component{
   		return (
   			<div className="questions" style={margin}>
 
-         {this.state.showVideo ? <VideoFS 
+         { /* this.state.showVideo ? <VideoFS 
+          closeVideo={this.closeVideo.bind(this)}
+         /> : null */}
+
+          {this.state.showVideo ? <VideoQuestion
           closeVideo={this.closeVideo.bind(this)}
          /> : null }
 
