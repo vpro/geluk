@@ -157,7 +157,6 @@ class Lameloverlay extends React.Component{
 
 		return (
 			<div className="questions__overlay">
-        <p>1/20</p>
 				<p className="questions__overlaytext" ref="text">{tekst}</p>
 
         { showButtons ? 

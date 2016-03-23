@@ -4,6 +4,7 @@ import Rebase from 're-base';
 /* Components */
 import IntegerMeasure from './IntegerMeasure.jsx';
 import SpriteAnimator from './interface/Sprite.jsx';
+import Results from './Results.jsx';
 
 /* Data */
 import Model from './config/model.json';
@@ -25,7 +26,11 @@ class Introduction extends React.Component{
       userId: Math.floor(Date.now()),
       boxWidth: 300,
       widthCompensator: 0,
-      userData: Model
+      userData: Model,
+      introduction: true,
+      persona: false,
+      questions: false,
+      results: false
     }
   }
 
@@ -86,6 +91,14 @@ class Introduction extends React.Component{
     firebase.post('answers/' + happinessModule + '/' + typeOfHappiness + '/' + amountOfHappiness + '/' + this.state.userId, {
       data: {answer: answer, gender: userStats.gender, age: userStats.age}
     })
+  }
+
+  goNext(thisScreen, nextScreen){
+    console.log(thisScreen);
+    this.setState(function(state){
+      state[thisScreen] = false;
+      state[nextScreen] = true;
+    })
   }  
 
   render() {
@@ -112,6 +125,24 @@ class Introduction extends React.Component{
             */
         }
 
+       { this.state.introduction ? <div className="intro">
+        <span className="intro__tagline">vpro<span className="intro__orange">tegen</span>licht <span className="intro__gray">het rendement van geluk</span></span>
+        <h1 className="intro__kop">De betekenis<br/>van werk</h1>
+        <p className="intro__text">Waar werk lange tijd vooral een manier was om de kost te verdienen, begint onze reden om te werken steeds meer te verschuiven. Onze toenemende welvaart zorgt ervoor dat geld niet uitsluitend meer onze primaire drijfveer is. Werk wordt steeds vaker een manier van zelfexpressie. Een manier om jezelf te ontwikkelen, maar bovenal ook een manier om goed te doen voor onze wereld.</p>
+          <video autoPlay className="intro__video" ref="videoElement" loop src="fabriek.mp4"></video>
+        <span className="intro__button" onClick={this.goNext.bind(this, 'introduction','persona')}>Start</span>
+        </div> : null }
+
+       { this.state.persona ? <div className="intro persona">
+        <p>man/vrouw</p>
+        <p>in welke sector ben je werkzaam?</p>
+        <p>wat verdien je per maand (bruto?)</p>
+        <p>leeftijd?</p>
+        <p>onderwijs?</p>
+        <span className="intro__button" onClick={this.goNext.bind(this, 'persona','questions')}>Verder</span>
+        </div> : null }
+
+
      {/*    <div className="introduction">
         <img className="introduction__logo" src={logo}/>
           <h1 className="introduction__tagline">Geluksmeter</h1>
@@ -123,13 +154,15 @@ class Introduction extends React.Component{
         <p className="questions__summarytext">Vul hier al je shit in</p>
       </div> */ }
 
-      <IntegerMeasure 
+      { this.state.questions ? <IntegerMeasure 
         uid={this.state.userId}
         boxWidth={this.state.boxWidth}
         userData={this.state.userData}
         setHappy={this.setHappiness.bind(this)}
         setAnswer={this.setAnswer.bind(this)}
-      />
+      /> : null }
+
+      { this.state.results ? <Results/> : null}
 
 
   			</div>

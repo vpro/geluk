@@ -27,7 +27,9 @@ class VideoQuestion extends React.Component{
   }
 
   componentDidMount(){
-    window.addEventListener('load', function() {
+    console.log(window);
+
+    window.addEventListener('click', function() {
       var videoContainer = ReactDOM.findDOMNode(this),
           preloader = ReactDOM.findDOMNode(this.refs.preloader),
           videoElem = ReactDOM.findDOMNode(this.refs.videoElement),
@@ -58,7 +60,7 @@ class VideoQuestion extends React.Component{
         { this.state.videoOverlay ? <span className="video__close" onClick={this.closeVideo.bind(this)}><i class="glyph glyph-close"></i></span> : null}
 
 				{ this.state.videoOverlay ? <VideoOverlay
-					headline="Aaron Hirsch"
+					headline="Aaron Hirst"
 					tekst="Schrijver van het boek Purpose Economy"
 				  /> : null }
           <span className="video__imagecontainer">
@@ -69,9 +71,9 @@ class VideoQuestion extends React.Component{
               <h1 className="video__question">Wat is jouw voornaamste drijfveer om te werken?</h1>
               <hr className="video__line"/>
               <ul className="video__multiplechoice">
-              <li>a) noodzakelijk kwaad</li>
-              <li>b) maken van carriere</li>
-              <li>c) innerlijke roeping</li>
+              <li>noodzakelijk kwaad</li>
+              <li>maken van carriere</li>
+              <li>innerlijke roeping</li>
               </ul>
             </div>
           </div>

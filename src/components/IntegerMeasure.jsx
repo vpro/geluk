@@ -68,8 +68,8 @@ class IntegerMeasure extends React.Component{
          /> : null }
 
           <LamelSummary 
-            moduleHeadline="eudaimonisch geluk"
-            moduleDescription="I propose to treat of Poetry in itself and of its various kinds, noting the essential quality of each; to inquire into the structure of the plot as requisite to a good poem; into the number and nature of the parts of which a poem is composed; and similarly into whatever else falls within the same inquiry. Following, then, the order of nature, let us begin with the principles which come first."
+            moduleHeadline="werk in getallen"
+            moduleDescription="Beantwoord de volgende vragen omtrent je werk"
           />
 
         { this.state.questions.core_module.map((question, key) => { 

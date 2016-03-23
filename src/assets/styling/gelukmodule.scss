@@ -1,8 +1,72 @@
-h4 {
-  color: orange !important;
-}
+
 p { 
   color: black;
+}
+
+/* INTRO */
+.intro {
+  background: black;
+  height: 100vh;
+  min-width: 100%;
+  padding-top: 70px;
+  padding-left: 50px;
+}
+
+.intro__tagline {
+  font-family: SimplisticSans-Bold;
+  font-size: 20px;
+  color: white;
+}
+
+.intro__orange {
+  color: $orange;
+}
+
+.intro__gray {
+  color: $greyelephant;
+}
+
+.intro__kop {
+  font-size: 64px;
+  color: white;
+  z-index: 1000;
+  position: relative;
+  line-height: 48px;
+}
+
+.intro__text {
+  color: white;
+  z-index: 1000;
+  position: relative;
+  width: 33.3%;
+}
+
+.intro__video {
+  top: 0;
+  position: absolute;
+  right: 0;
+  height: 100vh;
+  margin: 0;
+  z-index: 1;
+}
+
+.intro__button {
+@extend .questions__next;
+  border: 3px solid $orange !important;
+  color: $white !important;
+  display: inline-flex;
+  margin-top: 0px !important;
+  cursor: pointer;
+  &:hover {
+    border: 3px solid white;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+/* PERSONA */
+.persona p {
+  color: white !important;
 }
 
 /* VIDEO SHEISSSS */
@@ -39,7 +103,7 @@ p {
 .video__imagecontainer {
     overflow: hidden;
     display: flex;
-    width: 50%;
+    width: 66.66%;
 }
 
 .video__imageholder {
@@ -48,23 +112,22 @@ p {
 
 .video__border {
   /*width: calc(100% - 30px);*/
-  height: 85vh;
+  /*height: 85vh;*/
   margin: 50px;
   padding: 50px;
-  border: 2px solid $orange;
+  /*border: 2px solid $orange;*/
   text-align: center;
 }
 
 .video__questioncontainer {
   position: absolute;
-  margin-left: 50%;
-  width: 50%;
+  margin-left: 66.66%;
+  width: 33.33%;
   top: 0;
 }
 
 .video__question {
   color: white;
-  width: 300px;
   line-height: 32px;
   margin: auto;
   margin-top: 20px;
@@ -135,12 +198,11 @@ p {
   font-family: SimplisticSans-Medium;
 }
 .video__element {
-    position: relative;
-    min-width: 100%;
-    height: 100vh;
-    margin: 0;
-    z-index: 1;
-
+  position: relative;
+  min-width: 100%;
+  height: 100vh;
+  margin: 0;
+  z-index: 1;
 }
 
 .introduction {
@@ -180,7 +242,7 @@ p {
 .questions__summary {
   height: 100%;
   min-width: 300px;
-  background: $introduction-color;
+  background: black url('../images/footer.png');
   position: relative;
   padding: 40px;
 }
@@ -189,12 +251,14 @@ p {
     width: 200px;
     position: fixed;
     z-index: 100;
-    margin-top: 106px;
+    margin-top: 83px;
+    color: $orange !important;
   }
 
   .questions__summarytext {
    /* margin-top: 80px;*/ /* Temporary fix */
-    margin-top: 200px;
+    margin-top: 154px;
+    color: white !important;
   }
 
 /* Single Happiness Module */
@@ -208,7 +272,7 @@ p {
 }
 
 .questions__single:nth-child(odd) {
-  background: $steunkleur-twee !important;
+  background: transparent !important;
 }
 
 @-webkit-keyframes blurAnim {
@@ -226,6 +290,10 @@ p {
   font-family: SimplisticSans-Bold;
   font-size: 24px;
   margin-top: 20px;
+  color: black !important;
+  &:nth-child(odd){
+    color: white !important;
+  }
 }
 
 .questions__blur--add {
@@ -241,12 +309,14 @@ p {
 .questions__singlerating {
   font-family: SimplisticSans-Bold;
   font-size: 24px;
+  color: white !important;
 }
 
 .questions__next {
   font-family: SimplisticSans-Bold;
   font-size: 16px;
-  border: 3px solid black;
+  border: 3px solid white;
+  color: white !important;
   padding: 7px 11px;
   display: inline-flex;
   margin-top: 100px;
@@ -290,7 +360,7 @@ p {
 .questions__overlaytext {
   font-family: SimplisticSans-Bold;
   font-size: 32px;
-  color: $steunkleur-een;
+  color: white;
 }
 
 /* Overlay: Comments */
@@ -403,6 +473,21 @@ p {
 
 .singlemessage__message {
   color: white;
+}
+
+/* Results */
+.results {
+  width: 100%;
+  height: 100vh;
+  background: $orange;
+  overflow: hidden;
+}
+
+.results h1 {
+  font-size: 60px !important;
+  color: white !important;
+  margin-left: 40px;
+  margin-top: 40px;
 }
 
 /* Slider */
