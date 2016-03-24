@@ -6,6 +6,8 @@ import IntegerMeasure from './IntegerMeasure.jsx';
 import SpriteAnimator from './interface/Sprite.jsx';
 import Results from './Results.jsx';
 
+import PersonaString from './interface/PersonaString.jsx';
+
 /* Data */
 import Model from './config/model.json';
 import Innersettings from './config/innersettings.json';
@@ -41,6 +43,14 @@ class Introduction extends React.Component{
     // Have to make sure that is only invoked once
     // this.determineBoxWidth();
 
+  }
+
+  submitUserstats(type, reply){
+    console.log(type);
+    console.log('reply', reply);
+    this.setState(function(state){
+      state.userData.userStats[type] = reply
+    }, this.updateFirebase)
   }
 
   determineBoxWidth(){
@@ -135,10 +145,35 @@ class Introduction extends React.Component{
 
        { this.state.persona ? <div className="intro persona">
         <p>man/vrouw</p>
+        <PersonaString
+          value={this.state.userData.userStats.gender}
+          changeFunc={this.submitUserstats.bind(this)}
+          field="gender"
+         />        
         <p>in welke sector ben je werkzaam?</p>
+        <PersonaString
+          value={this.state.userData.userStats.job}
+          changeFunc={this.submitUserstats.bind(this)}
+          field="job"
+         />
         <p>wat verdien je per maand (bruto?)</p>
+        <PersonaString
+          value={this.state.userData.userStats.income}
+          changeFunc={this.submitUserstats.bind(this)}
+          field="income"
+         />        
         <p>leeftijd?</p>
+        <PersonaString
+          value={this.state.userData.userStats.age}
+          changeFunc={this.submitUserstats.bind(this)}
+          field="age"
+         />
         <p>onderwijs?</p>
+        <PersonaString
+          value={this.state.userData.userStats.education}
+          changeFunc={this.submitUserstats.bind(this)}
+          field="education"
+        />
         <span className="intro__button" onClick={this.goNext.bind(this, 'persona','questions')}>Verder</span>
         </div> : null }
 

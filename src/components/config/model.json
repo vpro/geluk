@@ -2,8 +2,7 @@
 	"userStats": {
 		"age": 0,
 		"gender": "male",
-		"married": true,
-		"children": 0,
+		"job": "",
 		"income": 0,
 		"education": "basisschool",
 		"vpro_member": false,
