@@ -19,7 +19,7 @@ class PersonaString extends React.Component{
             value={this.props.value}
             onChange={this.handleChange.bind(this)}
           />
-
+          
   			</div>
   		)
 		}

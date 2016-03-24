@@ -1,0 +1,141 @@
+{
+	"job": [
+		{
+			"cat": "agrarischmilieu",
+			"naam": "Agrarisch & Milieu"
+			},
+		{
+			"cat": "algemeen",
+			"naam": "Algemeen"
+		},
+		{
+			"cat": "architectuur",
+			"naam": "Architectuur & Design"
+		},
+		{
+			"cat": "automotive",
+			"naam": "Automotive"
+		},
+		{
+			"cat": "banken",
+			"naam": "Banken"
+		},
+		{
+			"cat": "bettinggaming",
+			"naam": "Betting & Gaming"
+		},
+		{
+			"cat": "bouw",
+			"naam": "Bouw"
+		},
+		{
+			"cat": "defensie",
+			"naam": "Defensie"
+		},
+		{
+			"cat": "dierenverzorging",
+			"naam": "Dieren & Verzorging"
+		},
+		{
+			"cat": "erotiek",
+			"naam": "Erotiek"
+		},
+		{
+			"cat": "facilitairedienstverlening",
+			"naam": "Facilitaire Dienstverlening"
+		},
+		{
+			"cat": "fashionstyling",
+			"naam": "Fashion & Styling"
+		},
+		{
+			"cat": "gezondheidfarmacie",
+			"naam": "Gezonheidszorg & Farmacie"
+		},
+		{
+			"cat": "handel",
+			"naam": "Handel/Groothandel/Detailhandel"
+		},
+		{
+			"cat": "horeca",
+			"naam": "Horeca"
+		},
+		{
+			"cat": "ict",
+			"naam": "ICT"
+		},
+		{
+			"cat": "industrieproductie",
+			"naam": "Industrie/Productie"
+		},
+		{
+			"cat": "juridisch",
+			"naam": "Juridisch"
+		},
+		{
+			"cat": "kunstcultuurentertainment",
+			"naam": "Kunst, Cultuur & Entertainment"
+		},
+		{
+			"cat": "lifesciences",
+			"naam": "Life Sciences"
+		},
+		{
+			"cat": "luchtvaartzeevaart",
+			"naam": "Luchtvaart en Zeevaart"
+		},
+		{
+			"cat": "marketingcommunicatie",
+			"naam": "Marketing en Communicatie"
+		},
+		{
+			"cat": "mediajournalistiek",
+			"naam": "Media en Journalistiek"
+		},
+		{
+			"cat": "onderwijs",
+			"naam": "Onderwijs"
+		},
+		{
+			"cat": "onderzoek",
+			"naam": "Onderzoek"
+		},
+		{
+			"cat": "overheid",
+			"naam": "Overheid/Semi-overheid"
+		},
+		{
+			"cat": "politie",
+			"naam": "Politie & Beveiliging"
+		},
+		{
+			"cat": "reizen",
+			"naam": "Reizen & Recreatie"
+		},
+		{
+			"cat": "techniek",
+			"naam": "Techniek"
+		},
+		{
+			"cat": "transport",
+			"naam": "Transport & Logistiek"
+		},
+		{
+			"cat": "uitzendbureaus",
+			"naam": "Uitzendbureaus / Werving & Selectie"
+		},
+		{
+			"cat": "Vastgoed",
+			"naam": "Vastgoed / Makelaardij"
+		},
+		{
+			"cat": "Voeding",
+			"naam": "Voeding / Beweging"
+		},
+		{
+			"cat": "dienstverlening",
+			"naam": "Zakelijke dienstverlening"
+		}												
+		],
+	"inkomen": ["1000 - 1250", "1250 - 1500"]	
+}

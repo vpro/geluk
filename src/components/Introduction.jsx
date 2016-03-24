@@ -7,11 +7,13 @@ import SpriteAnimator from './interface/Sprite.jsx';
 import Results from './Results.jsx';
 
 import PersonaString from './interface/PersonaString.jsx';
+import PersonaSelect from './interface/PersonaSelect.jsx';
 
 /* Data */
 import Model from './config/model.json';
 import Innersettings from './config/innersettings.json';
 import Questionnaire from './config/questions.json';
+import Persona from './config/persona.json';
 
 import logo from '../assets/images/logo.svg';
 
@@ -28,6 +30,7 @@ class Introduction extends React.Component{
       userId: Math.floor(Date.now()),
       boxWidth: 300,
       widthCompensator: 0,
+      personaQuestions: Persona,
       userData: Model,
       introduction: true,
       persona: false,
@@ -112,6 +115,7 @@ class Introduction extends React.Component{
   }  
 
   render() {
+    console.log(this.props.list);
   		return (
   			<div className="questions">
 
@@ -151,9 +155,10 @@ class Introduction extends React.Component{
           field="gender"
          />        
         <p>in welke sector ben je werkzaam?</p>
-        <PersonaString
+        <PersonaSelect
           value={this.state.userData.userStats.job}
           changeFunc={this.submitUserstats.bind(this)}
+          list={this.state.personaQuestions}
           field="job"
          />
         <p>wat verdien je per maand (bruto?)</p>
