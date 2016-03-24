@@ -13,7 +13,7 @@ class PersonaSelect extends React.Component{
   			<div className="persona__select">
           <select name="select" onChange={this.handleChange.bind(this)} value={this.props.value}>
 
-            { this.props.list.job.map(function(elements, key){
+            { this.props.list[this.props.field].map(function(elements, key){
               return (
                   <option value={elements.cat} key={key}>{elements.naam}</option> 
                 )

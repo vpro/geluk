@@ -162,9 +162,10 @@ class Introduction extends React.Component{
           field="job"
          />
         <p>wat verdien je per maand (bruto?)</p>
-        <PersonaString
+        <PersonaSelect
           value={this.state.userData.userStats.income}
           changeFunc={this.submitUserstats.bind(this)}
+          list={this.state.personaQuestions}
           field="income"
          />        
         <p>leeftijd?</p>
@@ -174,9 +175,10 @@ class Introduction extends React.Component{
           field="age"
          />
         <p>onderwijs?</p>
-        <PersonaString
+        <PersonaSelect
           value={this.state.userData.userStats.education}
           changeFunc={this.submitUserstats.bind(this)}
+          list={this.state.personaQuestions}
           field="education"
         />
         <span className="intro__button" onClick={this.goNext.bind(this, 'persona','questions')}>Verder</span>
