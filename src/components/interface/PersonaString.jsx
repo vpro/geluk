@@ -13,7 +13,7 @@ class PersonaString extends React.Component{
   render() {
   		return (
   			<div className="persona__string">
-
+          <h2>{this.props.question}</h2>
           <input
             type="text"
             value={this.props.value}

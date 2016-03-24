@@ -177,5 +177,14 @@
 		{
 			"cat": "wo",
 			"naam": "WO"
-		}]	
+		}],
+		"gender": [
+		{
+			"cat": "male",
+			"naam": "Man"
+		},
+		{
+			"cat": "female",
+			"naam": "Vrouw"
+		}]		
 }

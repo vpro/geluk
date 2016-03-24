@@ -261,6 +261,40 @@ p {
     color: white !important;
   }
 
+ /* User settings */
+ select {
+
+  /* styling */
+  background-color: white;
+  border: thin solid blue;
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+
+  /* reset */
+
+  margin: 0;      
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .persona__customselect {
+    background: #EFEFEF url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/392/select-arrow.png) 95% 50% no-repeat;
+  }
+} 
+
+.persona__select {
+  margin: auto;
+    text-align: center;
+
+}
+
 /* Single Happiness Module */
 .questions__single {
 	height: 100%;

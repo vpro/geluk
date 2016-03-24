@@ -23,7 +23,6 @@ class Lameloverlay extends React.Component{
   }
 
   componentDidMount(){
-    console.log(this.props);
     var node = ReactDOM.findDOMNode(this);
     var buttons = this.refs.overlaybuttons;
     var text = this.refs.text;

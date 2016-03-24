@@ -34,6 +34,11 @@ class Introduction extends React.Component{
       userData: Model,
       introduction: true,
       persona: false,
+      persona_gender: false,
+      persona_job: false,
+      persona_income: false,
+      persona_age: false,
+      persona_education: false,
       questions: false,
       results: false
     }
@@ -48,12 +53,14 @@ class Introduction extends React.Component{
 
   }
 
-  submitUserstats(type, reply){
-    console.log(type);
-    console.log('reply', reply);
+  submitUserstats(type, reply, next){
+    if(next == 'job' || next == 'gender' || next == 'income' || next == 'age' || next == 'education'){
+      var next = 'persona_'+next
+    }
     this.setState(function(state){
       state.userData.userStats[type] = reply
     }, this.updateFirebase)
+    this.goNext('persona_'+type, next)
   }
 
   determineBoxWidth(){
@@ -115,9 +122,8 @@ class Introduction extends React.Component{
   }  
 
   render() {
-    console.log(this.props.list);
-  		return (
-  			<div className="questions">
+		return (
+			<div className="questions">
 
         { /* <SpriteAnimator
             sprite='http://blaiprat.github.io/jquery.animateSprite/img/scottpilgrim_multiple.png'
@@ -144,43 +150,54 @@ class Introduction extends React.Component{
         <h1 className="intro__kop">De betekenis<br/>van werk</h1>
         <p className="intro__text">Waar werk lange tijd vooral een manier was om de kost te verdienen, begint onze reden om te werken steeds meer te verschuiven. Onze toenemende welvaart zorgt ervoor dat geld niet uitsluitend meer onze primaire drijfveer is. Werk wordt steeds vaker een manier van zelfexpressie. Een manier om jezelf te ontwikkelen, maar bovenal ook een manier om goed te doen voor onze wereld.</p>
           <video autoPlay className="intro__video" ref="videoElement" loop src="fabriek.mp4"></video>
-        <span className="intro__button" onClick={this.goNext.bind(this, 'introduction','persona')}>Start</span>
+        <span className="intro__button" onClick={this.goNext.bind(this, 'introduction','persona_gender')}>Start</span>
         </div> : null }
 
-       { this.state.persona ? <div className="intro persona">
-        <p>man/vrouw</p>
-        <PersonaString
+        { this.state.persona_gender ? <PersonaSelect
           value={this.state.userData.userStats.gender}
+          question="man/vrouw?"
+          list={this.state.personaQuestions}
           changeFunc={this.submitUserstats.bind(this)}
-          field="gender"
-         />        
-        <p>in welke sector ben je werkzaam?</p>
-        <PersonaSelect
+          next="job"
+          field="gender"/>  : null }
+
+        { this.state.persona_job ? <PersonaSelect
           value={this.state.userData.userStats.job}
           changeFunc={this.submitUserstats.bind(this)}
+          question="in welke sector ben je werkzaam?"
           list={this.state.personaQuestions}
-          field="job"
-         />
-        <p>wat verdien je per maand (bruto?)</p>
-        <PersonaSelect
+          next="income"
+          field="job"/> : null}  
+
+         { this.state.persona_income ? <PersonaSelect
           value={this.state.userData.userStats.income}
           changeFunc={this.submitUserstats.bind(this)}
+          question="wat verdien je per maand (bruto?)"          
           list={this.state.personaQuestions}
           field="income"
-         />        
-        <p>leeftijd?</p>
-        <PersonaString
-          value={this.state.userData.userStats.age}
-          changeFunc={this.submitUserstats.bind(this)}
-          field="age"
-         />
-        <p>onderwijs?</p>
-        <PersonaSelect
+          next="education"
+         /> : null } 
+
+         { this.state.persona_education ?  <PersonaSelect
           value={this.state.userData.userStats.education}
+          question="onderwijs?"          
           changeFunc={this.submitUserstats.bind(this)}
           list={this.state.personaQuestions}
           field="education"
-        />
+          next="questions"
+        />: null } 
+
+
+       { this.state.persona ? <div className="intro persona">
+
+  
+        <PersonaString
+          value={this.state.userData.userStats.age}
+          question="leeftijd?"          
+          changeFunc={this.submitUserstats.bind(this)}
+          field="age"
+         />
+
         <span className="intro__button" onClick={this.goNext.bind(this, 'persona','questions')}>Verder</span>
         </div> : null }
 
