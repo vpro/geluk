@@ -171,7 +171,7 @@ class Introduction extends React.Component{
 
        { this.state.introduction ? <div className="intro">
         <span className="intro__tagline">vpro<span className="intro__orange">tegen</span>licht <span className="intro__gray">het rendement van geluk</span></span>
-        <h1 className="intro__kop">De betekenis<br/>van werk</h1>
+        <h1 className="intro__kop">De betekenis<br />van werk</h1>
         <p className="intro__text">Waar werk lange tijd vooral een manier was om de kost te verdienen, begint onze reden om te werken steeds meer te verschuiven. Onze toenemende welvaart zorgt ervoor dat geld niet uitsluitend meer onze primaire drijfveer is. Werk wordt steeds vaker een manier van zelfexpressie. Een manier om jezelf te ontwikkelen, maar bovenal ook een manier om goed te doen voor onze wereld.</p>
           <video autoPlay className="intro__video" ref="videoElement" loop src="fabriek.mp4"></video>
         <span className="intro__button" onClick={this.goNext.bind(this, 'introduction','persona_gender')}>Start</span>

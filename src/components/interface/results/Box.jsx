@@ -32,7 +32,6 @@ class Box extends React.Component{
     });    
   }
 
-
   render() {
     var position = {
       top: this.props.top + 'px',
@@ -47,11 +46,10 @@ class Box extends React.Component{
   			<div className={cName} style={position}>
           <div className="results__box-content" ref="boxcontent">
           { this.props.h3 ? <h3>{this.props.h3}</h3> : null }
-          { this.props.h4 ? <h4>{this.props.h4}</h4> : null }
+          { this.props.h4 ? <span className="results__altkop">{this.props.h4}</span> : null }
           { this.props.p ? <p>{this.props.p}</p> : null }
-  			  <span>Deel je score op Twitter</span>
-          <br/>
-          <span>Deel je score op Facebook</span>
+
+          { this.props.ownScore ? <div className="results__circle-container"><span className="results__own-circle">{this.props.ownScore}</span><span className="results__own-circle results__right-circle">{this.props.otherScore}</span></div> : null}
           </div>
         </div>
   		)
