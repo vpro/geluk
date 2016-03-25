@@ -33,3 +33,19 @@ body {
 	min-height: 100%;
 	overflow: hidden;
 }
+
+.app-container__progress {
+  width: 10px;
+  height: 100vh;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  position: absolute;
+  background: #1D1D1D;
+}
+
+.app-container__progressbar--orange{
+	background: $orange;
+	width: 100%;
+	-webkit-transition: all 1s ease;
+}

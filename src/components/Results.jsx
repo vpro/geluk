@@ -19,10 +19,9 @@ class Results extends React.Component{
 
     console.log(DOMnode);
 
-    TweenLite.from(DOMnode, .5, {
+    TweenLite.from(DOMnode, 2.5, {
       width:0, 
-      delay:1,
-      ease: Power2.easeOut
+      ease: Power4.easeOut
     });
   }
 

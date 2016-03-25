@@ -145,7 +145,7 @@ p {
   background: $orange;
   height: 100%;
   min-width: 100%;
-  z-index: 10;
+  z-index: 10000;
   display: block;
   position: absolute;
   left: 0;
@@ -275,7 +275,8 @@ p {
 
   /* reset */
 
-  margin: 0;      
+  margin: 0;     
+  margin-top: 20px; 
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -291,8 +292,7 @@ p {
 
 .persona__select {
   margin: auto;
-    text-align: center;
-
+  text-align: center;
 }
 
 /* Single Happiness Module */

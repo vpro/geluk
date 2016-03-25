@@ -19,6 +19,7 @@ import logo from '../assets/images/logo.svg';
 
 const firebase = Rebase.createClass('https://geluk.firebaseio.com');
 const width = window.innerWidth;
+const aantalVragen = 9;
 
 /* Hier vermoedelijk een if else maken */
 
@@ -30,6 +31,7 @@ class Introduction extends React.Component{
       userId: Math.floor(Date.now()),
       boxWidth: 300,
       widthCompensator: 0,
+      heighty: 0,
       personaQuestions: Persona,
       userData: Model,
       introduction: true,
@@ -50,7 +52,7 @@ class Introduction extends React.Component{
     })
     // Have to make sure that is only invoked once
     // this.determineBoxWidth();
-
+    console.log(this.props.route);
   }
 
   submitUserstats(type, reply, next){
@@ -58,9 +60,10 @@ class Introduction extends React.Component{
       var next = 'persona_'+next
     }
     this.setState(function(state){
-      state.userData.userStats[type] = reply
+      state.userData.userStats[type] = reply;
     }, this.updateFirebase)
     this.goNext('persona_'+type, next)
+    this.increaseProgress();
   }
 
   determineBoxWidth(){
@@ -113,17 +116,38 @@ class Introduction extends React.Component{
     })
   }
 
+  increaseProgress(){
+    this.setState( function(state){
+      state.heighty = state.heighty + (100 / aantalVragen);
+    })
+    var that = this;
+    if(this.state.heighty > 85){
+      console.log('whooptiedoo');
+      setTimeout(function(){ 
+        that.goNext('questions', 'results');
+       }, 1500);
+    }
+  }
+
   goNext(thisScreen, nextScreen){
     console.log(thisScreen);
     this.setState(function(state){
-      state[thisScreen] = false;
-      state[nextScreen] = true;
+
+        state[thisScreen] = false;
+        state[nextScreen] = true;
+      
     })
   }  
 
   render() {
+    var height = {
+      height: this.state.heighty + '%'
+    }
 		return (
 			<div className="questions">
+        <div className="app-container__progress">
+          <div className="app-container__progressbar--orange" style={height}></div>
+        </div>
 
         { /* <SpriteAnimator
             sprite='http://blaiprat.github.io/jquery.animateSprite/img/scottpilgrim_multiple.png'
@@ -155,7 +179,7 @@ class Introduction extends React.Component{
 
         { this.state.persona_gender ? <PersonaSelect
           value={this.state.userData.userStats.gender}
-          question="man/vrouw?"
+          question="man of vrouw?"
           list={this.state.personaQuestions}
           changeFunc={this.submitUserstats.bind(this)}
           next="job"
@@ -172,7 +196,7 @@ class Introduction extends React.Component{
          { this.state.persona_income ? <PersonaSelect
           value={this.state.userData.userStats.income}
           changeFunc={this.submitUserstats.bind(this)}
-          question="wat verdien je per maand (bruto?)"          
+          question="wat verdien je per maand (bruto)"          
           list={this.state.personaQuestions}
           field="income"
           next="education"
@@ -180,7 +204,7 @@ class Introduction extends React.Component{
 
          { this.state.persona_education ?  <PersonaSelect
           value={this.state.userData.userStats.education}
-          question="onderwijs?"          
+          question="hoogst genoten onderwijs"          
           changeFunc={this.submitUserstats.bind(this)}
           list={this.state.personaQuestions}
           field="education"
@@ -219,6 +243,7 @@ class Introduction extends React.Component{
         userData={this.state.userData}
         setHappy={this.setHappiness.bind(this)}
         setAnswer={this.setAnswer.bind(this)}
+        setProgress={this.increaseProgress.bind(this)}
       /> : null }
 
       { this.state.results ? <Results/> : null}

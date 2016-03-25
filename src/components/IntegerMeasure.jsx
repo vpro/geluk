@@ -46,10 +46,12 @@ class IntegerMeasure extends React.Component{
   }
 
   setNext(){
-     this.setState( function(state){
+    this.setState( function(state){
       state.innerSettings.widthOffset = state.innerSettings.widthOffset - this.props.boxWidth;
       console.log(width);
     })   
+    // Increase height
+    this.props.setProgress();
   }
 
   render() {

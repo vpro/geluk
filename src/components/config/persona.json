@@ -180,6 +180,10 @@
 		}],
 		"gender": [
 		{
+			"cat": "undefined",
+			"naam": "Kies je geslacht"
+		},
+		{
 			"cat": "male",
 			"naam": "Man"
 		},

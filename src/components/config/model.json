@@ -1,7 +1,7 @@
 {
 	"userStats": {
 		"age": 0,
-		"gender": "male",
+		"gender": "undefined",
 		"job": "",
 		"income": 0,
 		"education": "basisschool",
