@@ -34,7 +34,7 @@ class Introduction extends React.Component{
       heighty: 0,
       personaQuestions: Persona,
       userData: Model,
-      introduction: false,
+      introduction: true,
       persona: false,
       persona_gender: false,
       persona_job: false,
@@ -42,7 +42,7 @@ class Introduction extends React.Component{
       persona_age: false,
       persona_education: false,
       questions: false,
-      results: true
+      results: false
     }
   }
 
@@ -172,13 +172,14 @@ class Introduction extends React.Component{
        { this.state.introduction ? <div className="intro">
         <span className="intro__tagline">vpro<span className="intro__orange">tegen</span>licht <span className="intro__gray">het rendement van geluk</span></span>
         <h1 className="intro__kop">De betekenis<br />van werk</h1>
-        <p className="intro__text">Waar werk lange tijd vooral een manier was om de kost te verdienen, begint onze reden om te werken steeds meer te verschuiven. Onze toenemende welvaart zorgt ervoor dat geld niet uitsluitend meer onze primaire drijfveer is. Werk wordt steeds vaker een manier van zelfexpressie. Een manier om jezelf te ontwikkelen, maar bovenal ook een manier om goed te doen voor onze wereld.</p>
+        <p className="intro__text">Ontdek met deze test hoe gelukkig jij bent tijdens je werk. Ben jij gelukkig dan collega's uit dezelfde sector? Ben jij gelukkiger dan anderen die deze test invullen? En hoe meetbaar is jouw arbeidsgeluk eigenlijk? Ontdek het rendement van je geluk.</p>
           <video autoPlay className="intro__video" ref="videoElement" loop src="fabriek.mp4"></video>
         <span className="intro__button" onClick={this.goNext.bind(this, 'introduction','persona_gender')}>Start</span>
         </div> : null }
 
         { this.state.persona_gender ? <PersonaSelect
           value={this.state.userData.userStats.gender}
+          inleiding={true}
           question="man of vrouw?"
           list={this.state.personaQuestions}
           changeFunc={this.submitUserstats.bind(this)}

@@ -295,6 +295,16 @@ p {
   text-align: center;
 }
 
+.persona__inleiding {
+  font-family: SimplisticSans-Bold;
+  font-size: 32px;
+  line-height: 32px;
+  width: 50%;
+  color: $orange;
+  display: block;
+  margin: auto;
+}
+
 /* Single Happiness Module */
 .questions__single {
 	height: 100%;
@@ -557,6 +567,7 @@ p {
   display: block;
 }
 
+
 .results__box h3, .results__box p, .results__box h4 {
   color: white;
 }
@@ -584,6 +595,51 @@ p {
   padding-right: 280px;
   bottom: 100px;
   z-index: 4;
+}
+
+/* Results graph */
+.results__graph {
+  width: 400px;
+  height: 80%;
+  padding: 30px;
+  background: black;
+  position: absolute;
+  left: 100px;
+  top: 100px;
+  display: block;
+}
+
+.results__graph-scale {
+  height: 100%;
+  background: url('../images/dotbar.svg');
+  background-size: 4px 1289px;
+  background-repeat: repeat-y;
+  width: 10px;
+}
+
+.results__yours {
+  font-family: SimplisticSans-Bold;
+  display: block;
+  position: absolute;
+  line-height: 30px;
+  width: 100px;
+  background: $white;
+  color: $orange;
+  top: 0;
+  left: 60px;
+  padding-left: 13px;
+}
+
+.results__arrow {
+  width: 20px;
+  height: 20px;
+  margin-left: -25px;
+  margin-right: 13px;
+}
+.results__others {
+  @extend .results__yours;
+  background: $orange;
+  color: $white;
 }
 
 /* Slider */
