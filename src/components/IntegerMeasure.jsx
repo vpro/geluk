@@ -67,11 +67,12 @@ class IntegerMeasure extends React.Component{
 
           {this.state.showVideo ? <VideoQuestion
           closeVideo={this.closeVideo.bind(this)}
+          setMultipleChoice={this.props.setMultipleChoice.bind(this)}
          /> : null }
 
           <LamelSummary 
-            moduleHeadline="werk in getallen"
-            moduleDescription="Beantwoord de volgende vragen omtrent je werk"
+            moduleHeadline="meetbaar geluk"
+            moduleDescription="Laat ons weten hoe gelukkig jij bent op je werk door de volgende vragen met een cijfer te beantwoorden. Tussendoor laten we zien hoe anderen scoren en vragen we je om een korte reactie. Want hoe meetbaar is geluk eigenlijk?"
           />
 
         { this.state.questions.core_module.map((question, key) => { 

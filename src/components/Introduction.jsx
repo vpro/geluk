@@ -34,14 +34,14 @@ class Introduction extends React.Component{
       heighty: 0,
       personaQuestions: Persona,
       userData: Model,
-      introduction: true,
+      introduction: false,
       persona: false,
       persona_gender: false,
       persona_job: false,
       persona_income: false,
       persona_age: false,
       persona_education: false,
-      questions: false,
+      questions: true,
       results: false
     }
   }
@@ -101,6 +101,12 @@ class Introduction extends React.Component{
     if(hasWhiteSpace(answer) === true){
       this.updateFirebaseAnswer(currentModule, typeOfHappiness, amountOfHappiness, answer);
     }
+  }
+
+  setMultipleChoice(type){
+    this.setState( function(state){
+      state.userData.multipleChoice.work = type;
+    }, this.updateFirebase)
   }
 
   updateFirebase(){
@@ -226,18 +232,6 @@ class Introduction extends React.Component{
         <span className="intro__button" onClick={this.goNext.bind(this, 'persona','questions')}>Verder</span>
         </div> : null }
 
-
-     {/*    <div className="introduction">
-        <img className="introduction__logo" src={logo}/>
-          <h1 className="introduction__tagline">Geluksmeter</h1>
-          <p className="introduction__text">Geluk kent een veelvoud aan betekenissen. De Franse intellectueel Marcel Proust vond zijn geluk vooral in anderen, terwijl de schrijver Honoré de Balzac zijn geluk vooral in het tonen van lef en hard werken vond. Als we Coca-Cola moeten geloven dan zou zelfs het openen van een blikje Cola ons met geluk doen vervullen.<br/><br/> Ook verschillende gouvernmentale organisaties houden zich tegenwoordig intensief bezig met geluk en het meten daarvan. In 2011 stelde de OESO (Organisatie voor economische samenwerking en ontwikkeling) een 255-pagina tellend rapport op met daarin een aantal best practices omtrent het meten van geluk. Deze geluksmeter bouwt daarop voort en laat zien wat geluk voor jou en voor anderen betekend.</p>
-        </div>
-
-      <div className="questions__summary" >
-        <h4 className="questions__heading">Start</h4>
-        <p className="questions__summarytext">Vul hier al je shit in</p>
-      </div> */ }
-
       { this.state.questions ? <IntegerMeasure 
         uid={this.state.userId}
         boxWidth={this.state.boxWidth}
@@ -245,6 +239,7 @@ class Introduction extends React.Component{
         setHappy={this.setHappiness.bind(this)}
         setAnswer={this.setAnswer.bind(this)}
         setProgress={this.increaseProgress.bind(this)}
+        setMultipleChoice={this.setMultipleChoice.bind(this)}
       /> : null }
 
       { this.state.results ? <Results/> : null}

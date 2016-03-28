@@ -5,7 +5,7 @@ import GSAP from 'gsap';
 import whitearrow from '../../../assets/images/resultswhitearrow.svg';
 import orangearrow from '../../../assets/images/resultsorangearrow.svg';
 
-class Box extends React.Component{
+class Graph extends React.Component{
   constructor(props){
     super(props);
   }
@@ -65,4 +65,4 @@ class Box extends React.Component{
   		)
 		}
 }
-export default Box;
+export default Graph;
