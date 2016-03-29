@@ -82,14 +82,14 @@ class VideoQuestion extends React.Component{
 			<div className="video">
         { this.state.videoIntroduction ?      
         <div className="video__introduction">
-        <h1 className="video__question">Tijdens de aflevering 'Rendement van geluk' vertelt Aaron Hirst dat je voornaamste drijfveer om te werken bepalend is voor jouw geluk op kantoor.</h1>
+        <h1 className="video__question">Tijdens de aflevering 'Rendement van geluk' vertelt Aaron Hurst dat je voornaamste drijfveer om te werken bepalend is voor jouw geluk op kantoor.</h1>
         </div>
         : null }
         <span className="video__loader" ref="preloader"></span>
 
 
 				{ this.state.videoOverlay ? <VideoOverlay
-					headline="Aaron Hirst"
+					headline="Aaron Hurst"
 					tekst="Schrijver van het boek Purpose Economy"
 				  /> : null }
 

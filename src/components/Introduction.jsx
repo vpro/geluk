@@ -34,7 +34,7 @@ class Introduction extends React.Component{
       heighty: 0,
       personaQuestions: Persona,
       userData: Model,
-      introduction: true,
+      introduction: false,
       persona: false,
       persona_gender: false,
       persona_job: false,
@@ -42,7 +42,7 @@ class Introduction extends React.Component{
       persona_age: false,
       persona_education: false,
       questions: false,
-      results: false
+      results: true
     }
   }
 
@@ -98,14 +98,23 @@ class Introduction extends React.Component{
       return s.indexOf(' ') >= 0;
     }
 
-    if(hasWhiteSpace(answer) === true){
-      this.updateFirebaseAnswer(currentModule, typeOfHappiness, amountOfHappiness, answer);
+    if( hasWhiteSpace( answer ) === true ){
+      this.updateFirebaseAnswer( currentModule, typeOfHappiness, amountOfHappiness, answer );
     }
   }
 
-  setMultipleChoice(type){
+  setMultipleChoice( type ){
     this.setState( function(state){
       state.userData.multipleChoice.work = type;
+    }, this.updateFirebase)
+  }
+
+  calculateScore(){
+    var score = ((this.state.userData.core_module.q_1 * 1) + (this.state.userData.core_module.q_2 * 1) + (this.state.userData.core_module.q_1 * 1) + (this.state.userData.core_module.q_3 * 1) + (this.state.userData.core_module.q_4 * .5) +  (this.state.userData.core_module.q_5 * 1))/4.5
+    score = Math.round(score * 10) / 10;
+
+    this.setState( function(state){
+      state.userData.userStats.score = score;
     }, this.updateFirebase)
   }
 
@@ -128,7 +137,6 @@ class Introduction extends React.Component{
     })
     var that = this;
     if(this.state.heighty > 85){
-      console.log('whooptiedoo');
       setTimeout(function(){ 
         that.goNext('questions', 'results');
        }, 1500);
@@ -242,7 +250,11 @@ class Introduction extends React.Component{
         setMultipleChoice={this.setMultipleChoice.bind(this)}
       /> : null }
 
-      { this.state.results ? <Results/> : null}
+      { this.state.results ? <Results
+        calculate={this.calculateScore.bind(this)}
+        userScore={this.state.userData.userStats.score}
+        userMultipleScores={this.state.userData.core_module}
+        /> : null}
 
 
   			</div>

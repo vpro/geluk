@@ -3,15 +3,10 @@
 		"age": 0,
 		"gender": "undefined",
 		"job": "",
-		"income": 0,
-		"education": "basisschool",
+		"income": "",
+		"education": "geen",
 		"vpro_member": false,
-		"score": {
-			"core_module": 0,
-			"affect_module": 0,
-			"eudaimonic_module": 0,
-			"overall": 0
-		}
+		"score": 0
 	},
 	"multipleChoice": {
 		"work": ""

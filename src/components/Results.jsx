@@ -5,6 +5,8 @@ import GSAP from 'gsap';
 import Box from './interface/results/Box.jsx';
 import Graph from './interface/results/Graph.jsx';
 
+import ScaleGraph from './interface/results/ScaleGraph.jsx';
+
 class Results extends React.Component{
   constructor(props){
     super(props);
@@ -17,6 +19,8 @@ class Results extends React.Component{
       width:0, 
       ease: Power4.easeOut
     });
+
+    this.props.calculate();
   }
 
 
@@ -24,18 +28,55 @@ class Results extends React.Component{
 
   		return (
   			<div className="results">
+          <div className="results__scalegraph-container">
+            <div className="results__scalegraph-controller">
+              <h2>Jouw scores in vergelijking met anderen op basis van</h2>
+              <ul>
+                <li>je leeftijd</li>
+                <li>je beroepssector</li>
+                <li>je opleidingsniveau</li>
+                <li>je werkmotivatie</li>
+                <li>je geslacht</li>
+              </ul>
+            </div>
+            <ScaleGraph
+              headline="tevredenheid leven"
+              yourScore={this.props.userMultipleScores.q_1}
+              averageScore={7.4}
+            />
+            <ScaleGraph
+              headline="tevredenheid werk"
+              yourScore={this.props.userMultipleScores.q_2}
+              averageScore={7.3}
+            />  
+            <ScaleGraph
+              headline="salaris/geluk-ratio"
+              yourScore={this.props.userMultipleScores.q_1+this.props.userMultipleScores.q_2/2}
+              averageScore={9.5}
+            /> 
+            <ScaleGraph
+              headline="job crafting"
+              yourScore={this.props.userMultipleScores.q_4}
+              averageScore={6.5}
+            /> 
+            <ScaleGraph
+              headline="werkbetekenis"
+              yourScore={this.props.userMultipleScores.q_5}
+              averageScore={7.1}
+            />                          
+          </div>        
           <Box 
             cName="results__resultbox" 
             h3="Tevredenheid" top="100" left="150" delayTime="1" speed="1" width="300" height="350"
             p="Jouw werktevredenheid in vergelijking met mensen die ook in 'automotive' werken"
-            ownScore="6.3"
+            ownScore={this.props.userScore}
             otherScore="7.0"/>
 
-          <Box 
+          { /* <Box 
             cName="results__layart" 
             h4="Het maakt na de eerste $70 000 voor je geluksgevoel niet meer uit hoeveel je extra verdient"
             p="Onder de Tegenlicht-kijkers lijkt dat inderdaad het geval te zijn. Mensen die meer dan E5800 p/m verdienen gaven hun leven gemiddeld een 7.6, terwijl mensen die daaronder zaten hun leven een 7.5 gaven"
-            top="250" left="450" delayTime="1.6" speed="1" width="300" height="350"/>
+            top="250" left="450" delayTime="1.6" speed="1" width="300" height="350"/> */ }
 
 
           <Graph top="10" left="1300" />
