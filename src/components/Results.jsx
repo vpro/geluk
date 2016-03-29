@@ -27,15 +27,12 @@ class Results extends React.Component{
 
   componentWillMount(){
     this.setState(function(state){
-      console.log(state);
       state.q_1 = Math.round((state.stats.all.q_1.total/state.stats.all.q_1.count) * 10) / 10;
       state.q_2 = Math.round((state.stats.all.q_2.total/state.stats.all.q_2.count) * 10) / 10;
       state.q_3 = Math.round((state.stats.all.q_3.total/state.stats.all.q_3.count) * 10) / 10;
       state.q_4 = Math.round((state.stats.all.q_4.total/state.stats.all.q_4.count) * 10) / 10;
       state.q_5 = Math.round((state.stats.all.q_5.total/state.stats.all.q_5.count) * 10) / 10;
     })
-
-    console.log(this.state)
   }
 
   componentDidMount(){
@@ -48,7 +45,19 @@ class Results extends React.Component{
     });
 
     this.props.calculate();
+    var that = this;
+    setTimeout(function(){ that.changeGraph('gender.female'); }, 10000);
+
+
+    
   }
+
+  // changeGraph(type){
+  //   console.log('type is ', type);
+  //   this.setState(function(state){
+  //     state.q_4 = Math.round((state.stats[type].q_4.total/state.stats[type].q_4.count) * 10) / 10;
+  //   })    
+  // }
 
 
   render() {
