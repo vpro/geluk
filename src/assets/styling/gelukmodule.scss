@@ -112,7 +112,8 @@ video {
   z-index:0;
 }
 video.fillWidth {
-  width: 100%;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .video__imagecontainer {
@@ -126,12 +127,9 @@ video.fillWidth {
 }
 
 .video__border {
-  /*width: calc(100% - 30px);*/
-  /*height: 85vh;*/
-  margin: 50px;
-  padding: 50px;
-  /*border: 2px solid $orange;*/
+  margin: 30px;
   text-align: center;
+  margin-top: 30%;
 }
 
 .video__questioncontainer {
@@ -149,6 +147,9 @@ video.fillWidth {
   margin: auto;
   position: inherit;
   font-size: 36px;
+}
+
+.video__introduction .video__question  {
   width: 50%;
 }
 
@@ -206,6 +207,10 @@ video.fillWidth {
 
 .video__multiplechoice li {
   margin-top: 30px;
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline $orange;
+  }
 }
 
 .video__tagline {

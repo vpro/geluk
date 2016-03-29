@@ -33,7 +33,7 @@ class Results extends React.Component{
 
           <Box 
             cName="results__layart" 
-            h4="Het maakt na de eerste $70 000 voor je geluksgevoel niet meer uit"
+            h4="Het maakt na de eerste $70 000 voor je geluksgevoel niet meer uit hoeveel je extra verdient"
             p="Onder de Tegenlicht-kijkers lijkt dat inderdaad het geval te zijn. Mensen die meer dan E5800 p/m verdienen gaven hun leven gemiddeld een 7.6, terwijl mensen die daaronder zaten hun leven een 7.5 gaven"
             top="250" left="450" delayTime="1.6" speed="1" width="300" height="350"/>
 
