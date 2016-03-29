@@ -214,6 +214,15 @@ class Introduction extends React.Component{
           question="wat verdien je per maand (bruto)"          
           list={this.state.personaQuestions}
           field="income"
+          next="age"
+         /> : null } 
+
+        { this.state.persona_age ? <PersonaSelect
+          value={this.state.userData.userStats.age}
+          changeFunc={this.submitUserstats.bind(this)}
+          question="hoe oud ben je?"          
+          list={this.state.personaQuestions}
+          field="age"
           next="education"
          /> : null } 
 

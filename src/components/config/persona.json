@@ -206,6 +206,35 @@
 			"cat": "wo",
 			"naam": "WO"
 		}],
+	"age": [
+		{
+			"cat": "geen",
+			"naam": "Hoe oud ben je?"
+		},
+		{
+			"cat": "18-28",
+			"naam": "18 tot en met 28 jaar"
+		},
+		{
+			"cat": "29-35",
+			"naam": "29 tot en met 35 jaar"
+		},
+		{
+			"cat": "36-50",
+			"naam": "36 tot en met 50 jaar"
+		},
+		{
+			"cat": "51-60",
+			"naam": "51 tot en met 60 jaar"
+		},
+		{
+			"cat": "61-70",
+			"naam": "61 tot en met 70 jaar"
+		},
+		{
+			"cat": "70",
+			"naam": "70-plus"
+		}],
 		"gender": [
 		{
 			"cat": "undefined",
