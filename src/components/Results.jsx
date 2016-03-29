@@ -8,13 +8,38 @@ import Graph from './interface/results/Graph.jsx';
 import ScaleGraph from './interface/results/ScaleGraph.jsx';
 import whitearrow from '../assets/images/resultswhitearrow.svg';
 
+import Stats from './config/stats.json';
+
 
 class Results extends React.Component{
   constructor(props){
     super(props);
+
+    this.state = {
+      stats: Stats,
+      q_1: null,
+      q_2: null,
+      q_3: null,
+      q_4: null,
+      q_5: null
+    }
+  }
+
+  componentWillMount(){
+    this.setState(function(state){
+      console.log(state);
+      state.q_1 = Math.round((state.stats.all.q_1.total/state.stats.all.q_1.count) * 10) / 10;
+      state.q_2 = Math.round((state.stats.all.q_2.total/state.stats.all.q_2.count) * 10) / 10;
+      state.q_3 = Math.round((state.stats.all.q_3.total/state.stats.all.q_3.count) * 10) / 10;
+      state.q_4 = Math.round((state.stats.all.q_4.total/state.stats.all.q_4.count) * 10) / 10;
+      state.q_5 = Math.round((state.stats.all.q_5.total/state.stats.all.q_5.count) * 10) / 10;
+    })
+
+    console.log(this.state)
   }
 
   componentDidMount(){
+    console.log(this.state.stats);
     var DOMnode = ReactDOM.findDOMNode(this);
 
     TweenLite.from(DOMnode, 2.5, {
@@ -45,27 +70,27 @@ class Results extends React.Component{
             <ScaleGraph
               headline="tevredenheid leven"
               yourScore={this.props.userMultipleScores.q_1}
-              averageScore={7.4}
+              averageScore={this.state.q_1}
             />
             <ScaleGraph
               headline="tevredenheid werk"
               yourScore={this.props.userMultipleScores.q_2}
-              averageScore={7.3}
+              averageScore={this.state.q_2}
             />  
             <ScaleGraph
               headline="salaris/geluk-ratio"
               yourScore={this.props.userMultipleScores.q_1+this.props.userMultipleScores.q_2/2}
-              averageScore={9.5}
+              averageScore={(this.state.q_1+this.state.q_2)/2}
             /> 
             <ScaleGraph
               headline="job crafting"
               yourScore={this.props.userMultipleScores.q_4}
-              averageScore={6.5}
+              averageScore={this.state.q_4}
             /> 
             <ScaleGraph
               headline="werkbetekenis"
               yourScore={this.props.userMultipleScores.q_5}
-              averageScore={7.1}
+              averageScore={this.state.q_5}
             />                          
           </div>        
           <Box 
