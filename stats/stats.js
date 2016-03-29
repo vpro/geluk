@@ -2,6 +2,7 @@
 const https = require('https');
 const fs = require('fs');
 var users={};
+var persona = require('../src/components/config/persona.json');
 
 function Stats( name ) {
         this.name = name;
@@ -30,15 +31,49 @@ function genStatsContainer( obj ) {
     for ( var key in obj[first][ 'userStats' ] ) {
         if ( typeof(obj[first][ 'userStats' ][key]) == 'boolean' ) {
             stats[key] = { true: new Stats(key +'_true'), false: new Stats(key +'_false') };
+        // JOB 
+        } else if ( key == 'job' ) {
+            if (!( key in stats )) stats[key] = {};
+            for ( job in persona.job )
+            {
+                stats[key][ persona.job[job].cat ] = new Stats( persona.job[job].naam );
+            }
+        // INCOME
+        } else if ( key == 'income' ) {
+            if (!( key in stats )) stats[key] = {};
+            for ( inc in persona.income )
+            {
+                stats[key][ persona.income[inc].cat ] = new Stats( persona.income[inc].naam );
+            }
+        // AGE
         } else if ( key == 'age' ) {
+            if (!( key in stats )) stats[key] = {};
+            for ( age in persona.age )
+            {
+                stats[key][ persona.age[age].cat ] = new Stats( persona.age[age].naam );
+            }
+        // EDUCATION
+        } else if ( key == 'education' ) {
+            ['geen', 'basisschool', 'middelbareschool', 'mbo', 'mbo', 'hbo', 'wo' ].forEach( function( name ) {
+                if (!( key in stats )) stats[key] = {};
+                stats[key][name] = new Stats(name);
+            });
+        // GENDER
+        } else if ( key == 'gender' ) {
+            stats[key] = { 'male': new Stats("male"), 'female': new Stats("female") };
+        // AGE
+        } else if ( key == 'age2' ) {
             // 0-20, 20-40, 40-60, 60-80, 80-100
             stats[key] = [ new Stats(key + '_0-20'), new Stats(key + '_20-39'), new Stats(key + '_40-59'), new Stats(key + '_60-79'), new Stats(key + '_80+') ];
+        // CHILDREN (deprecated)
         } else if ( key == 'children' ) {
             // 0, 1, 2, 3, 4+
-            stats[key] = [ new Stats(key + '_0'), new Stats(key + '_1'), new Stats(key + '_2'), new Stats(key + '_3'), new Stats(key + '_4+') ];       
-        }
-        else { console.log(key) };
-        // TODO income & education
+            stats[key] = [ new Stats(key + '_0'), new Stats(key + '_1'), new Stats(key + '_2'), new Stats(key + '_3'), new Stats(key + '_4+') ];
+        // INCOME
+        } else if ( key == 'income' ) {
+            // 0-20, 20-40, 40-60, 60-80, 80-100
+            stats[key] = [ new Stats(key + '_1000'), new Stats(key + '_2000'), new Stats(key + '_3000'), new Stats(key + '_4000'), new Stats(key + '_5000'), new Stats(key + '_6000') ];
+        } else { console.log(key) };
     }
     
     return stats;
@@ -51,37 +86,67 @@ function process_answer( answer, stat ) {
     stat.count += 1;
 }
 
+function isValidReponse( response ) {
+    try {
+        if ( response.userStats.score == 0 ) {
+            return false;
+        }
+        if ( typeof(response.userStats.score) === 'object' ) return false;
+        return true;
+    }
+    catch(err) {
+        return false;
+    }
+}
+
 function process_quality_scores( obj, stats ) {
+    if ( !isValidReponse(obj) ) return;
     // get relevant stats objects
     var age_index = parseInt(obj['userStats']['age'] / 100. * 5.);
     var s_age = stats.age[age];
-    var s_married = stats.married[obj['userStats']['married']];
+    //var s_married = stats.married[obj['userStats']['married']];
     var s_all = stats.all
     // process the users results
     for ( var key in obj['core_module'] ) {
-        if ( !key.endsWith( '_answer' ) ) {
+        if ( !key.endsWith( '_answer') ) {
             var answer = obj['core_module'][key];
             process_answer( answer, stats.all[key] );
             
             //process userStat specific stats
             for ( var key2 in obj['userStats'] ) {
+                console.log( key, key2);
                 if ( typeof(obj[ 'userStats' ][key2]) == 'boolean' ) {
                     // get relevant stats container to process answer for
-                    var stats_container = stats[ key2 ][ 
+                    if ( key2 in stats ) {
+                        var stats_container = stats[ key2 ][ 
                                         obj[ 'userStats' ][ key2 ] 
-                                        ][key]; 
+                                        ][key];
+                    } else {
+                        console.log("WARN: "+ key2 +"not in stats");
+                    }
                     process_answer( answer, stats_container );
-                } else if ( key == 'age' ) {
+                } else if ( key2 == 'age2' ) {
                     // get age index
                     // 0-20, 20-40, 40-60, 60-80, 80-100
                     var age = parseInt(obj[ 'userStats' ][ key2 ] / 100. * 5.);
                     var stats_container = stats[ key2 ][ age ][ key ];
                     process_answer( answer, stats_container );
-                } else if ( key == 'children' ) {
+                } else if ( key2 == 'score' ) { //do nothing
+                } else if ( key2 == 'children' ) {
                     // get children index
                     // 0, 1, 2, 3, 4+  
                     var childr = Math.min(obj[ 'userStats' ][ key2 ], 4);
                     var stats_container = stats[ key2 ][ childr ][key];
+                    process_answer( answer, stats_container );
+                } else if ( key2 == 'gender' ) {
+                    var gender = obj['userStats'][ key2 ];
+                    console.log(obj['userStats']);
+                    var stats_container = stats[ key2 ][ gender ][key];
+                    process_answer( answer, stats_container );
+                } else {
+                    var item = obj['userStats'][ key2 ];
+                    console.log(item, obj['userStats']);
+                    var stats_container = stats[ key2 ][ item ][key];
                     process_answer( answer, stats_container );
                 }
             }
@@ -104,13 +169,10 @@ function parse() {
     for ( var key in users ) {
         process_quality_scores( users[key], qstats );
     }
-    console.log(qstats.married);
-    //console.log(qstats.vpro_member);
-    //console.log(qstats.children);
-    console.log(qstats.married.true.avg());
     writeJson( qstats );
     return;
 }
+
 
 https.get('https://geluk.firebaseio.com/users.json', function(res) {
     var body = '';
@@ -127,49 +189,7 @@ https.get('https://geluk.firebaseio.com/users.json', function(res) {
     console.log("Got an error acquiring data from firebase:", e);
     users = require('./users.json');
 });
-
-
-/*var qs = {
-    married : { true: new Stats(), false: new Stats()},
-    age : [new Stats(), new Stats(), new Stats(), new Stats(), new Stats()], 
-    all : new Stats()
-};
-
-var count = 0;
-for (var key in users) {
-    for ( var key2 in users[key]['core_module'] ) {
-        //console.log(users[key]['userStats']['married']);
-        if ( !key2.endsWith( '_answer' )) {
-            var cA = qs.all[key2];
-            var cM = qs.married[users[key]['userStats']['married']][key2];
-            var age = parseInt(users[key]['userStats']['age'] / 100. * 5.);
-            if (age != 0) console.log("AGE: " + age);
-            cAge = qs.age[age][key2];
-            
-            cA.max = Math.max(cA.max, users[key]['core_module'][key2]);
-            cA.min = Math.min(cA.min, users[key]['core_module'][key2]);
-            cA.total += users[key]['core_module'][key2];
-            cA.count += 1;
-            // married or not?
-            cM.max = Math.max(cM.max, users[key]['core_module'][key2]);
-            cM.min = Math.min(cM.min, users[key]['core_module'][key2]);
-            cM.total += users[key]['core_module'][key2];
-            cM.count += 1;
-            //age
-            cAge.max = Math.max(cM.max, users[key]['core_module'][key2]);
-            cAge.min = Math.min(cM.min, users[key]['core_module'][key2]);
-            cAge.total += users[key]['core_module'][key2];
-            cAge.count += 1;
-        }
-    }    
-    count += 1;
-}
-console.log(Object.keys(users).length)
-console.log(count);
-//for ( var key in qs ) {
-console.log(qs.all);
-console.log(qs.all.avg());// = qs.all[key].avg / count;
-//}
-qs.married[true].avg();
-//console.log(qs);
+/*
+users = require('./users.json');
+parse();
 */
