@@ -17,6 +17,7 @@ p {
   font-size: 20px;
   color: white;
   z-index: 1000;
+  position: relative;
 }
 
 .intro__orange {
@@ -59,10 +60,10 @@ p {
   margin-top: 0px !important;
   z-index: 100;
   cursor: pointer;
+  position: relative;
   &:hover {
-    border: none;
-    background: $orange;
-    color: $black;
+    background: $orange !important;
+    color: $black !important;
     cursor: pointer;
   }
 }
