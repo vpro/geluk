@@ -34,7 +34,7 @@ class Introduction extends React.Component{
       heighty: 0,
       personaQuestions: Persona,
       userData: Model,
-      introduction: true,
+      introduction: false,
       persona: false,
       persona_gender: false,
       persona_job: false,
@@ -42,7 +42,7 @@ class Introduction extends React.Component{
       persona_age: false,
       persona_education: false,
       questions: false,
-      results: false
+      results: true
     }
   }
 

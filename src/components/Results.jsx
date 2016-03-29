@@ -8,13 +8,30 @@ import Graph from './interface/results/Graph.jsx';
 import ScaleGraph from './interface/results/ScaleGraph.jsx';
 import whitearrow from '../assets/images/resultswhitearrow.svg';
 
+import Stats from './config/stats.json';
+
 
 class Results extends React.Component{
   constructor(props){
     super(props);
+
+    this.state = {
+      stats: Stats,
+      q_1: null
+    }
+  }
+
+  componentWillMount(){
+    this.setState(function(state){
+      console.log(state);
+      state.q_1 = Math.round((state.stats.all.q_1.total/state.stats.all.q_1.count) * 10) / 10;
+    })
+
+    console.log(this.state)
   }
 
   componentDidMount(){
+    console.log(this.state.stats);
     var DOMnode = ReactDOM.findDOMNode(this);
 
     TweenLite.from(DOMnode, 2.5, {
@@ -45,7 +62,7 @@ class Results extends React.Component{
             <ScaleGraph
               headline="tevredenheid leven"
               yourScore={this.props.userMultipleScores.q_1}
-              averageScore={7.4}
+              averageScore={this.state.q_1}
             />
             <ScaleGraph
               headline="tevredenheid werk"
