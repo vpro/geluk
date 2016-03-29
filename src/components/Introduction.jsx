@@ -19,7 +19,7 @@ import logo from '../assets/images/logo.svg';
 
 const firebase = Rebase.createClass('https://geluk.firebaseio.com');
 const width = window.innerWidth;
-const aantalVragen = 9;
+const aantalVragen = 10;
 
 /* Hier vermoedelijk een if else maken */
 

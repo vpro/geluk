@@ -184,7 +184,7 @@ video.fillWidth {
 }
 
 .video__box {
-  z-index: 5;
+  z-index: 100000;
   opacity: 1;
   bottom: 120px;
   left: 0px;
@@ -714,10 +714,22 @@ video.fillWidth {
   padding: 30px;
 }
 
+.results__scalegraph-controller-arrow {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  margin-left: -82px;
+}
+
 .results__scalegraph-controller ul li {
   font-family: SimplisticSans-Normal;
-  font-size: 16px;
-  color: #graybat;
+  font-size: 20px;
+  padding-top: 10px;
+  color: $greyelephant;
+}
+
+.results__scalegraph-controller ul {
+  margin-top: 20px;
 }
 
 .results__scalegraph-controller h2 {

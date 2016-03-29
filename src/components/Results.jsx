@@ -6,6 +6,8 @@ import Box from './interface/results/Box.jsx';
 import Graph from './interface/results/Graph.jsx';
 
 import ScaleGraph from './interface/results/ScaleGraph.jsx';
+import whitearrow from '../assets/images/resultswhitearrow.svg';
+
 
 class Results extends React.Component{
   constructor(props){
@@ -30,6 +32,7 @@ class Results extends React.Component{
   			<div className="results">
           <div className="results__scalegraph-container">
             <div className="results__scalegraph-controller">
+              <img className="results__scalegraph-controller-arrow" src={whitearrow}/>
               <h2>Jouw scores in vergelijking met anderen op basis van</h2>
               <ul>
                 <li>je leeftijd</li>
