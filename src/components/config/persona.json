@@ -140,47 +140,40 @@
 		{
 			"cat": "inkomen",
 			"naam": "Kies een inkomen"
-		},	
-		{
-			"cat": "<1000",
-			"naam": "Minder dan €1000 per maand"
 		},
 		{
-			"cat": "1000><2000",
-			"naam": "Tussen de €1000 en €2000 per maand"
+			"cat": "<1500",
+			"naam": "Minder dan €1500 per maand"
 		},
 		{
-			"cat": "2000><3000",
-			"naam": "Tussen de €2000 en de €3000 per maand"
+			"cat": "1500><2500",
+			"naam": "Tussen de €1500 en €2500 per maand"
 		},
 		{
-			"cat": "3000><4000",
-			"naam": "Tussen de €3000 en de €4000 per maand"
+			"cat": "2500><3500",
+			"naam": "Tussen de €2500 en de €3500 per maand"
 		},
 		{
-			"cat": "4000><5000",
-			"naam": "Tussen de €4000 en de €5000 per maand"
+			"cat": "3500><4500",
+			"naam": "Tussen de €3500 en de €4500 per maand"
 		},
 		{
-			"cat": "5000><6000",
-			"naam": "Tussen de €5000 en de €6000 per maand"
+			"cat": "4500><6000",
+			"naam": "Tussen de €4500 en de €6500 per maand"
 		},
 		{
-			"cat": "6000><7000",
-			"naam": "Tussen de €6000 en de €7000 per maand"
+			"cat": "6000><7500",
+			"naam": "Tussen de €6000 en de €7500 per maand"
 		},
 		{
-			"cat": "7000><10000",
-			"naam": "Tussen de €7000 en de €10000 per maand"
+			"cat": "7500><10000",
+			"naam": "Tussen de €7500 en de €10000 per maand"
 		},
 		{
-			"cat": "10000><15000",
-			"naam": "Tussen de €10000 en de €15000  per maand"
-		},
-		{
-			"cat": "15000>",
-			"naam": "Meer dan €15000 per maand"
-		}],	
+			"cat": "10000>",
+			"naam": "€10000 of meer per maand"
+		}
+		],
 		"education": [
 		{
 			"cat": "geen",
