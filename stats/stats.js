@@ -132,7 +132,7 @@ function process_quality_scores( obj, stats ) {
             
             //process userStat specific stats
             for ( var key2 in obj['userStats'] ) {
-                console.log( key, key2);
+                //console.log( key, key2);
                 if ( typeof(obj[ 'userStats' ][key2]) == 'boolean' ) {
                     // get relevant stats container to process answer for
                     if ( key2 in stats ) {
@@ -171,7 +171,7 @@ function process_quality_scores( obj, stats ) {
             //process multipleChoice work stats
             var work = obj['multipleChoice'].work;
             var stats_container = stats.work[ work ][key];
-            console.log(work, stats_container);
+            //console.log(work, stats_container);
             if ( stats_container === undefined ) {
                 console.log("work stats not defined", stats.work, work);
             } else {
@@ -186,12 +186,12 @@ function process_quality_scores( obj, stats ) {
     }
 }
 
-function writeJson( obj ) {
-    fs.writeFile("./stats.json", JSON.stringify( obj ), function ( err ) {
+function writeJson( obj, file ) {
+    fs.writeFile( file, JSON.stringify( obj ), function ( err ) {
         if (err) {
-            console.log( 'Error saving file:', err );
+            console.log( 'Error saving file:' +file, err );
         } else {
-            console.log( 'stats.json was saved' );
+            console.log( file+' was saved' );
         }
     });
 }
@@ -201,7 +201,7 @@ function parse() {
     for ( var key in users ) {
         process_quality_scores( users[key], qstats );
     }
-    writeJson( qstats );
+    writeJson( qstats,  "./stats.json");
     return;
 }
 
@@ -215,7 +215,18 @@ https.get('https://geluk.firebaseio.com/users.json', function(res) {
     res.on('end', function() {
         users = JSON.parse(body);
         console.log("Got " + Object.keys(users).length + " responses from firebase");
-        parse();
+        try {
+            var count = require('./count.json');
+        } catch( err ) {
+            console.log(err);
+            var count = { count: 0 };
+        }
+        if ( count.count ===  Object.keys(users).length ) {
+            console.log("no update needed");
+        } else {
+            parse();
+            writeJson( { count: Object.keys(users).length}, "count.json" );
+        }
     });
 }).on('error', function(e) {
     console.log("Got an error acquiring data from firebase:", e);

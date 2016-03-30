@@ -160,11 +160,25 @@ class Lameloverlay extends React.Component{
               var avg = stat.total/stat.count;
               var percentage = Math.round(((100/avg) * val)-100);
               var hoogte = percentage > 0 ? "boven" : "onder";
+              if ( percentage == 0 ) {
+                  return "Je antwoord is gelijk aan het gemiddelde";
+              }
               return "Je antwoord ligt "+ Math.abs(percentage) + "% "+hoogte+" het gemiddelde.";
+          case 3:
+              var start = "Mensen worden volgens Hurst naar gelang hun carrière vaak steeds ontevredener over hun werk";
+              var prevVal = this.props.userData.core_module.q_2
+              if ( q > prevVal ) {
+                  return start + "<br /><br /> Blijkbaar is dit bij jou ook het geval";
+              } else {
+                  return start + "<br /><br /> Blijkbaar is dit bij jou niet het geval"
+              }
           case 4:
               var avg = stat.total/stat.count;
               var percentage = Math.round(((100/avg) * val)-100);
               var hoogte = percentage > 0 ? "meer" : "minder";
+              if ( percentage == 0 ) {
+                  return "Je voelt je even vrij als anderen in jouw leeftijds categorie";
+              }
               return "Je voelt je " + Math.abs(percentage) + "% " + hoogte
                     + " vrij dan anderen in jouw leeftijds categorie.";
           case 5:
@@ -181,6 +195,8 @@ class Lameloverlay extends React.Component{
           showButtons = true;
     } else if ( this.props.text === "answer1" ) {
           var tekst = this.genFeedback(this.state.stats.all.q_1, this.props.happinessValue, 1);//genereer obv stats
+    } else if ( this.props.text === "answer3" ) {
+          var tekst = this.genFeedback(this.state.stats.all.q_3, this.props.happinessValue, 3);//genereer obv stats
     } else if ( this.props.text === "answer4" ) {
           //console.log(this.props.userData.userStats, this.state.stats);
           // get right stats object or all
@@ -197,7 +213,7 @@ class Lameloverlay extends React.Component{
 
 		return (
 			<div className="questions__overlay">
-				<p className="questions__overlaytext" ref="text">{tekst}</p>
+				<p className="questions__overlaytext" ref="text" dangerouslySetInnerHTML={{__html: tekst}}></p>
 
         { showButtons ? 
           <div className="questions__overlaybuttons" ref="overlaybuttons">
