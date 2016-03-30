@@ -264,6 +264,7 @@ class Introduction extends React.Component{
         calculate={this.calculateScore.bind(this)}
         userScore={this.state.userData.userStats.score}
         userMultipleScores={this.state.userData.core_module}
+        userData={this.state.userData}
         /> : null}
 
 

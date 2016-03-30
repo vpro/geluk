@@ -2,7 +2,7 @@ import React from 'react';
 
 class SingleMessage extends React.Component{
   render() {
-    if(this.props.gender === 'male'){
+    if(this.props.gender == 'male'){
       var gender = 'man';
     } else {
       var gender = 'vrouw';

@@ -2,7 +2,13 @@ import React from 'react';
 import GSAP from 'gsap';
 
 class SimilarComment extends React.Component{
+	componentWillMount(){
+		  	console.log(this.props);
+		  	console.log('waarom jij niet werken??');
+	}
+
 	componentDidMount(){
+
 		const {loader, profile, message} = this.refs;
 		var duur = 8;
 
@@ -48,9 +54,6 @@ class SimilarComment extends React.Component{
   	}
 
   	/* Oplossing zoeken wat er moet gebeuren wanneer er een undefined is */
-  	if(typeof this.props.age == 'undefined'){
-  		console.log('geen comment');
-  	}
 
 		return (
 			<div className="message">

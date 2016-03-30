@@ -54,13 +54,15 @@ class Results extends React.Component{
   }
 
   changeGraph(firstProp, secondProp){
+    console.log(this.state.stats)
     this.setState(function(state){
       state.q_1 = Math.round((state.stats[firstProp][secondProp].q_1.total/state.stats[firstProp][secondProp].q_1.count) * 10) / 10;
       state.q_2 = Math.round((state.stats[firstProp][secondProp].q_2.total/state.stats[firstProp][secondProp].q_2.count) * 10) / 10;
       state.q_3 = Math.round((state.stats[firstProp][secondProp].q_3.total/state.stats[firstProp][secondProp].q_3.count) * 10) / 10;
       state.q_4 = Math.round((state.stats[firstProp][secondProp].q_4.total/state.stats[firstProp][secondProp].q_4.count) * 10) / 10;
       state.q_5 = Math.round((state.stats[firstProp][secondProp].q_5.total/state.stats[firstProp][secondProp].q_5.count) * 10) / 10;
-    })    
+    })  
+    console.log(this.state)  
   }
 
 
@@ -73,11 +75,11 @@ class Results extends React.Component{
               <img className="results__scalegraph-controller-arrow" src={whitearrow}/>
               <h2>Jouw scores in vergelijking met anderen op basis van</h2>
               <ul>
-                <li onClick={this.changeGraph.bind(this, 'gender', 'female')}>je leeftijd</li>
-                <li>je beroepssector</li>
-                <li>je opleidingsniveau</li>
+                <li onClick={this.changeGraph.bind(this, 'age', this.props.userData.userStats.age)}>je leeftijd</li>
+                <li onClick={this.changeGraph.bind(this, 'job', this.props.userData.userStats.job)}>je beroepssector</li>
+                <li onClick={this.changeGraph.bind(this, 'education', this.props.userData.userStats.education)}>je opleidingsniveau</li>
                 <li>je werkmotivatie</li>
-                <li>je geslacht</li>
+                <li onClick={this.changeGraph.bind(this, 'gender', this.props.userData.userStats.gender)}>je geslacht</li>
               </ul>
             </div>
             <ScaleGraph

@@ -55,10 +55,17 @@ class Lameloverlay extends React.Component{
         context: this,
         asArray: true,
         then(data){
-          this.setState(function(state){
-            state.posts = data;
-            state.chosenPost = Math.floor(data.length*Math.random());
-          });
+          console.log(data);
+          if(data == []) {
+            this.setState(function(state){
+              state.display = false;
+            });
+          } else {
+            this.setState(function(state){
+              state.posts = data;
+              state.chosenPost = Math.floor(data.length*Math.random());
+            });
+          }
         }
       }); 
     }
@@ -212,6 +219,7 @@ class Lameloverlay extends React.Component{
 
       { this.state.showMessage ? 
         <SimilarComment 
+          display={true}
           age={this.state.posts[chosenPost].age} 
           gender={this.state.posts[chosenPost].gender} 
           rating={this.props.happinessValue} 
