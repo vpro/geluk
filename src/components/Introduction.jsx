@@ -41,8 +41,8 @@ class Introduction extends React.Component{
       persona_income: false,
       persona_age: false,
       persona_education: false,
-      questions: false,
-      results: true
+      questions: true,
+      results: false
     }
   }
 
@@ -256,6 +256,7 @@ class Introduction extends React.Component{
         setHappy={this.setHappiness.bind(this)}
         setAnswer={this.setAnswer.bind(this)}
         setProgress={this.increaseProgress.bind(this)}
+        userData={this.state.userData}
         setMultipleChoice={this.setMultipleChoice.bind(this)}
       /> : null }
 

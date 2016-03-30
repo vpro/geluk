@@ -14,10 +14,10 @@
 		"q_5": false
 	},
 	"feedback": {
-		"q_1": "Je antwoord ligt 32% onder het gemiddelde",
+		"q_1": "answer1",
 		"q_2": "comment",
 		"q_3": "Mensen worden volgens Hurst naar gelang hun carrière vaak steeds ontevredener over hun werk",
-		"q_4": "",
-		"q_5": "Volgens het CBS had 1 miljoen Nederlanders in..."
+		"q_4": "answer4",
+		"q_5": "answer5"
 	}
 }

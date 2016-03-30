@@ -94,6 +94,7 @@ class IntegerMeasure extends React.Component{
                 overlayText={this.state.innerSettings.feedback[question.name]}
                 overlayComment={this.state.innerSettings.comment[question.name]}
                 overlayAnswer={this.props.userData.core_module[question.name + "_answer"]}
+                userData={this.props.userData}
                 boxWidth={this.props.boxWidth}
                 key={key} />
               );

@@ -8,6 +8,7 @@ import Rebase from 're-base';
 import InputComment from './comment/Lamelinput.jsx';
 import SimilarComment from './comment/Lamelmessage.jsx';
 import Allmessages from './comment/Gelukallmessages.jsx';
+import stats from '../config/stats.json';
 
 const firebase = Rebase.createClass('https://geluk.firebaseio.com');
 
@@ -18,6 +19,7 @@ class Lameloverlay extends React.Component{
     this.state = {
       showMessage: false,
       showAllMessages: false,
+      stats : stats,
       posts: null
     }
   }
@@ -144,11 +146,43 @@ class Lameloverlay extends React.Component{
     }
   }
 
+  genFeedback(stat, val, q) {
+      //console.log("genFeedback:", stat, val, q);
+      switch ( q ) {
+          case 1:
+              var avg = stat.total/stat.count;
+              var percentage = Math.round(((100/avg) * val)-100);
+              var hoogte = percentage > 0 ? "boven" : "onder";
+              return "Je antwoord ligt "+ Math.abs(percentage) + "% "+hoogte+" het gemiddelde.";
+          case 4:
+              var avg = stat.total/stat.count;
+              var percentage = Math.round(((100/avg) * val)-100);
+              var hoogte = percentage > 0 ? "meer" : "minder";
+              return "Je voelt je " + Math.abs(percentage) + "% " + hoogte
+                    + " vrij dan anderen in jouw leeftijds categorie.";
+          case 5:
+              var avg = stat.total/stat.count;
+              return "Mensen met jouw opleidings niveau geven gemiddeld een "
+                    + Math.round(avg*10)/10 + " aan de betekenis van hun werk."; 
+      }
+  }
+  
   render() {
     if (this.props.text === "comment"){
       var cijfer = this.props.happinessValue,
           tekst = "Wil je vertellen waarom je jezelf een " + cijfer + " gaf?",
           showButtons = true;
+    } else if ( this.props.text === "answer1" ) {
+          var tekst = this.genFeedback(this.state.stats.all.q_1, this.props.happinessValue, 1);//genereer obv stats
+    } else if ( this.props.text === "answer4" ) {
+          //console.log(this.props.userData);
+          // get right stats object or all
+          var stat = this.props.userData.userStats.age == "geen" ? this.state.stats.all.q_4 : this.state.stats[ this.props.userData.userStats.age ].q_4;
+          var tekst = this.genFeedback(stat, this.props.happinessValue, 4);//genereer obv stats
+    } else if ( this.props.text === "answer5" ) {
+          // get right stats object or all
+          var stat = this.props.userData.userStats.education == "geen" ? this.state.stats.all.q_5 : this.state.stats[ this.props.userData.userStats.education ].q_5;
+          var tekst = this.genFeedback(stat, this.props.happinessValue, 5);//genereer obv stats
     } else {
       var tekst = this.props.text;
     }
