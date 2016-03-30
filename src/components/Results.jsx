@@ -22,7 +22,14 @@ class Results extends React.Component{
       q_2: null,
       q_3: null,
       q_4: null,
-      q_5: null
+      q_5: null, 
+      active: {
+        age: true,
+        job: false,
+        education: false,
+        work: false,
+        gender: false
+      }
     }
   }
 
@@ -39,15 +46,22 @@ class Results extends React.Component{
   componentDidMount(){
     console.log(this.state.stats);
     var DOMnode = ReactDOM.findDOMNode(this);
+    var scalegraph = ReactDOM.findDOMNode(this.refs.scalegraph);
 
     TweenLite.from(DOMnode, 2.5, {
       width:0, 
       ease: Power4.easeOut
     });
+    TweenLite.from(scalegraph, 1, {
+      opacity: 0,
+      delay: 3.5,
+      ease: Power2.easeOut
+    });    
 
     this.props.calculate();
     // var that = this;
     // setTimeout(function(){ that.changeGraph('gender', 'female'); }, 10000);
+
 
 
     
@@ -55,31 +69,68 @@ class Results extends React.Component{
 
   changeGraph(firstProp, secondProp){
     console.log(this.state.stats)
+    this.setGrey();
     this.setState(function(state){
       state.q_1 = Math.round((state.stats[firstProp][secondProp].q_1.total/state.stats[firstProp][secondProp].q_1.count) * 10) / 10;
       state.q_2 = Math.round((state.stats[firstProp][secondProp].q_2.total/state.stats[firstProp][secondProp].q_2.count) * 10) / 10;
       state.q_3 = Math.round((state.stats[firstProp][secondProp].q_3.total/state.stats[firstProp][secondProp].q_3.count) * 10) / 10;
       state.q_4 = Math.round((state.stats[firstProp][secondProp].q_4.total/state.stats[firstProp][secondProp].q_4.count) * 10) / 10;
       state.q_5 = Math.round((state.stats[firstProp][secondProp].q_5.total/state.stats[firstProp][secondProp].q_5.count) * 10) / 10;
+      state.active[firstProp] = true;
     })  
     console.log(this.state)  
   }
 
+  setGrey(){
+    this.setState(function(state){
+      state.active.age = false;
+      state.active.job = false;
+      state.active.education = false;
+      state.active.work = false;
+      state.active.gender = false;
+    })      
+  }
+
 
   render() {
+    if(this.state.active.age == true){
+      var ageClass = "results__scalegraph--orange"
+    } else {
+      var ageClass = "";
+    }
+        if(this.state.active.job == true){
+      var jobClass = "results__scalegraph--orange"
+    } else {
+      var jobClass = "";
+    }
+        if(this.state.active.education == true){
+      var educationClass = "results__scalegraph--orange"
+    } else {
+      var educationClass = "";
+    }
+        if(this.state.active.work == true){
+      var workClass = "results__scalegraph--orange"
+    } else {
+      var workClass = "";
+    }
+        if(this.state.active.gender == true){
+      var genderClass = "results__scalegraph--orange"
+    } else {
+      var genderClass = "";
+    }
 
   		return (
   			<div className="results">
-          <div className="results__scalegraph-container">
+          <div className="results__scalegraph-container" ref="scalegraph">
             <div className="results__scalegraph-controller">
               <img className="results__scalegraph-controller-arrow" src={whitearrow}/>
               <h2>Jouw scores in vergelijking met anderen op basis van</h2>
               <ul>
-                <li onClick={this.changeGraph.bind(this, 'age', this.props.userData.userStats.age)}>je leeftijd</li>
-                <li onClick={this.changeGraph.bind(this, 'job', this.props.userData.userStats.job)}>je beroepssector</li>
-                <li onClick={this.changeGraph.bind(this, 'education', this.props.userData.userStats.education)}>je opleidingsniveau</li>
-                <li>je werkmotivatie</li>
-                <li onClick={this.changeGraph.bind(this, 'gender', this.props.userData.userStats.gender)}>je geslacht</li>
+                <li className={ageClass} onClick={this.changeGraph.bind(this, 'age', this.props.userData.userStats.age)}>je leeftijd</li>
+                <li className={jobClass} onClick={this.changeGraph.bind(this, 'job', this.props.userData.userStats.job)}>je beroepssector</li>
+                <li className={educationClass} onClick={this.changeGraph.bind(this, 'education', this.props.userData.userStats.education)}>je opleidingsniveau</li>
+                <li className={workClass} onClick={this.changeGraph.bind(this, 'work', this.props.userData.multipleChoice.work)}>je werkmotivatie</li>
+                <li className={genderClass} onClick={this.changeGraph.bind(this, 'gender', this.props.userData.userStats.gender)}>je geslacht</li>
               </ul>
             </div>
             <ScaleGraph
@@ -107,7 +158,8 @@ class Results extends React.Component{
               yourScore={this.props.userMultipleScores.q_5}
               averageScore={this.state.q_5}
             />                          
-          </div>        
+          </div>   
+
           <Box 
             cName="results__resultbox" 
             h3="Jouw score" top="100" left="150" delayTime="1" speed="1" width="300" height="350"
@@ -115,7 +167,7 @@ class Results extends React.Component{
             ownScore={this.props.userScore}
             otherScore="7.0"/>
 
-          <Millennials delayTime={3}/>
+          <Millennials delayTime={2.4}/>
 
           { /* <Box 
             cName="results__layart" 
