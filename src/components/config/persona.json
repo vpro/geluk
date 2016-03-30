@@ -174,7 +174,7 @@
 			"naam": "€10000 of meer per maand"
 		}
 		],
-		"education": [
+    "education": [
 		{
 			"cat": "geen",
 			"naam": "Kies je opleidingsniveau"
@@ -228,7 +228,7 @@
 			"cat": "70",
 			"naam": "70-plus"
 		}],
-		"gender": [
+    "gender": [
 		{
 			"cat": "undefined",
 			"naam": "Kies je geslacht"
@@ -240,5 +240,18 @@
 		{
 			"cat": "female",
 			"naam": "Vrouw"
-		}]		
+		}],
+    "work" : [
+        {
+            "cat": "evil",
+            "naam": "noodzakelijk kwaad"
+        },
+        {
+            "cat": "career",
+            "naam": "maken van carrière"
+        },
+        {
+            "cat": "calling",
+            "naam": "innerlijke roeping"
+        }]
 }
