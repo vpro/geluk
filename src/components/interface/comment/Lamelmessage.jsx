@@ -2,10 +2,6 @@ import React from 'react';
 import GSAP from 'gsap';
 
 class SimilarComment extends React.Component{
-	componentWillMount(){
-		  	console.log(this.props);
-		  	console.log('waarom jij niet werken??');
-	}
 
 	componentDidMount(){
 
