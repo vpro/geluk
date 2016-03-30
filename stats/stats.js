@@ -35,6 +35,16 @@ function genStatsContainer( obj ) {
     {
         stats.work[ persona.work[job].cat ] = new Stats( persona.work[job].naam );
     }
+    //multiple choice work per age
+    stats['work_age'] = {}
+    for ( age in persona.age ) {
+        if (!( age in stats.work_age )) stats.work_age[ persona.age[ age ].cat ] = {};
+         for ( job in persona.work ) {
+             stats.work_age[ persona.age[ age ].cat ][ 
+                persona.work[ job ].cat
+            ] = 0;
+         }
+    }
     
     for ( var key in obj[first][ 'userStats' ] ) {
         if ( typeof(obj[first][ 'userStats' ][key]) == 'boolean' ) {
@@ -148,12 +158,12 @@ function process_quality_scores( obj, stats ) {
                     process_answer( answer, stats_container );
                 } else if ( key2 == 'gender' ) {
                     var gender = obj['userStats'][ key2 ];
-                    console.log(obj['userStats']);
+                    //console.log(obj['userStats']);
                     var stats_container = stats[ key2 ][ gender ][key];
                     process_answer( answer, stats_container );
                 } else {
                     var item = obj['userStats'][ key2 ];
-                    console.log(item, obj['userStats']);
+                    //console.log(item, obj['userStats']);
                     var stats_container = stats[ key2 ][ item ][key];
                     process_answer( answer, stats_container );
                 }
@@ -168,6 +178,11 @@ function process_quality_scores( obj, stats ) {
                 process_answer( answer, stats_container );
             }
         }
+    }
+    for ( var key in obj['multipleChoice'] ) {
+        var work = obj['multipleChoice'][key]
+        var age = obj['userStats'].age;
+        stats.work_age[age][work] += 1
     }
 }
 
