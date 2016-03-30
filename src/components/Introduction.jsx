@@ -3,7 +3,6 @@ import Rebase from 're-base';
 
 /* Components */
 import IntegerMeasure from './IntegerMeasure.jsx';
-import SpriteAnimator from './interface/Sprite.jsx';
 import Results from './Results.jsx';
 
 import PersonaString from './interface/PersonaString.jsx';
@@ -35,7 +34,7 @@ class Introduction extends React.Component{
       personaQuestions: Persona,
       userData: Model,
       generatedStats: null,
-      introduction: true,
+      introduction: false,
       persona: false,
       persona_gender: false,
       persona_job: false,
@@ -43,7 +42,7 @@ class Introduction extends React.Component{
       persona_age: false,
       persona_education: false,
       questions: false,
-      results: false
+      results: true
     }
   }
 
@@ -183,25 +182,7 @@ class Introduction extends React.Component{
           <div className="app-container__progressbar--orange" style={height}></div>
         </div>
 
-        { /* <SpriteAnimator
-            sprite='http://blaiprat.github.io/jquery.animateSprite/img/scottpilgrim_multiple.png'
-            width={100}
-            height={100}
-          /> */ }
 
-        { /** Introductieblok (maandag af)
-            *   ...
-            * Vervolgens persoonsgegevensblok (later)
-            *   @ Leeftijd
-            *   @ Gender (combi?)
-            *   @ ...
-            * Eerste invulmodule (afwerken)
-            * True/false module (maandag af)
-            *   @ VPRO-lid (boolean)
-            *   @ Getrouwd (boolean)
-            *   @ Lid van de gids? (boolean)
-            */
-        }
 
        { this.state.introduction ? <div className="intro">
         <span className="intro__tagline">vpro<span className="intro__orange">tegen</span>licht <span className="intro__gray">het rendement van geluk</span></span>

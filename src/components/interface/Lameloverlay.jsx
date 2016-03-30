@@ -8,7 +8,6 @@ import Rebase from 're-base';
 import InputComment from './comment/Lamelinput.jsx';
 import SimilarComment from './comment/Lamelmessage.jsx';
 import Allmessages from './comment/Gelukallmessages.jsx';
-import stats from '../config/stats.json';
 
 const firebase = Rebase.createClass('https://geluk.firebaseio.com');
 
@@ -19,7 +18,7 @@ class Lameloverlay extends React.Component{
     this.state = {
       showMessage: false,
       showAllMessages: false,
-      stats : stats,
+      stats : null,
       posts: null
     }
   }
@@ -194,17 +193,17 @@ class Lameloverlay extends React.Component{
           tekst = "Wil je vertellen waarom je jezelf een " + cijfer + " gaf?",
           showButtons = true;
     } else if ( this.props.text === "answer1" ) {
-          var tekst = this.genFeedback(this.state.stats.all.q_1, this.props.happinessValue, 1);//genereer obv stats
+          var tekst = this.genFeedback(this.props.generatedStats.all.q_1, this.props.happinessValue, 1);//genereer obv stats
     } else if ( this.props.text === "answer3" ) {
-          var tekst = this.genFeedback(this.state.stats.all.q_3, this.props.happinessValue, 3);//genereer obv stats
+          var tekst = this.genFeedback(this.props.generatedStats.all.q_3, this.props.happinessValue, 3);//genereer obv stats
     } else if ( this.props.text === "answer4" ) {
           //console.log(this.props.userData.userStats, this.state.stats);
           // get right stats object or all
-          var stat = this.props.userData.userStats.age == "geen" ? this.state.stats.all.q_4 : this.state.stats.age[ this.props.userData.userStats.age ].q_4;
+          var stat = this.props.userData.userStats.age == "geen" ? this.props.generatedStats.all.q_4 : this.props.generatedStats.age[ this.props.userData.userStats.age ].q_4;
           var tekst = this.genFeedback(stat, this.props.happinessValue, 4);//genereer obv stats
     } else if ( this.props.text === "answer5" ) {
           // get right stats object or all
-          var stat = this.props.userData.userStats.education == "geen" ? this.state.stats.all.q_5 : this.state.stats.education[ this.props.userData.userStats.education ].q_5;
+          var stat = this.props.userData.userStats.education == "geen" ? this.props.generatedStats.all.q_5 : this.props.generatedStats.education[ this.props.userData.userStats.education ].q_5;
           var tekst = this.genFeedback(stat, this.props.happinessValue, 5);//genereer obv stats
     } else {
       var tekst = this.props.text;

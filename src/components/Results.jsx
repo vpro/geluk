@@ -17,6 +17,7 @@ class Results extends React.Component{
     super(props);
 
     this.state = {
+      stats: Stats,
       q_1: null,
       q_2: null,
       q_3: null,
@@ -37,11 +38,17 @@ class Results extends React.Component{
 
     this.setState( (state) => {
       console.log('will mount', this)
-      state.q_1 = Math.round((this.props.generatedStats.all.q_1.total/this.props.generatedStats.all.q_1.count) * 10) / 10;
-      state.q_2 = Math.round((this.props.generatedStats.all.q_2.total/this.props.generatedStats.all.q_2.count) * 10) / 10;
-      state.q_3 = Math.round((this.props.generatedStats.all.q_3.total/this.props.generatedStats.all.q_3.count) * 10) / 10;
-      state.q_4 = Math.round((this.props.generatedStats.all.q_4.total/this.props.generatedStats.all.q_4.count) * 10) / 10;
-      state.q_5 = Math.round((this.props.generatedStats.all.q_5.total/this.props.generatedStats.all.q_5.count) * 10) / 10;
+      // state.q_1 = Math.round((this.props.generatedStats.all.q_1.total/this.props.generatedStats.all.q_1.count) * 10) / 10;
+      // state.q_2 = Math.round((this.props.generatedStats.all.q_2.total/this.props.generatedStats.all.q_2.count) * 10) / 10;
+      // state.q_3 = Math.round((this.props.generatedStats.all.q_3.total/this.props.generatedStats.all.q_3.count) * 10) / 10;
+      // state.q_4 = Math.round((this.props.generatedStats.all.q_4.total/this.props.generatedStats.all.q_4.count) * 10) / 10;
+      // state.q_5 = Math.round((this.props.generatedStats.all.q_5.total/this.props.generatedStats.all.q_5.count) * 10) / 10;
+
+      state.q_1 = Math.round((this.state.stats.all.q_1.total/this.state.stats.all.q_1.count) * 10) / 10;
+      state.q_2 = Math.round((this.state.stats.all.q_2.total/this.state.stats.all.q_2.count) * 10) / 10;
+      state.q_3 = Math.round((this.state.stats.all.q_3.total/this.state.stats.all.q_3.count) * 10) / 10;
+      state.q_4 = Math.round((this.state.stats.all.q_4.total/this.state.stats.all.q_4.count) * 10) / 10;
+      state.q_5 = Math.round((this.state.stats.all.q_5.total/this.state.stats.all.q_5.count) * 10) / 10;
     }, console.log('setState', this.state))
 
   }
@@ -170,7 +177,13 @@ class Results extends React.Component{
             ownScore={this.props.userScore}
             otherScore="7.0"/>
 
-          <Millennials delayTime={2.4}/>
+          <Millennials 
+            type="mannenvrouwen"
+            logoWidth="350"
+            stats={this.state.stats} // this.props.generatedStats
+            delayTime={2.4}
+            text="Volgens Hurst zoeken millennials (1980 - 2000) vaak meer betekenis in hun werk dan vorige generaties. Hieronder zie je of dat bij Tegenlicht-kijkers ook het geval is."
+            />
 
           { /* <Box 
             cName="results__layart" 
