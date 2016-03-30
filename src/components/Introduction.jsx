@@ -34,6 +34,7 @@ class Introduction extends React.Component{
       heighty: 0,
       personaQuestions: Persona,
       userData: Model,
+      generatedStats: null,
       introduction: true,
       persona: false,
       persona_gender: false,
@@ -53,6 +54,22 @@ class Introduction extends React.Component{
     // Have to make sure that is only invoked once
     // this.determineBoxWidth();
     console.log(this.props.route);
+
+    var that = this;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', encodeURI('http://lola.z25.org/~arnaud/geluk/stats.json'));
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log(xhr.responseText);
+              that.setState(function(state){
+                state.generatedStats = xhr.responseText;
+              });
+        }
+        else {
+            console.log('Request failed.  Returned status of ' + xhr.status);
+        }
+    };
+    xhr.send();
   }
 
   submitUserstats(type, reply, next){
@@ -265,6 +282,7 @@ class Introduction extends React.Component{
         userScore={this.state.userData.userStats.score}
         userMultipleScores={this.state.userData.core_module}
         userData={this.state.userData}
+        generatedStats={this.state.generatedStats}
         /> : null}
 
 
