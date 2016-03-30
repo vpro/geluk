@@ -28,6 +28,14 @@ function genStatsContainer( obj ) {
     // generate stats container
     var stats = { all : new Stats() };
     var first = Object.keys(users)[0]
+    
+    //multiple choice work
+    stats['work'] = {}
+    for ( job in persona.work )
+    {
+        stats.work[ persona.work[job].cat ] = new Stats( persona.work[job].naam );
+    }
+    
     for ( var key in obj[first][ 'userStats' ] ) {
         if ( typeof(obj[first][ 'userStats' ][key]) == 'boolean' ) {
             stats[key] = { true: new Stats(key +'_true'), false: new Stats(key +'_false') };
@@ -149,6 +157,15 @@ function process_quality_scores( obj, stats ) {
                     var stats_container = stats[ key2 ][ item ][key];
                     process_answer( answer, stats_container );
                 }
+            }
+            //process multipleChoice work stats
+            var work = obj['multipleChoice'].work;
+            var stats_container = stats.work[ work ][key];
+            console.log(work, stats_container);
+            if ( stats_container === undefined ) {
+                console.log("work stats not defined", stats.work, work);
+            } else {
+                process_answer( answer, stats_container );
             }
         }
     }
