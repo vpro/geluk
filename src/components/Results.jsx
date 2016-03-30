@@ -17,7 +17,6 @@ class Results extends React.Component{
     super(props);
 
     this.state = {
-      stats: this.props.generatedStats,
       q_1: null,
       q_2: null,
       q_3: null,
@@ -34,17 +33,21 @@ class Results extends React.Component{
   }
 
   componentWillMount(){
-    this.setState(function(state){
-      state.q_1 = Math.round((state.stats.all.q_1.total/state.stats.all.q_1.count) * 10) / 10;
-      state.q_2 = Math.round((state.stats.all.q_2.total/state.stats.all.q_2.count) * 10) / 10;
-      state.q_3 = Math.round((state.stats.all.q_3.total/state.stats.all.q_3.count) * 10) / 10;
-      state.q_4 = Math.round((state.stats.all.q_4.total/state.stats.all.q_4.count) * 10) / 10;
-      state.q_5 = Math.round((state.stats.all.q_5.total/state.stats.all.q_5.count) * 10) / 10;
-    })
+    console.log(this.props);
+
+    this.setState( (state) => {
+      console.log('will mount', this)
+      state.q_1 = Math.round((this.props.generatedStats.all.q_1.total/this.props.generatedStats.all.q_1.count) * 10) / 10;
+      state.q_2 = Math.round((this.props.generatedStats.all.q_2.total/this.props.generatedStats.all.q_2.count) * 10) / 10;
+      state.q_3 = Math.round((this.props.generatedStats.all.q_3.total/this.props.generatedStats.all.q_3.count) * 10) / 10;
+      state.q_4 = Math.round((this.props.generatedStats.all.q_4.total/this.props.generatedStats.all.q_4.count) * 10) / 10;
+      state.q_5 = Math.round((this.props.generatedStats.all.q_5.total/this.props.generatedStats.all.q_5.count) * 10) / 10;
+    }, console.log('setState', this.state))
+
   }
 
   componentDidMount(){
-    console.log(this.state.stats);
+    console.log(this.props.generatedStats);
     var DOMnode = ReactDOM.findDOMNode(this);
     var scalegraph = ReactDOM.findDOMNode(this.refs.scalegraph);
 
@@ -68,16 +71,16 @@ class Results extends React.Component{
   }
 
   changeGraph(firstProp, secondProp){
-    console.log(this.state.stats)
+    console.log(this.props.generatedStats)
     this.setGrey();
-    this.setState(function(state){
-      state.q_1 = Math.round((state.stats[firstProp][secondProp].q_1.total/state.stats[firstProp][secondProp].q_1.count) * 10) / 10;
-      state.q_2 = Math.round((state.stats[firstProp][secondProp].q_2.total/state.stats[firstProp][secondProp].q_2.count) * 10) / 10;
-      state.q_3 = Math.round((state.stats[firstProp][secondProp].q_3.total/state.stats[firstProp][secondProp].q_3.count) * 10) / 10;
-      state.q_4 = Math.round((state.stats[firstProp][secondProp].q_4.total/state.stats[firstProp][secondProp].q_4.count) * 10) / 10;
-      state.q_5 = Math.round((state.stats[firstProp][secondProp].q_5.total/state.stats[firstProp][secondProp].q_5.count) * 10) / 10;
+    this.setState( (state) => {
+      state.q_1 = Math.round((this.props.generatedStats[firstProp][secondProp].q_1.total/this.props.generatedStats[firstProp][secondProp].q_1.count) * 10) / 10;
+      state.q_2 = Math.round((this.props.generatedStats[firstProp][secondProp].q_2.total/this.props.generatedStats[firstProp][secondProp].q_2.count) * 10) / 10;
+      state.q_3 = Math.round((this.props.generatedStats[firstProp][secondProp].q_3.total/this.props.generatedStats[firstProp][secondProp].q_3.count) * 10) / 10;
+      state.q_4 = Math.round((this.props.generatedStats[firstProp][secondProp].q_4.total/this.props.generatedStats[firstProp][secondProp].q_4.count) * 10) / 10;
+      state.q_5 = Math.round((this.props.generatedStats[firstProp][secondProp].q_5.total/this.props.generatedStats[firstProp][secondProp].q_5.count) * 10) / 10;
       state.active[firstProp] = true;
-    })  
+    })
     console.log(this.state)  
   }
 

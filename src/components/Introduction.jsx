@@ -57,19 +57,22 @@ class Introduction extends React.Component{
 
     var that = this;
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', encodeURI('http://lola.z25.org/~arnaud/geluk/stats.json'));
+    xhr.open('GET', encodeURI('http://vpro.github.io/geluk/stats.json'));
     xhr.onload = function() {
         if (xhr.status === 200) {
-            console.log(xhr.responseText);
               that.setState(function(state){
-                state.generatedStats = xhr.responseText;
-              });
+                state.generatedStats = JSON.parse(xhr.responseText);
+              }, that.checkState);
         }
         else {
             console.log('Request failed.  Returned status of ' + xhr.status);
         }
     };
     xhr.send();
+  }
+
+  checkState(){
+    console.log(this.state);
   }
 
   submitUserstats(type, reply, next){
