@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import GSAP from 'gsap';
 
 import Box from './interface/results/Box.jsx';
-import Graph from './interface/results/Graph.jsx';
-import Millenials from './interface/results/Millenials.jsx';
+// import Graph from './interface/results/Graph.jsx';
+import Millennials from './interface/results/Millennials.jsx';
 
 import ScaleGraph from './interface/results/ScaleGraph.jsx';
 import whitearrow from '../assets/images/resultswhitearrow.svg';
@@ -113,7 +113,7 @@ class Results extends React.Component{
             ownScore={this.props.userScore}
             otherScore="7.0"/>
 
-          <Millenials />
+          <Millennials delayTime={3}/>
 
           { /* <Box 
             cName="results__layart" 
@@ -122,7 +122,6 @@ class Results extends React.Component{
             top="250" left="450" delayTime="1.6" speed="1" width="300" height="350"/> */ }
 
 
-          <Graph top="10" left="1300" />
   			</div>
   		)
 		}
