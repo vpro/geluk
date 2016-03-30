@@ -17,7 +17,7 @@ class Results extends React.Component{
     super(props);
 
     this.state = {
-      stats: Stats,
+      stats: this.props.generatedStats,
       q_1: null,
       q_2: null,
       q_3: null,
