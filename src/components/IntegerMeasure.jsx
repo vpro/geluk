@@ -96,6 +96,7 @@ class IntegerMeasure extends React.Component{
                 overlayAnswer={this.props.userData.core_module[question.name + "_answer"]}
                 userData={this.props.userData}
                 boxWidth={this.props.boxWidth}
+                generatedStats={this.props.generatedStats}
                 key={key} />
               );
             })

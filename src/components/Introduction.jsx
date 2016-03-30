@@ -59,14 +59,14 @@ class Introduction extends React.Component{
     var xhr = new XMLHttpRequest();
     xhr.open('GET', encodeURI('http://vpro.github.io/geluk/stats.json'));
     xhr.onload = function() {
-        if (xhr.status === 200) {
-              that.setState(function(state){
-                state.generatedStats = JSON.parse(xhr.responseText);
-              }, that.checkState);
-        }
-        else {
-            console.log('Request failed.  Returned status of ' + xhr.status);
-        }
+      if (xhr.status === 200) {
+        that.setState(function(state){
+          state.generatedStats = JSON.parse(xhr.responseText);
+        }, that.checkState);
+      }
+      else {
+        console.log('Request failed.  Returned status of ' + xhr.status);
+      }
     };
     xhr.send();
   }
@@ -278,6 +278,7 @@ class Introduction extends React.Component{
         setProgress={this.increaseProgress.bind(this)}
         userData={this.state.userData}
         setMultipleChoice={this.setMultipleChoice.bind(this)}
+        generatedStats={this.state.generatedStats}
       /> : null }
 
       { this.state.results ? <Results
