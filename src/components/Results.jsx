@@ -46,15 +46,22 @@ class Results extends React.Component{
   componentDidMount(){
     console.log(this.state.stats);
     var DOMnode = ReactDOM.findDOMNode(this);
+    var scalegraph = ReactDOM.findDOMNode(this.refs.scalegraph);
 
     TweenLite.from(DOMnode, 2.5, {
       width:0, 
       ease: Power4.easeOut
     });
+    TweenLite.from(scalegraph, 1, {
+      opacity: 0,
+      delay: 3.5,
+      ease: Power2.easeOut
+    });    
 
     this.props.calculate();
     // var that = this;
     // setTimeout(function(){ that.changeGraph('gender', 'female'); }, 10000);
+
 
 
     
@@ -114,7 +121,7 @@ class Results extends React.Component{
 
   		return (
   			<div className="results">
-          <div className="results__scalegraph-container">
+          <div className="results__scalegraph-container" ref="scalegraph">
             <div className="results__scalegraph-controller">
               <img className="results__scalegraph-controller-arrow" src={whitearrow}/>
               <h2>Jouw scores in vergelijking met anderen op basis van</h2>
@@ -151,7 +158,8 @@ class Results extends React.Component{
               yourScore={this.props.userMultipleScores.q_5}
               averageScore={this.state.q_5}
             />                          
-          </div>        
+          </div>   
+
           <Box 
             cName="results__resultbox" 
             h3="Jouw score" top="100" left="150" delayTime="1" speed="1" width="300" height="350"
