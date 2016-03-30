@@ -66,6 +66,7 @@ class LamelModule extends React.Component{
             currentQuestion={this.props.happinessQuestion}
             comment={this.props.overlayAnswer} 
             boxWidth={this.props.boxWidth}
+            userData={this.props.userData}
           /> : null }
 				<p className={blurStyle}>{this.props.questionDescription}</p>
         <span className={secondBlurStyle}>{this.props.happinessValue}/{this.props.highestScale}</span>
