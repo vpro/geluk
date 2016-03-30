@@ -4,6 +4,7 @@ import GSAP from 'gsap';
 
 import Box from './interface/results/Box.jsx';
 import Graph from './interface/results/Graph.jsx';
+import Millenials from './interface/results/Millenials.jsx';
 
 import ScaleGraph from './interface/results/ScaleGraph.jsx';
 import whitearrow from '../assets/images/resultswhitearrow.svg';
@@ -45,19 +46,22 @@ class Results extends React.Component{
     });
 
     this.props.calculate();
-    var that = this;
-    setTimeout(function(){ that.changeGraph('gender.female'); }, 10000);
+    // var that = this;
+    // setTimeout(function(){ that.changeGraph('gender', 'female'); }, 10000);
 
 
     
   }
 
-  // changeGraph(type){
-  //   console.log('type is ', type);
-  //   this.setState(function(state){
-  //     state.q_4 = Math.round((state.stats[type].q_4.total/state.stats[type].q_4.count) * 10) / 10;
-  //   })    
-  // }
+  changeGraph(firstProp, secondProp){
+    this.setState(function(state){
+      state.q_1 = Math.round((state.stats[firstProp][secondProp].q_1.total/state.stats[firstProp][secondProp].q_1.count) * 10) / 10;
+      state.q_2 = Math.round((state.stats[firstProp][secondProp].q_2.total/state.stats[firstProp][secondProp].q_2.count) * 10) / 10;
+      state.q_3 = Math.round((state.stats[firstProp][secondProp].q_3.total/state.stats[firstProp][secondProp].q_3.count) * 10) / 10;
+      state.q_4 = Math.round((state.stats[firstProp][secondProp].q_4.total/state.stats[firstProp][secondProp].q_4.count) * 10) / 10;
+      state.q_5 = Math.round((state.stats[firstProp][secondProp].q_5.total/state.stats[firstProp][secondProp].q_5.count) * 10) / 10;
+    })    
+  }
 
 
   render() {
@@ -69,7 +73,7 @@ class Results extends React.Component{
               <img className="results__scalegraph-controller-arrow" src={whitearrow}/>
               <h2>Jouw scores in vergelijking met anderen op basis van</h2>
               <ul>
-                <li>je leeftijd</li>
+                <li onClick={this.changeGraph.bind(this, 'gender', 'female')}>je leeftijd</li>
                 <li>je beroepssector</li>
                 <li>je opleidingsniveau</li>
                 <li>je werkmotivatie</li>
@@ -104,10 +108,12 @@ class Results extends React.Component{
           </div>        
           <Box 
             cName="results__resultbox" 
-            h3="Tevredenheid" top="100" left="150" delayTime="1" speed="1" width="300" height="350"
-            p="Jouw werktevredenheid in vergelijking met mensen die ook in 'automotive' werken"
+            h3="Jouw score" top="100" left="150" delayTime="1" speed="1" width="300" height="350"
+            p="Ontdek hoe gelukkig jij op de werkvloer bent ten opzichte van andere mannen of vrouwen. Deel je resultaten op Facebook of Twitter en ga met je vrienden het gesprek aan over meetbaar geluk op de werkvloer."
             ownScore={this.props.userScore}
             otherScore="7.0"/>
+
+          <Millenials />
 
           { /* <Box 
             cName="results__layart" 
