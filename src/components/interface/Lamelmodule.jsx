@@ -11,7 +11,7 @@ class LamelModule extends React.Component{
 
     this.state = {
       DOMnode: null,
-      showNext: false
+      showNext: true
     }
   }
 
