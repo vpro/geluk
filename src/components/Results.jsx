@@ -166,6 +166,12 @@ class Results extends React.Component{
     } else {
       var genderClass = "";
     }
+    var avgQ1 = this.props.generatedStats.all.q_1.total/this.props.generatedStats.all.q_1.count,
+        avgQ2 = this.props.generatedStats.all.q_2.total/this.props.generatedStats.all.q_2.count,
+        avgQ3 = (this.props.generatedStats.all.q_3.total/this.props.generatedStats.all.q_3.count)/2,
+        avgQ4 = this.props.generatedStats.all.q_4.total/this.props.generatedStats.all.q_4.count,
+        avgQ5 = this.props.generatedStats.all.q_5.total/this.props.generatedStats.all.q_5.count;
+    var allScores = (avgQ1 + avgQ2 + avgQ3 + avgQ4 + avgQ5) / 4.5;
 
   		return (
   			<div className="results">
@@ -178,7 +184,7 @@ class Results extends React.Component{
               h3="Jouw score" top="100" left="150" delayTime="1" speed="1" width="300" height="350"
               p="Ontdek hoe gelukkig jij op de werkvloer bent ten opzichte van andere mannen of vrouwen. Deel je resultaten op Facebook of Twitter en ga met je vrienden het gesprek aan over meetbaar geluk op de werkvloer."
               ownScore={this.props.userScore}
-              otherScore="7.0"/>
+              otherScore={allScores.toFixed(1)}/>
 
             <div className="results__scalegraph-container" ref="scalegraph">
               <ScaleGraph

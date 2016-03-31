@@ -27,7 +27,7 @@ class SalaryGraph extends React.Component{
     var lessThan7000Width = {width: (width/10)*lessThan7000 + 'px', backgroundColor: '#000', color: '#FFF'} ;
     var lessThan10000Width = {width: (width/10)*lessThan10000 + 'px', backgroundColor: '#000', color: '#FFF'} ;
     var moreThan10000Width = {width: (width/10)*moreThan10000 + 'px', backgroundColor: '#000', color: '#FFF'} ;
-
+console.log(typeof lessThan1500);
   		return (
         <div>
           <div className="results__millennials-graph">
