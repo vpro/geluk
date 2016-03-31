@@ -11,7 +11,7 @@ class LamelModule extends React.Component{
 
     this.state = {
       DOMnode: null,
-      showNext: true
+      showNext: false
     }
   }
 
@@ -86,6 +86,7 @@ class LamelModule extends React.Component{
           max={this.props.highestScale}
           value={this.props.happinessValue}
           onChange={this.submitHappiness} 
+          onMouseUp={this.submitHappiness}
           ref={this.setRef}
           style={displayElem} 
         />
