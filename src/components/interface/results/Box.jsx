@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import GSAP from 'gsap';
 
+import Tegenlichtkijker from '../../../assets/images/tegenlichtkijker.png';
+import Jouwscore from '../../../assets/images/jouwscore.png';
+
+
 class Box extends React.Component{
   constructor(props){
     super(props);
@@ -50,6 +54,8 @@ class Box extends React.Component{
           { this.props.p ? <p>{this.props.p}</p> : null }
 
           { this.props.ownScore ? <div className="results__circle-container"><span className="results__own-circle">{this.props.ownScore}</span><span className="results__own-circle results__right-circle">{this.props.otherScore}</span></div> : null}
+            <img className="results__kijkerscore" src={Tegenlichtkijker} />
+            <img className="results__jouwscore" src={Jouwscore} />
           </div>
         </div>
   		)

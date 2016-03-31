@@ -68,13 +68,13 @@ class Results extends React.Component{
     });
     TweenLite.from(scalegraph, 1, {
       opacity: 0,
-      delay: 2,
+      delay: 2.5,
       x: -20,
       ease: Power2.easeOut
     });
     TweenLite.from(scalegraphController, 1, {
       opacity: 0,
-      delay: 2.5,
+      delay: 2.7,
       x: -20,
       ease: Power2.easeOut
     });        
@@ -181,8 +181,8 @@ class Results extends React.Component{
           
             <Box 
               cName="results__resultbox" 
-              h3="Jouw score" top="100" left="150" delayTime="1" speed="1" width="300" height="350"
-              p="Ontdek hoe gelukkig jij op de werkvloer bent ten opzichte van andere mannen of vrouwen. Deel je resultaten op Facebook of Twitter en ga met je vrienden het gesprek aan over meetbaar geluk op de werkvloer."
+              h3="Jouw score" top="100" left="150" delayTime="1" speed="1" width="300" height="400"
+              p="Ontdek hoe gelukkig jij op de werkvloer bent ten opzichte van andere Tegenlicht-kijkers. Deel je resultaten op Facebook of Twitter en ga met je vrienden het gesprek aan over meetbaar geluk op de werkvloer."
               ownScore={this.props.userScore}
               otherScore={allScores.toFixed(1)}/>
 

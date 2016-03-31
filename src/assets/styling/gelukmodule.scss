@@ -326,6 +326,10 @@ video.fillWidth {
   }
 } 
 
+  .persona__customselect {
+    background: #EFEFEF url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/392/select-arrow.png) 95% 50% no-repeat;
+  }
+
 .persona__select {
   margin: auto;
   text-align: center;
@@ -402,8 +406,8 @@ video.fillWidth {
   margin-top: 100px;
   cursor: pointer;
   &:hover {
-    background: black;
-    color: $steunkleur-een;
+    background: white !important;
+    color: black !important;
     cursor: pointer;
   }
 }
@@ -544,8 +548,6 @@ video.fillWidth {
 }
 
 /* MessageSSSSSS */
-
-
 .singlemessage__meta {
   color: white;
 }
@@ -600,7 +602,7 @@ video.fillWidth {
 
 .results__box {
   width: 300px;
-  height: 350px;
+  height: 410px;
   padding: 30px;
   background: black;
   display: block;
@@ -754,6 +756,10 @@ video.fillWidth {
   font-family: SimplisticSans-Medium;
   font-size: 14px;
   margin-top: -13px;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
 }
 
 .results__scale-yours {
@@ -800,7 +806,7 @@ video.fillWidth {
   background: $greymouse;
   display: block;
   width: 105px;
-  overflow: auto;
+  overflow: hidden;
   font-size: 10px;
   height: 100%;
   color: black;
@@ -813,6 +819,20 @@ video.fillWidth {
   color: $orange !important;
   border-bottom: 3px solid $orange;
   display: inline-block;
+}
+
+.results__kijkerscore {
+  width: 80px;
+  position: absolute;
+  left: 167px;
+  top: 342px; 
+}
+
+.results__jouwscore {
+  width: 61px;
+  position: absolute;
+  left: -1px;
+  top: 337px;
 }
 
 /* Slider */

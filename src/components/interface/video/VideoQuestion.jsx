@@ -74,7 +74,7 @@ class VideoQuestion extends React.Component{
     setTimeout(function(){ 
       that.activator('videoIntroduction', 'videoQuestion');
       that.moveVideo();
-    }, 9000);
+    }, 13000);
   }
 
   render() {

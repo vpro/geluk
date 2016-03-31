@@ -167,10 +167,8 @@ class Introduction extends React.Component{
     console.log('trigger go next');
     console.log(thisScreen);
     this.setState(function(state){
-
         state[thisScreen] = false;
         state[nextScreen] = true;
-      
     })
   }  
 
@@ -252,11 +250,9 @@ class Introduction extends React.Component{
         <span className="intro__button" onClick={this.goNext.bind(this, 'persona','questions')}>Verder</span>
         </div> : null */ }
 
-        { this.state.video ? <Video 
+      { this.state.video ? <Video 
         setMultipleChoice={this.setMultipleChoice.bind(this)}
-        goNext={this.goNext.bind(this)}
-
-          /> : null
+        goNext={this.goNext.bind(this)} /> : null
         }
 
       { this.state.questions ? <IntegerMeasure 
