@@ -568,6 +568,8 @@ video.fillWidth {
 .results__personal-container {
   position: relative;
   margin: auto;
+  min-width: 900px;
+  width: auto !important;
 }
 
 .results__circle-container { text-align: center }
