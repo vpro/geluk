@@ -216,7 +216,6 @@ class Lameloverlay extends React.Component{
 
         { showButtons ? 
           <div className="questions__overlaybuttons" ref="overlaybuttons">
-            <span className="questions__next--yellow" onClick={this.submitNext.bind(this)}>Liever niet</span>
             <span className="questions__next--yellow" onClick={this.showBox.bind(this)}>Ja</span>
           </div> : null }
         
