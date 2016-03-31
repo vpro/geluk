@@ -28,7 +28,7 @@ class IntegerMeasure extends React.Component{
       widthCompensator: 0,
       innerSettings: Innersettings,
       questions: Questionnaire,
-      showVideo: true
+      showVideo: false
     }
   }
 
@@ -65,10 +65,10 @@ class IntegerMeasure extends React.Component{
           closeVideo={this.closeVideo.bind(this)}
          /> : null */}
 
-          {this.state.showVideo ? <VideoQuestion
+          { /* this.state.showVideo ? <VideoQuestion
           closeVideo={this.closeVideo.bind(this)}
           setMultipleChoice={this.props.setMultipleChoice.bind(this)}
-         /> : null }
+         /> : null  */}
 
           <LamelSummary 
             moduleHeadline="meetbaar geluk"

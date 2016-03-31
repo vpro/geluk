@@ -4,6 +4,7 @@ import Rebase from 're-base';
 /* Components */
 import IntegerMeasure from './IntegerMeasure.jsx';
 import Results from './Results.jsx';
+import Video from './Video.jsx';
 
 import PersonaString from './interface/PersonaString.jsx';
 import PersonaSelect from './interface/PersonaSelect.jsx';
@@ -34,8 +35,8 @@ class Introduction extends React.Component{
       personaQuestions: Persona,
       userData: Model,
       generatedStats: null,
-      introduction: true,
-      persona: false,
+      introduction: false,
+      video: true,
       persona_gender: false,
       persona_job: false,
       persona_income: false,
@@ -85,22 +86,22 @@ class Introduction extends React.Component{
     this.increaseProgress();
   }
 
-  determineBoxWidth(){
-    /*
-     *  Keep smartphone width as the width for one box
-     *  Perfect width would be around 300px. Which is also doable for iphone
-     */
+  // determineBoxWidth(){
+  //   /*
+  //    *  Keep smartphone width as the width for one box
+  //    *  Perfect width would be around 300px. Which is also doable for iphone
+  //    */
 
-    this.setState(function(state){
-      if(width < 468) {
-        // iPhone width
-        state.boxWidth = width;
-      } else {
-        // Make sure to update css widths
-        state.boxWidth = 300;
-      }
-    })
-  }  
+  //   this.setState(function(state){
+  //     if(width < 468) {
+  //       // iPhone width
+  //       state.boxWidth = width;
+  //     } else {
+  //       // Make sure to update css widths
+  //       state.boxWidth = 300;
+  //     }
+  //   })
+  // }  
 
   setHappiness(happiness, type){
     var geluk = happiness,
@@ -163,6 +164,7 @@ class Introduction extends React.Component{
   }
 
   goNext(thisScreen, nextScreen){
+    console.log('trigger go next');
     console.log(thisScreen);
     this.setState(function(state){
 
@@ -237,7 +239,7 @@ class Introduction extends React.Component{
         />: null } 
 
 
-       { this.state.persona ? <div className="intro persona">
+       { /* this.state.persona ? <div className="intro persona">
 
   
         <PersonaString
@@ -248,7 +250,14 @@ class Introduction extends React.Component{
          />
 
         <span className="intro__button" onClick={this.goNext.bind(this, 'persona','questions')}>Verder</span>
-        </div> : null }
+        </div> : null */ }
+
+        { this.state.video ? <Video 
+        setMultipleChoice={this.setMultipleChoice.bind(this)}
+        goNext={this.goNext.bind(this)}
+
+          /> : null
+        }
 
       { this.state.questions ? <IntegerMeasure 
         uid={this.state.userId}
@@ -258,7 +267,7 @@ class Introduction extends React.Component{
         setAnswer={this.setAnswer.bind(this)}
         setProgress={this.increaseProgress.bind(this)}
         userData={this.state.userData}
-        setMultipleChoice={this.setMultipleChoice.bind(this)}
+        // setMultipleChoice={this.setMultipleChoice.bind(this)}
         generatedStats={this.state.generatedStats}
       /> : null }
 
