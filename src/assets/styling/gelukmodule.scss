@@ -770,10 +770,13 @@ video.fillWidth {
 }
 
 .results__millennials {
-  position: absolute;
+  float: left;
   width: 350px;
-  left: 1600px;
   bottom: 120px;
+  margin-right: 40px;
+  &:last-child{
+    margin-right: 0;
+  }
 }
 
 .results__millennials-p {
@@ -799,7 +802,7 @@ video.fillWidth {
   display: block;
   width: 105px;
   overflow: auto;
-  font-size: 8px;
+  font-size: 10px;
   height: 100%;
   color: black;
   padding-left: 5px;
@@ -834,6 +837,28 @@ input[type=range]::-webkit-slider-thumb {
 
 input[type=range]:focus {
   outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+.results__showResults {
+  font-family: SimplisticSans-Normal;
+  border-bottom: 2px solid white;
+  padding-bottom: 2px;
+  color: white;
+  font-size: 20px;
+  position: fixed;
+  bottom: 20px;
+  width: 250px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  z-index: 100000;
+  cursor: pointer;
+  &:hover{
+    color: $black;
+    border-bottom: 2px dashed black;
+  }
 }
 
 /*input[type=range]::-ms-track {

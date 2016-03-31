@@ -48,7 +48,8 @@ class GeneralGraph extends React.Component{
     } else {
       var logo = mannenvrouwen
     }
-    var logoWidth = { width: this.props.logoWidth + 'px'}
+    var logoWidth = { width: this.props.logoWidth + 'px'};
+    var width = 350;
 
   		return (
   			<div className="results__millennials" >
@@ -59,19 +60,19 @@ class GeneralGraph extends React.Component{
 
             { this.props.type == "millennials" ? 
               <MillenialsGraph
-                width={this.props.logoWidth}
+                width={width}
                 stats={this.props.stats}/> 
               : null }
 
             { this.props.type == "mannenvrouwen" ? 
               <GenderGraph
-              width={this.props.logoWidth}
+              width={width}
               stats={this.props.stats}/> 
             : null }
 
             { this.props.type == "salaristevredenheid" ? 
               <SalaryGraph
-              width={this.props.logoWidth}
+              width={width}
               stats={this.props.stats}/> 
             : null }
           </div>

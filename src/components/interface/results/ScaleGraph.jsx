@@ -41,7 +41,7 @@ class ScaleGraph extends React.Component{
   			<div className="results__scale-graph">
           <h6>{this.props.headline}</h6>
           <div className="results__scale-circle results__scale-yours" style={positionOwnCircle} ref="owncircle">{this.props.yourScore}</div>
-          <div className="results__scale-circle results__scale-others" style={positionAverageCircle} ref="averagecircle">{this.props.averageScore}</div>
+          <div className="results__scale-circle results__scale-others" style={positionAverageCircle} ref="averagecircle">{this.props.averageScore.toFixed(1)}</div>
           <div className="results__scale"/>
         </div>
   		)

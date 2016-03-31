@@ -17,7 +17,9 @@ class Results extends React.Component{
     super(props);
 
     this.state = {
-      stats: Stats,
+      // stats: Stats,
+      showPersonal: true,
+      showGeneral: false,
       q_1: null,
       q_2: null,
       q_3: null,
@@ -38,17 +40,17 @@ class Results extends React.Component{
 
     this.setState( (state) => {
       console.log('will mount', this)
-      // state.q_1 = Math.round((this.props.generatedStats.all.q_1.total/this.props.generatedStats.all.q_1.count) * 10) / 10;
-      // state.q_2 = Math.round((this.props.generatedStats.all.q_2.total/this.props.generatedStats.all.q_2.count) * 10) / 10;
-      // state.q_3 = Math.round((this.props.generatedStats.all.q_3.total/this.props.generatedStats.all.q_3.count) * 10) / 10;
-      // state.q_4 = Math.round((this.props.generatedStats.all.q_4.total/this.props.generatedStats.all.q_4.count) * 10) / 10;
-      // state.q_5 = Math.round((this.props.generatedStats.all.q_5.total/this.props.generatedStats.all.q_5.count) * 10) / 10;
+      state.q_1 = Math.round((this.props.generatedStats.all.q_1.total/this.props.generatedStats.all.q_1.count) * 10) / 10;
+      state.q_2 = Math.round((this.props.generatedStats.all.q_2.total/this.props.generatedStats.all.q_2.count) * 10) / 10;
+      state.q_3 = Math.round((this.props.generatedStats.all.q_3.total/this.props.generatedStats.all.q_3.count) * 10) / 10;
+      state.q_4 = Math.round((this.props.generatedStats.all.q_4.total/this.props.generatedStats.all.q_4.count) * 10) / 10;
+      state.q_5 = Math.round((this.props.generatedStats.all.q_5.total/this.props.generatedStats.all.q_5.count) * 10) / 10;
 
-      state.q_1 = Math.round((this.state.stats.all.q_1.total/this.state.stats.all.q_1.count) * 10) / 10;
-      state.q_2 = Math.round((this.state.stats.all.q_2.total/this.state.stats.all.q_2.count) * 10) / 10;
-      state.q_3 = Math.round((this.state.stats.all.q_3.total/this.state.stats.all.q_3.count) * 10) / 10;
-      state.q_4 = Math.round((this.state.stats.all.q_4.total/this.state.stats.all.q_4.count) * 10) / 10;
-      state.q_5 = Math.round((this.state.stats.all.q_5.total/this.state.stats.all.q_5.count) * 10) / 10;
+      // state.q_1 = Math.round((this.state.stats.all.q_1.total/this.state.stats.all.q_1.count) * 10) / 10;
+      // state.q_2 = Math.round((this.state.stats.all.q_2.total/this.state.stats.all.q_2.count) * 10) / 10;
+      // state.q_3 = Math.round((this.state.stats.all.q_3.total/this.state.stats.all.q_3.count) * 10) / 10;
+      // state.q_4 = Math.round((this.state.stats.all.q_4.total/this.state.stats.all.q_4.count) * 10) / 10;
+      // state.q_5 = Math.round((this.state.stats.all.q_5.total/this.state.stats.all.q_5.count) * 10) / 10;
     }, console.log('setState', this.state))
 
   }
@@ -58,6 +60,7 @@ class Results extends React.Component{
     var DOMnode = ReactDOM.findDOMNode(this);
     var scalegraph = ReactDOM.findDOMNode(this.refs.scalegraph);
     var scalegraphController = ReactDOM.findDOMNode(this.refs.scalegraphcontroller);
+    var generalResults = ReactDOM.findDOMNode(this.refs.generalResults);
 
     TweenLite.from(DOMnode, 2.5, {
       width:0, 
@@ -75,6 +78,12 @@ class Results extends React.Component{
       x: -20,
       ease: Power2.easeOut
     });        
+    TweenLite.from(generalResults, 1, {
+      opacity: 0,
+      delay: 3,
+      y: 20,
+      ease: Power2.easeOut
+    });     
 
     this.props.calculate();
     // var that = this;
@@ -86,23 +95,27 @@ class Results extends React.Component{
   }
 
   changeGraph(firstProp, secondProp){
-    console.log(this.props.generatedStats)
     this.setGrey();
     this.setState( (state) => {
       console.log('eerste property ', firstProp)
       console.log('tweede property ', secondProp)
-      console.log('getal', this.state.stats[firstProp][secondProp].q_1.total)
-      // state.q_1 = Math.round((this.props.generatedStats[firstProp][secondProp].q_1.total/this.props.generatedStats[firstProp][secondProp].q_1.count) * 10) / 10;
-      // state.q_2 = Math.round((this.props.generatedStats[firstProp][secondProp].q_2.total/this.props.generatedStats[firstProp][secondProp].q_2.count) * 10) / 10;
-      // state.q_3 = Math.round((this.props.generatedStats[firstProp][secondProp].q_3.total/this.props.generatedStats[firstProp][secondProp].q_3.count) * 10) / 10;
-      // state.q_4 = Math.round((this.props.generatedStats[firstProp][secondProp].q_4.total/this.props.generatedStats[firstProp][secondProp].q_4.count) * 10) / 10;
-      // state.q_5 = Math.round((this.props.generatedStats[firstProp][secondProp].q_5.total/this.props.generatedStats[firstProp][secondProp].q_5.count) * 10) / 10;
+      console.log(this.props.generatedStats);
 
-      state.q_1 = Math.round((this.state.stats[firstProp][secondProp].q_1.total/this.state.stats[firstProp][secondProp].q_1.count) * 10) / 10;
-      state.q_2 = Math.round((this.state.stats[firstProp][secondProp].q_2.total/this.state.stats[firstProp][secondProp].q_2.count) * 10) / 10;
-      state.q_3 = Math.round((this.state.stats[firstProp][secondProp].q_3.total/this.state.stats[firstProp][secondProp].q_3.count) * 10) / 10;
-      state.q_4 = Math.round((this.state.stats[firstProp][secondProp].q_4.total/this.state.stats[firstProp][secondProp].q_4.count) * 10) / 10;
-      state.q_5 = Math.round((this.state.stats[firstProp][secondProp].q_5.total/this.state.stats[firstProp][secondProp].q_5.count) * 10) / 10;
+      var eersteProp = firstProp;
+      var tweedeProp = secondProp;
+
+
+      state.q_1 = this.props.generatedStats[eersteProp][tweedeProp].q_1.total/this.props.generatedStats[eersteProp][tweedeProp].q_1.count;
+      state.q_2 = this.props.generatedStats[eersteProp][tweedeProp].q_2.total/this.props.generatedStats[eersteProp][tweedeProp].q_2.count;
+      state.q_3 = this.props.generatedStats[eersteProp][tweedeProp].q_3.total/this.props.generatedStats[eersteProp][tweedeProp].q_3.count;
+      state.q_4 = this.props.generatedStats[eersteProp][tweedeProp].q_4.total/this.props.generatedStats[eersteProp][tweedeProp].q_4.count;
+      state.q_5 = this.props.generatedStats[eersteProp][tweedeProp].q_5.total/this.props.generatedStats[eersteProp][tweedeProp].q_5.count;
+
+      // state.q_1 = Math.round((this.state.stats[firstProp][secondProp].q_1.total/this.state.stats[firstProp][secondProp].q_1.count) * 10) / 10;
+      // state.q_2 = Math.round((this.state.stats[firstProp][secondProp].q_2.total/this.state.stats[firstProp][secondProp].q_2.count) * 10) / 10;
+      // state.q_3 = Math.round((this.state.stats[firstProp][secondProp].q_3.total/this.state.stats[firstProp][secondProp].q_3.count) * 10) / 10;
+      // state.q_4 = Math.round((this.state.stats[firstProp][secondProp].q_4.total/this.state.stats[firstProp][secondProp].q_4.count) * 10) / 10;
+      // state.q_5 = Math.round((this.state.stats[firstProp][secondProp].q_5.total/this.state.stats[firstProp][secondProp].q_5.count) * 10) / 10;
       state.active[firstProp] = true;
     })
     console.log(this.state)  
@@ -116,6 +129,14 @@ class Results extends React.Component{
       state.active.work = false;
       state.active.gender = false;
     })      
+  }
+
+  switcher(type){
+    console.log('bla');
+    this.setState(function(state){
+      state.showPersonal = false;
+      state.showGeneral = true;
+    })   
   }
 
 
@@ -148,6 +169,8 @@ class Results extends React.Component{
 
   		return (
   			<div className="results">
+        { this.state.showPersonal ? 
+
           <div className="results__personal-container">
           
             <Box 
@@ -184,6 +207,7 @@ class Results extends React.Component{
                 averageScore={this.state.q_5}
               />                          
             </div> 
+          <span className="results__showResults" ref="generalResults" onClick={this.switcher.bind(this, 'off')}>Bekijk algemene resultaten</span>
 
             <div className="results__scalegraph-controller" ref="scalegraphcontroller">
                 <img className="results__scalegraph-controller-arrow" src={whitearrow}/>
@@ -196,34 +220,39 @@ class Results extends React.Component{
                   <li className={genderClass} onClick={this.changeGraph.bind(this, 'gender', this.props.userData.userStats.gender)}>je geslacht</li>
                 </ul>
               </div> 
-          </div> 
+
+          </div>   
+          : null }
+
+          { this.state.showGeneral ? 
+            <div className="results__personal-container">
 
 
-
-          { /* 
             <GeneralGraph 
             type="millennials"
-            logoWidth="350"
-            stats={this.state.stats} // vervangen voor this.props.generatedStats
-            delayTime={2.4}
+            logoWidth="338"
+            stats={this.props.generatedStats} // vervangen voor this.props.generatedStats
+            delayTime={0}
             text="Volgens Hurst zoeken millennials (1980 - 2000) vaak meer betekenis in hun werk dan vorige generaties. Hieronder zie je of dat bij Tegenlicht-kijkers ook het geval is." /> 
-            */ }
 
-          { /* 
+
+
             <GeneralGraph 
             type="mannenvrouwen"
-            logoWidth="350"
-            stats={this.state.stats} // this.props.generatedStats
-            delayTime={2.4}
+            logoWidth="231"
+            stats={this.props.generatedStats} // this.state.stats
+            delayTime={.5}
             text="Hoe tevreden zijn mannen over hun werk in vergelijking met vrouwen?" /> 
-          */ }
+
 
             <GeneralGraph 
             type="salaristevredenheid"
-            logoWidth="350"
-            stats={this.state.stats} // this.props.generatedStats
-            delayTime={2.4}
-            text="Hoe verhoudt salaris tot werktevredeneheid?" />           
+            logoWidth="325"
+            stats={this.props.generatedStats} // this.props.generatedStats
+            delayTime={1}
+            text="Hoe verhoudt salaris tot werktevredeneheid?" />    
+
+            </div> : null }       
 
 
           { /* <Box 
