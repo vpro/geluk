@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import GSAP from 'gsap';
 
 import MillenialsGraph from './MillennialsGraph.jsx';
+import GenderGraph from './GenderGraph.jsx';
 
 import millennials from '../../../assets/images/millennials.svg';
 import salaristevredenheid from '../../../assets/images/salaristevredenheid.svg';
 import mannenvrouwen from '../../../assets/images/mannenvrouwen.svg';
 
-class Millennials extends React.Component{
+class GeneralGraph extends React.Component{
   constructor(props){
     super(props);
   }
@@ -54,13 +55,16 @@ class Millennials extends React.Component{
 
           <div ref="results">
             <p className="results__millennials-p">{this.props.text}</p> 
-            <MillenialsGraph
+            { this.props.type == "millennials" ? <MillenialsGraph
               width={this.props.logoWidth}
-              stats={this.props.stats}
-            />
+              stats={this.props.stats}/> : null }
+
+            { this.props.type == "mannenvrouwen" ? <GenderGraph
+              width={this.props.logoWidth}
+              stats={this.props.stats}/> : null }
           </div>
         </div>
   		)
 		}
 }
-export default Millennials;
+export default GeneralGraph;
