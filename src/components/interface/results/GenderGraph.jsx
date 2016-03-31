@@ -16,7 +16,7 @@ class GenderGraph extends React.Component{
     var maleWidth = {width: (width/10)*averageMales + 'px', backgroundColor: '#000', color: '#FFF'} ;
     var femaleWidth = {width: (width/10)*averageFemales + 'px', backgroundColor: '#000', color: '#FFF'} ;
 
-  		return (
+      return (
         <div>
           <div className="results__millennials-graph">
             <div className="results__millennials-bar" style={maleWidth}>mannen ({averageMales.toFixed(1)})</div>
@@ -26,7 +26,7 @@ class GenderGraph extends React.Component{
             <div className="results__millennials-bar" style={femaleWidth}>vrouwen ({averageFemales.toFixed(1)})</div>
           </div>
         </div>
-  		)
-		}
+      )
+    }
 }
 export default GenderGraph;

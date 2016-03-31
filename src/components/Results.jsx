@@ -177,21 +177,30 @@ class Results extends React.Component{
             ownScore={this.props.userScore}
             otherScore="7.0"/>
 
-          { /* <GeneralGraph 
+          { /* 
+            <GeneralGraph 
             type="millennials"
             logoWidth="350"
             stats={this.state.stats} // vervangen voor this.props.generatedStats
             delayTime={2.4}
-            text="Volgens Hurst zoeken millennials (1980 - 2000) vaak meer betekenis in hun werk dan vorige generaties. Hieronder zie je of dat bij Tegenlicht-kijkers ook het geval is."
-            /> */ }
+            text="Volgens Hurst zoeken millennials (1980 - 2000) vaak meer betekenis in hun werk dan vorige generaties. Hieronder zie je of dat bij Tegenlicht-kijkers ook het geval is." /> 
+            */ }
 
-          <GeneralGraph 
+          { /* 
+            <GeneralGraph 
             type="mannenvrouwen"
             logoWidth="350"
             stats={this.state.stats} // this.props.generatedStats
             delayTime={2.4}
-            text="Hoe tevreden zijn mannen over hun werk in vergelijking met vrouwen?"
-            />
+            text="Hoe tevreden zijn mannen over hun werk in vergelijking met vrouwen?" /> 
+          */ }
+
+            <GeneralGraph 
+            type="salaristevredenheid"
+            logoWidth="350"
+            stats={this.state.stats} // this.props.generatedStats
+            delayTime={2.4}
+            text="Hoe verhoudt salaris tot werktevredeneheid?" />           
 
 
           { /* <Box 

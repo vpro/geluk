@@ -4,6 +4,7 @@ import GSAP from 'gsap';
 
 import MillenialsGraph from './MillennialsGraph.jsx';
 import GenderGraph from './GenderGraph.jsx';
+import SalaryGraph from './SalaryGraph.jsx';
 
 import millennials from '../../../assets/images/millennials.svg';
 import salaristevredenheid from '../../../assets/images/salaristevredenheid.svg';
@@ -55,13 +56,24 @@ class GeneralGraph extends React.Component{
 
           <div ref="results">
             <p className="results__millennials-p">{this.props.text}</p> 
-            { this.props.type == "millennials" ? <MillenialsGraph
-              width={this.props.logoWidth}
-              stats={this.props.stats}/> : null }
 
-            { this.props.type == "mannenvrouwen" ? <GenderGraph
+            { this.props.type == "millennials" ? 
+              <MillenialsGraph
+                width={this.props.logoWidth}
+                stats={this.props.stats}/> 
+              : null }
+
+            { this.props.type == "mannenvrouwen" ? 
+              <GenderGraph
               width={this.props.logoWidth}
-              stats={this.props.stats}/> : null }
+              stats={this.props.stats}/> 
+            : null }
+
+            { this.props.type == "salaristevredenheid" ? 
+              <SalaryGraph
+              width={this.props.logoWidth}
+              stats={this.props.stats}/> 
+            : null }
           </div>
         </div>
   		)
