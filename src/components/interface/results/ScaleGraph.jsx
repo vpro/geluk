@@ -17,12 +17,12 @@ class ScaleGraph extends React.Component{
 
     TweenLite.from(ownCircle, 1, {
       marginLeft:0, 
-      delay: 3.5,
+      delay: 2,
       ease: Power4.easeOut
     });
     TweenLite.from(averageCircle, 1, {
       marginLeft:0, 
-      delay: 3.5,
+      delay: 2,
       ease: Power4.easeOut
     });
   

@@ -43,7 +43,7 @@ class Box extends React.Component{
     }
     var cName = this.props.cName + ' results__box'
   		return (
-  			<div className={cName} style={position}>
+  			<div className={cName}>
           <div className="results__box-content" ref="boxcontent">
           { this.props.h3 ? <h3>{this.props.h3}</h3> : null }
           { this.props.h4 ? <span className="results__altkop">{this.props.h4}</span> : null }

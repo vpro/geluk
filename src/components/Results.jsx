@@ -57,6 +57,7 @@ class Results extends React.Component{
     console.log(this.props.generatedStats);
     var DOMnode = ReactDOM.findDOMNode(this);
     var scalegraph = ReactDOM.findDOMNode(this.refs.scalegraph);
+    var scalegraphController = ReactDOM.findDOMNode(this.refs.scalegraphcontroller);
 
     TweenLite.from(DOMnode, 2.5, {
       width:0, 
@@ -64,9 +65,16 @@ class Results extends React.Component{
     });
     TweenLite.from(scalegraph, 1, {
       opacity: 0,
-      delay: 3.5,
+      delay: 2,
+      x: -20,
       ease: Power2.easeOut
-    });    
+    });
+    TweenLite.from(scalegraphController, 1, {
+      opacity: 0,
+      delay: 2.5,
+      x: -20,
+      ease: Power2.easeOut
+    });        
 
     this.props.calculate();
     // var that = this;
@@ -81,11 +89,20 @@ class Results extends React.Component{
     console.log(this.props.generatedStats)
     this.setGrey();
     this.setState( (state) => {
-      state.q_1 = Math.round((this.props.generatedStats[firstProp][secondProp].q_1.total/this.props.generatedStats[firstProp][secondProp].q_1.count) * 10) / 10;
-      state.q_2 = Math.round((this.props.generatedStats[firstProp][secondProp].q_2.total/this.props.generatedStats[firstProp][secondProp].q_2.count) * 10) / 10;
-      state.q_3 = Math.round((this.props.generatedStats[firstProp][secondProp].q_3.total/this.props.generatedStats[firstProp][secondProp].q_3.count) * 10) / 10;
-      state.q_4 = Math.round((this.props.generatedStats[firstProp][secondProp].q_4.total/this.props.generatedStats[firstProp][secondProp].q_4.count) * 10) / 10;
-      state.q_5 = Math.round((this.props.generatedStats[firstProp][secondProp].q_5.total/this.props.generatedStats[firstProp][secondProp].q_5.count) * 10) / 10;
+      console.log('eerste property ', firstProp)
+      console.log('tweede property ', secondProp)
+      console.log('getal', this.state.stats[firstProp][secondProp].q_1.total)
+      // state.q_1 = Math.round((this.props.generatedStats[firstProp][secondProp].q_1.total/this.props.generatedStats[firstProp][secondProp].q_1.count) * 10) / 10;
+      // state.q_2 = Math.round((this.props.generatedStats[firstProp][secondProp].q_2.total/this.props.generatedStats[firstProp][secondProp].q_2.count) * 10) / 10;
+      // state.q_3 = Math.round((this.props.generatedStats[firstProp][secondProp].q_3.total/this.props.generatedStats[firstProp][secondProp].q_3.count) * 10) / 10;
+      // state.q_4 = Math.round((this.props.generatedStats[firstProp][secondProp].q_4.total/this.props.generatedStats[firstProp][secondProp].q_4.count) * 10) / 10;
+      // state.q_5 = Math.round((this.props.generatedStats[firstProp][secondProp].q_5.total/this.props.generatedStats[firstProp][secondProp].q_5.count) * 10) / 10;
+
+      state.q_1 = Math.round((this.state.stats[firstProp][secondProp].q_1.total/this.state.stats[firstProp][secondProp].q_1.count) * 10) / 10;
+      state.q_2 = Math.round((this.state.stats[firstProp][secondProp].q_2.total/this.state.stats[firstProp][secondProp].q_2.count) * 10) / 10;
+      state.q_3 = Math.round((this.state.stats[firstProp][secondProp].q_3.total/this.state.stats[firstProp][secondProp].q_3.count) * 10) / 10;
+      state.q_4 = Math.round((this.state.stats[firstProp][secondProp].q_4.total/this.state.stats[firstProp][secondProp].q_4.count) * 10) / 10;
+      state.q_5 = Math.round((this.state.stats[firstProp][secondProp].q_5.total/this.state.stats[firstProp][secondProp].q_5.count) * 10) / 10;
       state.active[firstProp] = true;
     })
     console.log(this.state)  
@@ -131,51 +148,57 @@ class Results extends React.Component{
 
   		return (
   			<div className="results">
-          <div className="results__scalegraph-container" ref="scalegraph">
-            <div className="results__scalegraph-controller">
-              <img className="results__scalegraph-controller-arrow" src={whitearrow}/>
-              <h2>Jouw scores in vergelijking met anderen op basis van</h2>
-              <ul>
-                <li className={ageClass} onClick={this.changeGraph.bind(this, 'age', this.props.userData.userStats.age)}>je leeftijd</li>
-                <li className={jobClass} onClick={this.changeGraph.bind(this, 'job', this.props.userData.userStats.job)}>je beroepssector</li>
-                <li className={educationClass} onClick={this.changeGraph.bind(this, 'education', this.props.userData.userStats.education)}>je opleidingsniveau</li>
-                <li className={workClass} onClick={this.changeGraph.bind(this, 'work', this.props.userData.multipleChoice.work)}>je werkmotivatie</li>
-                <li className={genderClass} onClick={this.changeGraph.bind(this, 'gender', this.props.userData.userStats.gender)}>je geslacht</li>
-              </ul>
-            </div>
-            <ScaleGraph
-              headline="tevredenheid leven"
-              yourScore={this.props.userMultipleScores.q_1}
-              averageScore={this.state.q_1}
-            />
-            <ScaleGraph
-              headline="tevredenheid werk"
-              yourScore={this.props.userMultipleScores.q_2}
-              averageScore={this.state.q_2}
-            />  
-            <ScaleGraph
-              headline="salaris/geluk-ratio"
-              yourScore={this.props.userMultipleScores.q_1+this.props.userMultipleScores.q_2/2}
-              averageScore={(this.state.q_1+this.state.q_2)/2}
-            /> 
-            <ScaleGraph
-              headline="job crafting"
-              yourScore={this.props.userMultipleScores.q_4}
-              averageScore={this.state.q_4}
-            /> 
-            <ScaleGraph
-              headline="werkbetekenis"
-              yourScore={this.props.userMultipleScores.q_5}
-              averageScore={this.state.q_5}
-            />                          
-          </div>   
+          <div className="results__personal-container">
+          
+            <Box 
+              cName="results__resultbox" 
+              h3="Jouw score" top="100" left="150" delayTime="1" speed="1" width="300" height="350"
+              p="Ontdek hoe gelukkig jij op de werkvloer bent ten opzichte van andere mannen of vrouwen. Deel je resultaten op Facebook of Twitter en ga met je vrienden het gesprek aan over meetbaar geluk op de werkvloer."
+              ownScore={this.props.userScore}
+              otherScore="7.0"/>
 
-          <Box 
-            cName="results__resultbox" 
-            h3="Jouw score" top="100" left="150" delayTime="1" speed="1" width="300" height="350"
-            p="Ontdek hoe gelukkig jij op de werkvloer bent ten opzichte van andere mannen of vrouwen. Deel je resultaten op Facebook of Twitter en ga met je vrienden het gesprek aan over meetbaar geluk op de werkvloer."
-            ownScore={this.props.userScore}
-            otherScore="7.0"/>
+            <div className="results__scalegraph-container" ref="scalegraph">
+              <ScaleGraph
+                headline="tevredenheid leven"
+                yourScore={this.props.userMultipleScores.q_1}
+                averageScore={this.state.q_1}
+              />
+              <ScaleGraph
+                headline="tevredenheid werk"
+                yourScore={this.props.userMultipleScores.q_2}
+                averageScore={this.state.q_2}
+              />  
+              <ScaleGraph
+                headline="salaris/geluk-ratio"
+                yourScore={this.props.userMultipleScores.q_1+this.props.userMultipleScores.q_2/2}
+                averageScore={(this.state.q_1+this.state.q_2)/2}
+              /> 
+              <ScaleGraph
+                headline="job crafting"
+                yourScore={this.props.userMultipleScores.q_4}
+                averageScore={this.state.q_4}
+              /> 
+              <ScaleGraph
+                headline="werkbetekenis"
+                yourScore={this.props.userMultipleScores.q_5}
+                averageScore={this.state.q_5}
+              />                          
+            </div> 
+
+            <div className="results__scalegraph-controller" ref="scalegraphcontroller">
+                <img className="results__scalegraph-controller-arrow" src={whitearrow}/>
+                <h2>Jouw scores in vergelijking met anderen op basis van</h2>
+                <ul>
+                  <li className={ageClass} onClick={this.changeGraph.bind(this, 'age', this.props.userData.userStats.age)}>je leeftijd</li>
+                  <li className={jobClass} onClick={this.changeGraph.bind(this, 'job', this.props.userData.userStats.job)}>je beroepssector</li>
+                  <li className={educationClass} onClick={this.changeGraph.bind(this, 'education', this.props.userData.userStats.education)}>je opleidingsniveau</li>
+                  <li className={workClass} onClick={this.changeGraph.bind(this, 'work', this.props.userData.multipleChoice.work)}>je werkmotivatie</li>
+                  <li className={genderClass} onClick={this.changeGraph.bind(this, 'gender', this.props.userData.userStats.gender)}>je geslacht</li>
+                </ul>
+              </div> 
+          </div> 
+
+
 
           { /* 
             <GeneralGraph 
