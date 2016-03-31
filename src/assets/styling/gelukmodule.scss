@@ -187,7 +187,7 @@ video.fillWidth {
 .video__box {
   z-index: 100000;
   opacity: 1;
-  bottom: 120px;
+  bottom: 160px;
   left: 0px;
   position: absolute;
   display: block;
@@ -539,13 +539,12 @@ video.fillWidth {
   font-family: SimplisticSans-Medium;
   font-size: 48px;
   line-height: 44px;
-  color: $darkyellow;
+  color: $orange;
   opacity: 0;
 }
 
 /* MessageSSSSSS */
-.singlemessage {
-}
+
 
 .singlemessage__meta {
   color: white;

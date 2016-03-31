@@ -96,7 +96,7 @@ class VideoQuestion extends React.Component{
         { this.state.video ?
           <span className="video__imagecontainer" ref="videocontainer">
           <div className="video__container">
-            <video autoPlay className="fillWidth" ref="videoElement" src="hirst.mp4"></video> 
+            <video autoPlay className="fillWidth" ref="videoElement" src="hurst.mp4"></video> 
           </div>
           </span> : null }
 

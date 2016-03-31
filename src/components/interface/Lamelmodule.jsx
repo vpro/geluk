@@ -10,12 +10,14 @@ class LamelModule extends React.Component{
     this.setRef = this.setRef.bind(this);
 
     this.state = {
-      DOMnode: null
+      DOMnode: null,
+      showNext: false
     }
   }
 
   componentDidMount(){
     var DOMnode = ReactDOM.findDOMNode(this);
+
     this.setState(function(state){
       state.DOMnode = DOMnode;
     })
@@ -30,6 +32,10 @@ class LamelModule extends React.Component{
         givenHappiness = Number(this.refHappiness.value);
 
     this.props.setHappy(givenHappiness, currentQuestion);
+
+    this.setState(function(state){
+      state.showNext = true;
+    })
   }
 
   submitOverlay(event){
@@ -84,11 +90,11 @@ class LamelModule extends React.Component{
           style={displayElem} 
         />
 
-        <span 
+        { this.state.showNext ? <span 
           className="questions__next" 
           style={displayElem} 
           onClick={this.submitOverlay.bind(this)}
-        >verder</span>
+        >verder</span> : null }
 			</div>
 		)
 	}
