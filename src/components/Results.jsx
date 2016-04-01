@@ -8,10 +8,15 @@ import GeneralGraph from './interface/results/GeneralGraph.jsx';
 
 import ScaleGraph from './interface/results/ScaleGraph.jsx';
 import whitearrow from '../assets/images/resultswhitearrow.svg';
+import twitterimg from '../assets/images/twitter.png';
+import facebookimg from '../assets/images/facebook.png';
 
 import Stats from './config/stats.json';
 
 import { FacebookButton, TwitterButton } from "react-social";
+
+
+
 
 class Results extends React.Component{
   constructor(props){
@@ -63,6 +68,8 @@ class Results extends React.Component{
     var scalegraphController = ReactDOM.findDOMNode(this.refs.scalegraphcontroller);
     var generalResults = ReactDOM.findDOMNode(this.refs.generalResults);
     var backResults = ReactDOM.findDOMNode(this.refs.backResults);
+    var socialmedia = ReactDOM.findDOMNode(this.refs.socialmedia);
+
 
     TweenLite.from(DOMnode, 2.5, {
       width:0, 
@@ -86,7 +93,13 @@ class Results extends React.Component{
       y: 20,
       ease: Power2.easeOut
     });
-   
+    TweenLite.from(socialmedia, 1, {
+      opacity: 0,
+      delay: 3,
+      y: 20,
+      ease: Power2.easeOut
+    });
+      
 
     this.props.calculate();
     // var that = this;
@@ -145,6 +158,13 @@ class Results extends React.Component{
  
   }
 
+  switcherPersonal(type){
+    this.setState(function(state){
+      state.showPersonal = true;
+      state.showGeneral = false;
+    })
+ 
+  }
 
   render() {
     if(this.state.active.age == true){
@@ -187,14 +207,15 @@ class Results extends React.Component{
 
           <div className="results__personal-container">
 
-          { /* <div className="results__socialmedia" ref="socialmedia" >
+          <div className="results__socialmedia" ref="socialmedia" >
+          Deel je score op 
             <TwitterButton url={url} message={"Ik heb een " + this.props.userScore + " bij de Tegenlicht Arbeidsvreugdetest"}>
-              Deel je score op Twitter
+              <img src={twitterimg}/>
             </TwitterButton>
             <FacebookButton url={url} message={"Ik heb een " + this.props.userScore + " bij de Tegenlicht Arbeidsvreugdetest"}>
-              Deel je score op Facebook
+              <img src={facebookimg}/>
             </FacebookButton>   
-          </div> */ } 
+          </div>  
 
             <Box 
               cName="results__resultbox" 
@@ -250,7 +271,7 @@ class Results extends React.Component{
           { this.state.showGeneral ? 
             <div className="results__personal-container">
 
-            { /* <span className="results__goBackResults" ref="backResults" onClick={this.switcher.bind(this, 'showPersonal')}>Terug naar persoonlijke resultaten</span> */ }
+           <span className="results__goBackResults" ref="backResults" onClick={this.switcherPersonal.bind(this, 'showPersonal')}>Terug naar persoonlijke resultaten</span>
 
             <GeneralGraph 
             type="millennials"
@@ -259,15 +280,12 @@ class Results extends React.Component{
             delayTime={0}
             text="Volgens Hurst zoeken millennials (1980 - 2000) vaak meer betekenis in hun werk dan vorige generaties. Hieronder zie je of dat bij Tegenlicht-kijkers ook het geval is." /> 
 
-
-
             <GeneralGraph 
             type="mannenvrouwen"
             logoWidth="231"
             stats={this.props.generatedStats} // this.state.stats
             delayTime={.5}
             text="Hoe tevreden zijn mannen over hun werk in vergelijking met vrouwen?" /> 
-
 
             <GeneralGraph 
             type="salaristevredenheid"

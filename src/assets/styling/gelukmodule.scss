@@ -214,6 +214,7 @@ video.fillWidth {
   cursor: pointer;
   &:hover{
     text-decoration: underline $orange;
+    color: $orange;
   }
 }
 
@@ -905,6 +906,12 @@ input[type=range]:focus {
     color: $black;
     border-bottom: 2px dashed black;
   }
+}
+
+button {
+  background: black;
+  color: white;
+  padding: 3px;
 }
 
 /*input[type=range]::-ms-track {
