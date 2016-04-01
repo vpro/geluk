@@ -200,7 +200,7 @@ class Results extends React.Component{
         avgQ5 = this.props.generatedStats.all.q_5.total/this.props.generatedStats.all.q_5.count;
     var allScores = (avgQ1 + avgQ2 + avgQ3 + avgQ4 + avgQ5) / 5;
 
-    let url = "https://tegenlicht.vpro.nl/geluk";
+    let url = "http://tegenlicht.vpro.nl/geluk";
 
   		return (
   			<div className="results">
@@ -244,10 +244,10 @@ class Results extends React.Component{
 
           <div className="results__socialmedia" ref="socialmedia" >
           Deel je score op 
-            <TwitterButton url={url} message={"Ik geef mezelf een score van" + this.props.userScore + ". Hoe gelukkig ben jij op je werk? Test jezelf op tegenlicht.vpro.nl/geluk. #tegenlicht"}>
+            <TwitterButton url={url} message={"Ik geef mezelf een score van " + this.props.userScore + ". Hoe gelukkig ben jij op je werk? #tegenlicht Test jezelf op "}>
               <img className="results__socialmedia-icon" src={twitterimg}/>
             </TwitterButton>
-            <FacebookButton className="results__button" url={url} message={"Ik geef mezelf een score van" + this.props.userScore + ". Hoe gelukkig ben jij op je werk? Test jezelf op tegenlicht.vpro.nl/geluk."}>
+            <FacebookButton className="results__button" url={url} message={"Ik geef mezelf een score van " + this.props.userScore + ". Hoe gelukkig ben jij op je werk? Test jezelf op tegenlicht.vpro.nl/geluk"}>
               <img className="results__socialmedia-icon" src={facebookimg}/>
             </FacebookButton>   
           </div>  
@@ -270,7 +270,7 @@ class Results extends React.Component{
           : null }
 
           { this.state.showGeneral ? 
-            <div className="results__personal-container">
+            <div className="results__personal-container results__minwidth">
 
            <span className="results__goBackResults" ref="backResults" onClick={this.switcherPersonal.bind(this, 'showPersonal')}>terug naar jouw score</span>
 

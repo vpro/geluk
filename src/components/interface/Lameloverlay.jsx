@@ -166,7 +166,8 @@ class Lameloverlay extends React.Component{
           case 3:
               var start = "Volgens Hurst worden mensen gedurende hun carrière steeds minder tevreden over hun werk.";
               var prevVal = this.props.userData.core_module.q_2
-              if ( q > prevVal ) {
+              var q3 = this.props.userData.core_module.q_3
+              if ( q3 > prevVal ) {
                   return start + "<br /><br /> Jij bevestigt die aanname.";
               } else {
                   return start + "<br /><br /> Voor jou geldt dat niet."
