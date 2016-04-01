@@ -183,7 +183,7 @@ class Introduction extends React.Component{
         </div>
 
       <div className="nosupport"> 
-        <p>Deze applicatie ondersteunt geen mobiele telefoons</p>
+        <p>Deze applicatie ondersteunt geen mobiele telefoons. Bezoek <a href="http://tegenlicht.vpro.nl/">tegenlicht.vpro.nl</a></p>
       </div>
 
 

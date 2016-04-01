@@ -7,6 +7,9 @@ import placeholderOne from '../../../assets/images/logo.svg';
 import VideoOverlay from './VideoOverlay.jsx';
 import VideoMC from './VideoMC.jsx';
 
+import logo from '../../../assets/images/tegenlichtlogo.svg';
+
+
 class VideoQuestion extends React.Component{
   constructor(props){
     super(props);
@@ -82,6 +85,8 @@ class VideoQuestion extends React.Component{
 			<div className="video">
         { this.state.videoIntroduction ?      
         <div className="video__introduction">
+              <img className="tegenlichtlogo" src={logo} />
+
         <h1 className="video__question">in <a href="http://tegenlicht.vpro.nl/afleveringen/2015-2016/rendement-van-geluk.html" target="_blank">'rendement van geluk'</a> zegt schrijver aaron hurst dat je drijfveer om te werken, bepalend is voor je geluk op kantoor</h1>
         </div>
         : null }
