@@ -201,6 +201,7 @@ class Results extends React.Component{
     var allScores = (avgQ1 + avgQ2 + avgQ3 + avgQ4 + avgQ5) / 5;
 
     let url = "http://tegenlicht.vpro.nl/geluk";
+    let urlFacebook = "http://vpro.github.io/geluk";
 
   		return (
   			<div className="results">
@@ -247,7 +248,7 @@ class Results extends React.Component{
             <TwitterButton url={url} message={"Ik geef mezelf een score van " + this.props.userScore + ". Hoe gelukkig ben jij op je werk? #tegenlicht Test jezelf op "}>
               <img className="results__socialmedia-icon" src={twitterimg}/>
             </TwitterButton>
-            <FacebookButton className="results__button" url={url} message={"Ik geef mezelf een score van " + this.props.userScore + ". Hoe gelukkig ben jij op je werk? Test jezelf op tegenlicht.vpro.nl/geluk"}>
+            <FacebookButton className="results__button" url={urlFacebook} message={"Ik geef mezelf een score van " + this.props.userScore + ". Hoe gelukkig ben jij op je werk? Test jezelf op tegenlicht.vpro.nl/geluk"}>
               <img className="results__socialmedia-icon" src={facebookimg}/>
             </FacebookButton>   
           </div>  
