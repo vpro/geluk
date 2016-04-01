@@ -195,7 +195,7 @@ class Results extends React.Component{
     }
     var avgQ1 = this.props.generatedStats.all.q_1.total/this.props.generatedStats.all.q_1.count,
         avgQ2 = this.props.generatedStats.all.q_2.total/this.props.generatedStats.all.q_2.count,
-        avgQ3 = (this.props.generatedStats.all.q_3.total/this.props.generatedStats.all.q_3.count),
+        avgQ3 = this.props.generatedStats.all.q_3.total/this.props.generatedStats.all.q_3.count,
         avgQ4 = this.props.generatedStats.all.q_4.total/this.props.generatedStats.all.q_4.count,
         avgQ5 = this.props.generatedStats.all.q_5.total/this.props.generatedStats.all.q_5.count;
     var allScores = (avgQ1 + avgQ2 + avgQ3 + avgQ4 + avgQ5) / 5;
@@ -227,8 +227,8 @@ class Results extends React.Component{
               />  
               <ScaleGraph
                 headline="salaris/geluk-ratio"
-                yourScore={this.props.userMultipleScores.q_1+this.props.userMultipleScores.q_2/2}
-                averageScore={this.state.q_1+this.state.q_2/2}
+                yourScore={this.props.userMultipleScores.q_2}
+                averageScore={this.state.q_2}
               /> 
               <ScaleGraph
                 headline="job crafting"
