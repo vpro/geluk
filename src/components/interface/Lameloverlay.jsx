@@ -179,7 +179,7 @@ class Lameloverlay extends React.Component{
                   return "Jouw score is gelijk aan andere mensen uit jouw leeftijdscategorie";
               }
               return "Je scoort "+ hoogte
-                    + " het gemiddelde van mensen van ";
+                    + " het gemiddelde van mensen uit jouw leeftijdscategorie";
           case 5:
               var avg = stat.total/stat.count;
               return "Mensen met jouw opleidings niveau geven gemiddeld een "
