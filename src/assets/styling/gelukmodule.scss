@@ -597,9 +597,23 @@ video.fillWidth {
 .results__socialmedia {
   position: fixed;
   bottom: 20px;
-  left: 10%;
+  left: 40px; /* 10% */
   color: white;
 }
+
+.results__aflevering {
+  position: fixed;
+  bottom: 20px;
+  right: 40px;
+  color: white;
+}
+
+.results__aflevering a {
+  color: white;
+  text-decoration: underline;
+}
+
+
 
 .results__socialmedia p {
   color: white;

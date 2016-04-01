@@ -69,6 +69,7 @@ class Results extends React.Component{
     var generalResults = ReactDOM.findDOMNode(this.refs.generalResults);
     var backResults = ReactDOM.findDOMNode(this.refs.backResults);
     var socialmedia = ReactDOM.findDOMNode(this.refs.socialmedia);
+    var aflevering = ReactDOM.findDOMNode(this.refs.aflevering);
 
     var initialDelay = 0;
     TweenLite.from(DOMnode, 2.5, {
@@ -100,6 +101,12 @@ class Results extends React.Component{
       y: 20,
       ease: Power2.easeOut
     });
+    TweenLite.from(aflevering, 1, {
+      opacity: 0,
+      delay: initialDelay + 3,
+      y: 20,
+      ease: Power2.easeOut
+    });    
       
 
     this.props.calculate();
@@ -251,6 +258,10 @@ class Results extends React.Component{
             <FacebookButton className="results__button" url={urlFacebook} message={"Ik geef mezelf een score van " + this.props.userScore + ". Hoe gelukkig ben jij op je werk? Test jezelf op tegenlicht.vpro.nl/geluk"}>
               <img className="results__socialmedia-icon" src={facebookimg}/>
             </FacebookButton>   
+          </div>  
+
+        <div className="results__aflevering" ref="aflevering" >
+          <a href="http://tegenlicht.vpro.nl/afleveringen/2015-2016/rendement-van-geluk.html" target="_blank">Bekijk de aflevering</a>
           </div>  
                       
           <span className="results__showResults" ref="generalResults" onClick={this.switcher.bind(this, 'showGeneral')}>hoe scoren anderen? ></span>
