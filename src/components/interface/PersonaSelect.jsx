@@ -27,32 +27,32 @@ class PersonaSelect extends React.Component{
       TweenLite.to(inleidingEen, 1, {
         display: 'none',
         opacity: 0,
-        delay: 6,
+        delay: 5,
         ease: Power1.ease
       });
       TweenLite.from(inleidingTwee, 1, {
         display: 'none',
         opacity: 0,
         y: 20,
-        delay: 7,
+        delay: 6,
         ease: Power1.ease
       });
       TweenLite.to(inleidingTwee, 1, {
         display: 'none',
         opacity: 0,
-        delay: 11,
+        delay: 10,
         ease: Power1.ease
       });
       TweenLite.from(inleidingKop, 1, {
         opacity: 0,
         y: 20,
-        delay: 12,
+        delay: 11,
         ease: Power1.ease
       });
       TweenLite.from(inleidingSelect, 1, {
         opacity: 0,
         y: 20,
-        delay: 12,
+        delay: 11,
         ease: Power1.ease
       });
 
@@ -71,8 +71,8 @@ class PersonaSelect extends React.Component{
   render() {
   		return (
   			<div className="persona__select">
-          { this.props.inleiding ? <span className="persona__inleiding" ref="inleiding_een">Om te weten hoe gelukkig jij bent op de werkvloer willen we je eerst wat beter leren kennen aan de hand van vijf korte vragen.</span> : null } 
-          { this.props.inleiding ? <span className="persona__inleiding" ref="inleiding_twee">We gebruiken deze gegevens alleen binnen deze test zodat je zelf kunt zien hoe je scoort ten opzichte van anderen.</span> : null } 
+          { this.props.inleiding ? <span className="persona__inleiding" ref="inleiding_een">Eerst vijf korte vragen over jezelf om jouw geluk op de werkvloer beter te kunnen duiden.</span> : null } 
+          { this.props.inleiding ? <span className="persona__inleiding" ref="inleiding_twee">De antwoorden op deze vragen gebruiken we alleen binnen deze test. Zo kun je jezelf vergelijken met anderen.</span> : null } 
           <h2 ref="inleiding_kop">{this.props.question}</h2>
           <select className="persona__customselect" ref="inleiding_select" name="select" onChange={this.handleChange.bind(this)} value={this.props.value}>
 

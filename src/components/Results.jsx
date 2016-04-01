@@ -209,7 +209,7 @@ class Results extends React.Component{
             <Box 
               cName="results__resultbox" 
               h3="Jouw score" top="100" left="150" delayTime="1" speed="1" width="300" height="400"
-              p="Ontdek hoe gelukkig jij op de werkvloer bent ten opzichte van andere Tegenlicht-kijkers. Deel je resultaten op Facebook of Twitter en ga met je vrienden het gesprek aan over meetbaar geluk op de werkvloer."
+              p="Vergelijk je score met andere deelnemers aan deze test. Deel deze test op Facebook en Twitter voor een betere vergelijking. Ga met vrienden en collega's in discussie over hoe meetbaar geluk op de werkvloer is."
               ownScore={this.props.userScore}
               otherScore={allScores.toFixed(1)}/>
 
@@ -251,7 +251,7 @@ class Results extends React.Component{
             </FacebookButton>   
           </div>  
                       
-          <span className="results__showResults" ref="generalResults" onClick={this.switcher.bind(this, 'showGeneral')}>Bekijk algemene resultaten</span>
+          <span className="results__showResults" ref="generalResults" onClick={this.switcher.bind(this, 'showGeneral')}>hoe scoren anderen?</span>
 
             <div className="results__scalegraph-controller" ref="scalegraphcontroller">
                 <img className="results__scalegraph-controller-arrow" src={whitearrow}/>
@@ -271,28 +271,28 @@ class Results extends React.Component{
           { this.state.showGeneral ? 
             <div className="results__personal-container">
 
-           <span className="results__goBackResults" ref="backResults" onClick={this.switcherPersonal.bind(this, 'showPersonal')}>Terug naar persoonlijke resultaten</span>
+           <span className="results__goBackResults" ref="backResults" onClick={this.switcherPersonal.bind(this, 'showPersonal')}>terug naar jouw score</span>
 
             <GeneralGraph 
             type="millennials"
             logoWidth="338"
             stats={this.props.generatedStats} // vervangen voor this.props.generatedStats
             delayTime={0}
-            text="Volgens Hurst zoeken millennials (1980 - 2000) vaak meer betekenis in hun werk dan vorige generaties. Hieronder zie je of dat bij Tegenlicht-kijkers ook het geval is." /> 
+            text="Volgens Hurst zoeken millennials (1980 - 2000) vaak meer betekenis in hun werk dan vorige generaties. Geldt dat ook voor deelnemers aan deze test?" /> 
 
             <GeneralGraph 
             type="mannenvrouwen"
             logoWidth="231"
             stats={this.props.generatedStats} // this.state.stats
             delayTime={.5}
-            text="Hoe tevreden zijn mannen over hun werk in vergelijking met vrouwen?" /> 
+            text="Zijn mannen of vrouwen meer tevreden over hun werk? Dit is de gemiddelde score per geslacht van deelnemers aan deze test." /> 
 
             <GeneralGraph 
             type="salaristevredenheid"
             logoWidth="325"
             stats={this.props.generatedStats} // this.props.generatedStats
             delayTime={1}
-            text="Hoe verhoudt salaris tot werktevredeneheid?" />    
+            text="Word je gelukkiger als je meer verdient? Dit zijn de gemiddelde scores per salarisschaal van deelnemers aan deze test." />    
 
             </div> : null }       
 

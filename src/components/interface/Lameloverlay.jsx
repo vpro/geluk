@@ -158,28 +158,28 @@ class Lameloverlay extends React.Component{
           case 1:
               var avg = stat.total/stat.count;
               var percentage = Math.round(((100/avg) * val)-100);
-              var hoogte = percentage > 0 ? "boven" : "onder";
+              var hoogte = percentage > 0 ? "hoger" : "lager";
               if ( percentage == 0 ) {
-                  return "Je antwoord is gelijk aan het gemiddelde";
+                  return "Je score is gelijk aan het gemiddelde";
               }
-              return "Je antwoord ligt "+ Math.abs(percentage) + "% "+hoogte+" het gemiddelde.";
+              return "Je score is "+ Math.abs(percentage) + "% "+hoogte+" dan het gemiddelde.";
           case 3:
-              var start = "Mensen worden volgens Hurst naar gelang hun carrière vaak steeds ontevredener over hun werk";
+              var start = "Volgens Hurst worden mensen gedurende hun carrière steeds minder tevreden over hun werk.";
               var prevVal = this.props.userData.core_module.q_2
               if ( q > prevVal ) {
-                  return start + "<br /><br /> Blijkbaar is dit bij jou ook het geval";
+                  return start + "<br /><br /> Jij bevestigt die aanname.";
               } else {
-                  return start + "<br /><br /> Blijkbaar is dit bij jou niet het geval"
+                  return start + "<br /><br /> Voor jou geldt dat niet."
               }
           case 4:
               var avg = stat.total/stat.count;
               var percentage = Math.round(((100/avg) * val)-100);
-              var hoogte = percentage > 0 ? "meer" : "minder";
+              var hoogte = percentage > 0 ? "boven" : "onder";
               if ( percentage == 0 ) {
-                  return "Je voelt je even vrij als anderen in jouw leeftijds categorie";
+                  return "Jouw score is gelijk aan andere mensen uit jouw leeftijdscategorie";
               }
-              return "Je voelt je " + Math.abs(percentage) + "% " + hoogte
-                    + " vrij dan anderen in jouw leeftijds categorie.";
+              return "Jouw score ligt " + Math.abs(percentage) + "% " + hoogte
+                    + " het gemiddelde van mensen uit jouw leeftijdscategorie";
           case 5:
               var avg = stat.total/stat.count;
               return "Mensen met jouw opleidings niveau geven gemiddeld een "
@@ -190,7 +190,7 @@ class Lameloverlay extends React.Component{
   render() {
     if (this.props.text === "comment"){
       var cijfer = this.props.happinessValue,
-          tekst = "Wil je vertellen waarom je jezelf een " + cijfer + " gaf?",
+          tekst = "Waarom gaf je jezelf een " + cijfer + "?",
           showButtons = true;
     } else if ( this.props.text === "answer1" ) {
           var tekst = this.genFeedback(this.props.generatedStats.all.q_1, this.props.happinessValue, 1);//genereer obv stats
@@ -216,7 +216,7 @@ class Lameloverlay extends React.Component{
 
         { showButtons ? 
           <div className="questions__overlaybuttons" ref="overlaybuttons">
-            <span className="questions__next--yellow" onClick={this.showBox.bind(this)}>Ja</span>
+            <span className="questions__next--yellow" onClick={this.showBox.bind(this)}>Reageer</span>
           </div> : null }
         
         { this.props.showComment ? 
@@ -234,8 +234,6 @@ class Lameloverlay extends React.Component{
       { this.state.showMessage ? 
         <SimilarComment 
           display={true}
-          age={this.state.posts[chosenPost].age} 
-          gender={this.state.posts[chosenPost].gender} 
           rating={this.props.happinessValue} 
           comment={this.state.posts[chosenPost].answer} 
           setShowMessage={this.setShowMessage.bind(this)}

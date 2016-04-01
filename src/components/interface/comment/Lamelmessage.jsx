@@ -1,12 +1,16 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import GSAP from 'gsap';
 
 class SimilarComment extends React.Component{
 
 	componentDidMount(){
 
-		const {loader, profile, message} = this.refs;
 		var duur = 8;
+
+    var loader = ReactDOM.findDOMNode(this.refs.loader);
+    var profile = ReactDOM.findDOMNode(this.refs.profile);
+    var message = ReactDOM.findDOMNode(this.refs.message);
 
 		TweenLite.to(loader, duur, {
       minWidth: '100%',
@@ -41,12 +45,18 @@ class SimilarComment extends React.Component{
 	}
 
   render() {
-  	const {age, rating, comment} = this.props;
+  	const {age, rating} = this.props;
 
   	if(this.props.gender === 'male'){
   		var gender = 'man';
   	} else {
   		var gender = 'vrouw';
+  	}
+
+  	if (this.props.comment) {
+  		var comment = this.props.comment;
+  	} else {
+  		var comment = "Want ik ben zeer gelukkig"
   	}
 
   	/* Oplossing zoeken wat er moet gebeuren wanneer er een undefined is */
@@ -65,9 +75,7 @@ class SimilarComment extends React.Component{
 
 SimilarComment.propTypes = {
 	setShowMessage: React.PropTypes.func.isRequired,
-	age: React.PropTypes.any.isRequired,
-	gender: React.PropTypes.string.isRequired,
-	comment: React.PropTypes.string.isRequired
+	comment: React.PropTypes.string
 }
 
 export default SimilarComment;

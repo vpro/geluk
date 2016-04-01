@@ -43,7 +43,7 @@ class VideoMC extends React.Component{
               <hr className="video__line"/>
               <ul className="video__multiplechoice">
               <li onClick={this.setMultipleChoice.bind(this, 'evil')}>noodzakelijk kwaad</li>
-              <li onClick={this.setMultipleChoice.bind(this, 'career')}>maken van carrière</li>
+              <li onClick={this.setMultipleChoice.bind(this, 'career')}>carrière maken</li>
               <li onClick={this.setMultipleChoice.bind(this, 'calling')}>innerlijke roeping</li>
               </ul>
             </div>

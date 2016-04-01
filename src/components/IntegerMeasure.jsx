@@ -72,7 +72,7 @@ class IntegerMeasure extends React.Component{
 
           <LamelSummary 
             moduleHeadline="meetbaar geluk"
-            moduleDescription="Laat ons weten hoe gelukkig jij bent op je werk door de volgende vragen met een cijfer te beantwoorden. Tussendoor laten we zien hoe anderen scoren en vragen we je om een korte reactie. Want hoe meetbaar is geluk eigenlijk?"
+            moduleDescription="Geef een score van 1 tot 10 op de volgende vragen om je geluk op de werkvloer te bepalen. We vergelijken je score met andere deelnemers aan deze test en vragen je om een reactie. Hoe meetbaar is geluk?"
           />
 
         { this.state.questions.core_module.map((question, key) => { 

@@ -207,7 +207,7 @@ class Introduction extends React.Component{
         { this.state.persona_job ? <PersonaSelect
           value={this.state.userData.userStats.job}
           changeFunc={this.submitUserstats.bind(this)}
-          question="in welke sector ben je werkzaam?"
+          question="in welke sector werk je?"
           list={this.state.personaQuestions}
           next="income"
           field="job"/> : null}  
@@ -215,7 +215,7 @@ class Introduction extends React.Component{
          { this.state.persona_income ? <PersonaSelect
           value={this.state.userData.userStats.income}
           changeFunc={this.submitUserstats.bind(this)}
-          question="wat verdien je per maand (bruto)"          
+          question="wat is je bruto maandsalaris?"          
           list={this.state.personaQuestions}
           field="income"
           next="age"

@@ -30,13 +30,15 @@ class MillennialsGraph extends React.Component{
 
   		return (
         <div>
+          <span className="results__millennials-tag">Millennials</span>
           <div className="results__millennials-graph">
             <div className="results__millennials-bar" style={millennialFirstWidth}>noodzakelijk kwaad</div>
             <div className="results__millennials-bar" style={millennialSecondWidth}>carrière</div>
             <div className="results__millennials-bar" style={millennialThirdWidth}>roeping</div>
           </div>
 
-          <div className="results__millennials-graph results__millennials-margin">
+          <span className="results__millennials-margin results__millennials-tag results__extramargin">Babyboomers</span>
+          <div className="results__millennials-graph">
             <div className="results__millennials-bar" style={babyboomersFirstWidth}>noodzakelijk kwaad</div>
             <div className="results__millennials-bar" style={babyboomersSecondWidth}>carrière</div>
             <div className="results__millennials-bar" style={babyboomersThirdWidth}>roeping</div>

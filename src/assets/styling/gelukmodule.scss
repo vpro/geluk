@@ -3,6 +3,15 @@ p {
   color: black;
 }
 
+a:link, a:visited, a:active {
+  color: white;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: $orange;
+}
+
 /* INTRO */
 .intro {
   background: black;
@@ -622,6 +631,7 @@ button {
 
 .results__box {
   width: 300px;
+  min-width: 300px;
   height: 410px;
   padding: 30px;
   background: black;
@@ -802,6 +812,14 @@ button {
   &:last-child{
     margin-right: 0;
   }
+}
+
+.results__millennials-tag {
+  color: white;
+}
+
+.results__extramargin {
+  margin-top: 20px;
 }
 
 .results__millennials-p {
