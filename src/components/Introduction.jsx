@@ -182,6 +182,9 @@ class Introduction extends React.Component{
           <div className="app-container__progressbar--orange" style={height}></div>
         </div>
 
+      <div className="nosupport"> 
+        <p>Deze applicatie ondersteunt geen mobiele telefoons</p>
+      </div>
 
 
        { this.state.introduction ? <div className="intro">

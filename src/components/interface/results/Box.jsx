@@ -20,8 +20,6 @@ class Box extends React.Component{
     console.log('initial delay', this.props.delayTime);
     console.log('this delay', thisDelay)
 
-
-
     TweenLite.from(DOMnode, this.props.speed, {
       width:0, 
       padding: 0,
@@ -53,7 +51,7 @@ class Box extends React.Component{
           { this.props.h4 ? <span className="results__altkop">{this.props.h4}</span> : null }
           { this.props.p ? <p>{this.props.p}</p> : null }
 
-          { this.props.ownScore ? <div className="results__circle-container"><span className="results__own-circle">{this.props.ownScore}</span><span className="results__own-circle results__right-circle">{this.props.otherScore}</span></div> : null}
+          <div className="results__circle-container"><span className="results__own-circle">{this.props.ownScore}</span><span className="results__own-circle results__right-circle">{this.props.otherScore}</span></div>
             <img className="results__kijkerscore" src={Tegenlichtkijker} />
             <img className="results__jouwscore" src={Jouwscore} />
           </div>

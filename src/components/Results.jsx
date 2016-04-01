@@ -11,6 +11,7 @@ import whitearrow from '../assets/images/resultswhitearrow.svg';
 
 import Stats from './config/stats.json';
 
+import { FacebookButton, TwitterButton } from "react-social";
 
 class Results extends React.Component{
   constructor(props){
@@ -61,6 +62,7 @@ class Results extends React.Component{
     var scalegraph = ReactDOM.findDOMNode(this.refs.scalegraph);
     var scalegraphController = ReactDOM.findDOMNode(this.refs.scalegraphcontroller);
     var generalResults = ReactDOM.findDOMNode(this.refs.generalResults);
+    var backResults = ReactDOM.findDOMNode(this.refs.backResults);
 
     TweenLite.from(DOMnode, 2.5, {
       width:0, 
@@ -83,13 +85,14 @@ class Results extends React.Component{
       delay: 3,
       y: 20,
       ease: Power2.easeOut
-    });     
+    });
+   
 
     this.props.calculate();
     // var that = this;
     // setTimeout(function(){ that.changeGraph('gender', 'female'); }, 10000);
 
-
+    console.log(this);
 
     
   }
@@ -132,11 +135,14 @@ class Results extends React.Component{
   }
 
   switcher(type){
-    console.log('bla');
+
+    var mode = type;
+
     this.setState(function(state){
       state.showPersonal = false;
       state.showGeneral = true;
-    })   
+    })
+ 
   }
 
 
@@ -173,12 +179,23 @@ class Results extends React.Component{
         avgQ5 = this.props.generatedStats.all.q_5.total/this.props.generatedStats.all.q_5.count;
     var allScores = (avgQ1 + avgQ2 + avgQ3 + avgQ4 + avgQ5) / 4.5;
 
+    let url = "https://tegenlicht.vpro.nl/arbeidsvreugde";
+
   		return (
   			<div className="results">
         { this.state.showPersonal ? 
 
           <div className="results__personal-container">
-          
+
+          { /* <div className="results__socialmedia" ref="socialmedia" >
+            <TwitterButton url={url} message={"Ik heb een " + this.props.userScore + " bij de Tegenlicht Arbeidsvreugdetest"}>
+              Deel je score op Twitter
+            </TwitterButton>
+            <FacebookButton url={url} message={"Ik heb een " + this.props.userScore + " bij de Tegenlicht Arbeidsvreugdetest"}>
+              Deel je score op Facebook
+            </FacebookButton>   
+          </div> */ } 
+
             <Box 
               cName="results__resultbox" 
               h3="Jouw score" top="100" left="150" delayTime="1" speed="1" width="300" height="400"
@@ -213,7 +230,7 @@ class Results extends React.Component{
                 averageScore={this.state.q_5}
               />                          
             </div> 
-          <span className="results__showResults" ref="generalResults" onClick={this.switcher.bind(this, 'off')}>Bekijk algemene resultaten</span>
+          <span className="results__showResults" ref="generalResults" onClick={this.switcher.bind(this, 'showGeneral')}>Bekijk algemene resultaten</span>
 
             <div className="results__scalegraph-controller" ref="scalegraphcontroller">
                 <img className="results__scalegraph-controller-arrow" src={whitearrow}/>
@@ -233,6 +250,7 @@ class Results extends React.Component{
           { this.state.showGeneral ? 
             <div className="results__personal-container">
 
+            { /* <span className="results__goBackResults" ref="backResults" onClick={this.switcher.bind(this, 'showPersonal')}>Terug naar persoonlijke resultaten</span> */ }
 
             <GeneralGraph 
             type="millennials"

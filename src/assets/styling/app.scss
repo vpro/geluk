@@ -50,3 +50,27 @@ body {
 	-webkit-transition: all 1s ease;
 	transition: all 1s ease;
 }
+
+.nosupport {
+	display: none;
+	background: black;
+}
+
+.nosupport p {
+	color: white !important;
+}
+
+@media screen and (max-width: 736px) {
+	.nosupport {
+    height: 100%;
+    width: 100%;
+    background: black;
+    z-index: 10000000000;
+    position: absolute;
+		display: block;
+		color: white;
+		text-align: center;
+		padding-top: 300px;
+	}
+}
+

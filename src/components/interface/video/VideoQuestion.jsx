@@ -96,7 +96,10 @@ class VideoQuestion extends React.Component{
         { this.state.video ?
           <span className="video__imagecontainer" ref="videocontainer">
           <div className="video__container">
-            <video autoPlay className="fillWidth" ref="videoElement" src="hurst.mp4"></video> 
+            <video autoPlay className="fillWidth" ref="videoElement" src="hurst.mp4">
+              <source src="hurst.mp4" type="video/mp4"/>
+              <em>Je browser ondersteunt geen HTML5-video</em>
+            </video> 
           </div>
           </span> : null }
 
