@@ -31,7 +31,7 @@ class VideoQuestion extends React.Component{
   activator(disactivate, activate){
     this.setState(function(state){
       console.log(state);
-      console.log('ik trigger')
+      console.log('ik triggker')
       state[disactivate] = false;
       state[activate] = true;
     })
