@@ -200,7 +200,7 @@ class Results extends React.Component{
         avgQ5 = this.props.generatedStats.all.q_5.total/this.props.generatedStats.all.q_5.count;
     var allScores = (avgQ1 + avgQ2 + avgQ3 + avgQ4 + avgQ5) / 5;
 
-    let url = "https://tegenlicht.vpro.nl/arbeidsvreugde";
+    let url = "https://tegenlicht.vpro.nl/geluk";
 
   		return (
   			<div className="results">
