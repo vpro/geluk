@@ -70,20 +70,21 @@ class Results extends React.Component{
     var backResults = ReactDOM.findDOMNode(this.refs.backResults);
     var socialmedia = ReactDOM.findDOMNode(this.refs.socialmedia);
 
-
+    var initialDelay = 0;
     TweenLite.from(DOMnode, 2.5, {
       width:0, 
+      delay: initialDelay,
       ease: Power4.easeOut
     });
     TweenLite.from(scalegraph, 1, {
       opacity: 0,
-      delay: 2.5,
+      delay: initialDelay + 2.5,
       x: -20,
       ease: Power2.easeOut
     });
     TweenLite.from(scalegraphController, 1, {
       opacity: 0,
-      delay: 2.7,
+      delay: initialDelay + 2.7,
       x: -20,
       ease: Power2.easeOut
     });        
@@ -95,7 +96,7 @@ class Results extends React.Component{
     });
     TweenLite.from(socialmedia, 1, {
       opacity: 0,
-      delay: 3,
+      delay: initialDelay + 3,
       y: 20,
       ease: Power2.easeOut
     });

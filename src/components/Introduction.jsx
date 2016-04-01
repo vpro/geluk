@@ -159,7 +159,7 @@ class Introduction extends React.Component{
     if(this.state.heighty > 85){
       setTimeout(function(){ 
         that.goNext('questions', 'results');
-       }, 1500);
+       }, 5000);
     }
   }
 

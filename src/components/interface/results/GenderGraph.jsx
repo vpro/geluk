@@ -21,13 +21,13 @@ class GenderGraph extends React.Component{
       return (
         <div>
           <div className="results__millennials-graph">
-            <div className="results__millennials-bar" style={maleWidth}>mannen ({averageMales.toFixed(1)})</div>
+            <div className="results__millennials-bar" style={maleWidth}>mannen</div>
             <div className="results__circle" style={maleML}>{averageMales.toFixed(1)}</div>    
           </div>
 
           <div className="results__millennials-graph results__gender-margin">
-            <div className="results__millennials-bar" style={femaleWidth}>vrouwen ({averageFemales.toFixed(1)})</div>
-            <div className="results__circle" style={femaleML}>{averageMales.toFixed(1)}</div>    
+            <div className="results__millennials-bar" style={femaleWidth}>vrouwen</div>
+            <div className="results__circle" style={femaleML}>{averageFemales.toFixed(1)}</div>    
           
           </div>
         </div>
