@@ -37,22 +37,16 @@ class PersonaSelect extends React.Component{
         delay: 6,
         ease: Power1.ease
       });
-      TweenLite.to(inleidingTwee, 1, {
-        display: 'none',
-        opacity: 0,
-        delay: 10,
-        ease: Power1.ease
-      });
       TweenLite.from(inleidingKop, 1, {
         opacity: 0,
         y: 20,
-        delay: 11,
+        delay: 6,
         ease: Power1.ease
       });
       TweenLite.from(inleidingSelect, 1, {
         opacity: 0,
         y: 20,
-        delay: 11,
+        delay: 6,
         ease: Power1.ease
       });
 
@@ -72,7 +66,6 @@ class PersonaSelect extends React.Component{
   		return (
   			<div className="persona__select">
           { this.props.inleiding ? <span className="persona__inleiding" ref="inleiding_een">Eerst vijf korte vragen over jezelf om jouw geluk op de werkvloer beter te kunnen duiden.</span> : null } 
-          { this.props.inleiding ? <span className="persona__inleiding" ref="inleiding_twee">De antwoorden op deze vragen gebruiken we alleen binnen deze test. Zo kun je jezelf vergelijken met anderen.</span> : null } 
           <h2 ref="inleiding_kop">{this.props.question}</h2>
           <select className="persona__customselect" ref="inleiding_select" name="select" onChange={this.handleChange.bind(this)} value={this.props.value}>
 
@@ -82,6 +75,7 @@ class PersonaSelect extends React.Component{
                 )
              }) }
           </select>
+          { this.props.inleiding ? <span className="persona__inleiding-variant" ref="inleiding_twee">De antwoorden op deze vragen gebruiken we alleen binnen deze test. Zo kun je jezelf vergelijken met anderen.</span> : null } 
 
   			</div>
   		)
