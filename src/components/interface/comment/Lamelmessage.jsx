@@ -55,7 +55,7 @@ class SimilarComment extends React.Component{
 			<div className="message">
 				<div className="message__loader" ref="loader"></div>
 				<div className="message__container">
-					<p className="message__profile" ref="profile">een {age}-jarige {gender} gaf zichzelf ook een {rating} omdat:</p>
+					<p className="message__profile" ref="profile">iemand anders gaf zichzelf ook een {rating} omdat:</p>
 					<p className="message__message" ref="message">{comment}</p>
 				</div>
 			</div>

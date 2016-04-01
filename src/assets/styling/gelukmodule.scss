@@ -218,6 +218,7 @@ video.fillWidth {
   }
 }
 
+
 .video__tagline {
     display: block;
     margin-bottom: 0.05em;
@@ -579,6 +580,19 @@ video.fillWidth {
   left: 0px;
 }
 
+.results__socialmedia-icon {
+  width: 24px;
+}
+
+button {
+  background: none;
+  color: white;
+  padding: 3px;
+  display: inline-block;
+}
+
+
+
 .results__circle-container { text-align: center }
 
 .results__own-circle {
@@ -908,11 +922,6 @@ input[type=range]:focus {
   }
 }
 
-button {
-  background: black;
-  color: white;
-  padding: 3px;
-}
 
 /*input[type=range]::-ms-track {
   width: 100%;

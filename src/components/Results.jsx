@@ -206,17 +206,6 @@ class Results extends React.Component{
         { this.state.showPersonal ? 
 
           <div className="results__personal-container">
-
-          <div className="results__socialmedia" ref="socialmedia" >
-          Deel je score op 
-            <TwitterButton url={url} message={"Ik heb een " + this.props.userScore + " bij de Tegenlicht Arbeidsvreugdetest"}>
-              <img src={twitterimg}/>
-            </TwitterButton>
-            <FacebookButton url={url} message={"Ik heb een " + this.props.userScore + " bij de Tegenlicht Arbeidsvreugdetest"}>
-              <img src={facebookimg}/>
-            </FacebookButton>   
-          </div>  
-
             <Box 
               cName="results__resultbox" 
               h3="Jouw score" top="100" left="150" delayTime="1" speed="1" width="300" height="400"
@@ -251,6 +240,17 @@ class Results extends React.Component{
                 averageScore={this.state.q_5}
               />                          
             </div> 
+
+          <div className="results__socialmedia" ref="socialmedia" >
+          Deel je score op 
+            <TwitterButton url={url} message={"Ik heb een " + this.props.userScore + " bij de Tegenlicht Arbeidsvreugdetest"}>
+              <img className="results__socialmedia-icon" src={twitterimg}/>
+            </TwitterButton>
+            <FacebookButton url={url} message={"Ik heb een " + this.props.userScore + " bij de Tegenlicht Arbeidsvreugdetest"}>
+              <img className="results__socialmedia-icon" src={facebookimg}/>
+            </FacebookButton>   
+          </div>  
+                      
           <span className="results__showResults" ref="generalResults" onClick={this.switcher.bind(this, 'showGeneral')}>Bekijk algemene resultaten</span>
 
             <div className="results__scalegraph-controller" ref="scalegraphcontroller">
