@@ -8,7 +8,7 @@ class SalaryGraph extends React.Component{
   render() {
     var width = this.props.width;
     const stats = this.props.stats;
-    console.log('deze stats', this.props.stats);
+    console.log('deze stkats', this.props.stats);
 
     var lessThan1500 = stats.income['<1500'].q_2.total/stats.income['<1500'].q_2.count;
     var lessThan2500 = stats.income['1500><2500'].q_2.total/stats.income['1500><2500'].q_2.count;
