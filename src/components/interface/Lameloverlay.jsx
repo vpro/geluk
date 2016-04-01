@@ -162,7 +162,7 @@ class Lameloverlay extends React.Component{
               if ( percentage == 0 ) {
                   return "Je score is gelijk aan het gemiddelde";
               }
-              return "Je score is "+ Math.abs(percentage) + "% "+hoogte+" dan het gemiddelde.";
+              return "Je scoort "+hoogte+" dan het gemiddelde.";
           case 3:
               var start = "Volgens Hurst worden mensen gedurende hun carrière steeds minder tevreden over hun werk.";
               var prevVal = this.props.userData.core_module.q_2
@@ -178,8 +178,8 @@ class Lameloverlay extends React.Component{
               if ( percentage == 0 ) {
                   return "Jouw score is gelijk aan andere mensen uit jouw leeftijdscategorie";
               }
-              return "Jouw score ligt " + Math.abs(percentage) + "% " + hoogte
-                    + " het gemiddelde van mensen uit jouw leeftijdscategorie";
+              return "Je scoort "+ hoogte
+                    + " het gemiddelde van mensen van ";
           case 5:
               var avg = stat.total/stat.count;
               return "Mensen met jouw opleidings niveau geven gemiddeld een "
