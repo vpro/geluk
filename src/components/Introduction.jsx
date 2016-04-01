@@ -130,7 +130,7 @@ class Introduction extends React.Component{
   }
 
   calculateScore(){
-    var score = ((this.state.userData.core_module.q_1 * 1) + (this.state.userData.core_module.q_2 * 1) + (this.state.userData.core_module.q_1 * 1) + (this.state.userData.core_module.q_3 * 1) + (this.state.userData.core_module.q_4 * .5) +  (this.state.userData.core_module.q_5 * 1))/4.5
+    var score = (this.state.userData.core_module.q_1 + this.state.userData.core_module.q_2 + this.state.userData.core_module.q_3 + this.state.userData.core_module.q_4 + this.state.userData.core_module.q_5)/5
     score = Math.round(score * 10) / 10;
 
     this.setState( function(state){

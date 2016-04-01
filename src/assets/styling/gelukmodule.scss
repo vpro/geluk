@@ -584,20 +584,32 @@ video.fillWidth {
 }
 
 .results__socialmedia {
-  position: absolute;
-  bottom: 120px;
-  left: 0px;
+  position: fixed;
+  bottom: 20px;
+  left: 10%;
+  color: white;
+}
+
+.results__socialmedia p {
+  color: white;
 }
 
 .results__socialmedia-icon {
   width: 24px;
 }
 
+.results__button {
+  margin-left: 36px;
+
+}
+
 button {
-  background: none;
-  color: white;
-  padding: 3px;
-  display: inline-block;
+    background: none;
+    color: #fff;
+    padding: 3px;
+    display: inline-block;
+    position: absolute;
+    margin-left: 5px;
 }
 
 
@@ -814,6 +826,19 @@ button {
   }
 }
 
+.results__circle {
+  position: absolute;
+  width: 30px;
+  line-height: 30px;
+  border-radius: 100%;
+  text-align: center;
+  font-family: SimplisticSans-Medium;
+  font-size: 14px;
+  margin-top: -13px;
+  background: $white;
+  margin-top: 0px;
+}
+
 .results__millennials-tag {
   color: white;
 }
@@ -898,8 +923,8 @@ input[type=range]:focus {
 
 .results__showResults {
   font-family: SimplisticSans-Normal;
-  border-bottom: 2px solid white;
-  padding-bottom: 2px;
+  border: 2px solid white;
+  padding: 3px;
   color: white;
   font-size: 20px;
   position: fixed;
@@ -914,14 +939,14 @@ input[type=range]:focus {
   cursor: pointer;
   &:hover{
     color: $black;
-    border-bottom: 2px dashed black;
+    border: 2px dashed black;
   }
 }
 
 .results__goBackResults {
   font-family: SimplisticSans-Normal;
-  border-bottom: 2px solid white;
-  padding-bottom: 2px;
+  border: 2px solid white;
+  padding: 3px;
   color: white;
   font-size: 20px;
   position: fixed;
@@ -936,7 +961,7 @@ input[type=range]:focus {
   cursor: pointer;
   &:hover{
     color: $black;
-    border-bottom: 2px dashed black;
+    border: 2px dashed black;
   }
 }
 

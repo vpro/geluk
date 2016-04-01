@@ -16,14 +16,19 @@ class GenderGraph extends React.Component{
     var maleWidth = {width: (width/10)*averageMales + 'px', backgroundColor: '#000', color: '#FFF'} ;
     var femaleWidth = {width: (width/10)*averageFemales + 'px', backgroundColor: '#000', color: '#FFF'} ;
 
+    var maleML = {marginLeft: ((width/10)*averageMales)-17 + 'px'};
+    var femaleML = {marginLeft: ((width/10)*averageFemales)-17 + 'px'};
       return (
         <div>
           <div className="results__millennials-graph">
             <div className="results__millennials-bar" style={maleWidth}>mannen ({averageMales.toFixed(1)})</div>
+            <div className="results__circle" style={maleML}>{averageMales.toFixed(1)}</div>    
           </div>
 
           <div className="results__millennials-graph results__gender-margin">
             <div className="results__millennials-bar" style={femaleWidth}>vrouwen ({averageFemales.toFixed(1)})</div>
+            <div className="results__circle" style={femaleML}>{averageMales.toFixed(1)}</div>    
+          
           </div>
         </div>
       )

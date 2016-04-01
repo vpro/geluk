@@ -194,10 +194,10 @@ class Results extends React.Component{
     }
     var avgQ1 = this.props.generatedStats.all.q_1.total/this.props.generatedStats.all.q_1.count,
         avgQ2 = this.props.generatedStats.all.q_2.total/this.props.generatedStats.all.q_2.count,
-        avgQ3 = (this.props.generatedStats.all.q_3.total/this.props.generatedStats.all.q_3.count)/2,
+        avgQ3 = (this.props.generatedStats.all.q_3.total/this.props.generatedStats.all.q_3.count),
         avgQ4 = this.props.generatedStats.all.q_4.total/this.props.generatedStats.all.q_4.count,
         avgQ5 = this.props.generatedStats.all.q_5.total/this.props.generatedStats.all.q_5.count;
-    var allScores = (avgQ1 + avgQ2 + avgQ3 + avgQ4 + avgQ5) / 4.5;
+    var allScores = (avgQ1 + avgQ2 + avgQ3 + avgQ4 + avgQ5) / 5;
 
     let url = "https://tegenlicht.vpro.nl/arbeidsvreugde";
 
@@ -227,7 +227,7 @@ class Results extends React.Component{
               <ScaleGraph
                 headline="salaris/geluk-ratio"
                 yourScore={this.props.userMultipleScores.q_1+this.props.userMultipleScores.q_2/2}
-                averageScore={(this.state.q_1+this.state.q_2)/2}
+                averageScore={this.state.q_1+this.state.q_2/2}
               /> 
               <ScaleGraph
                 headline="job crafting"
@@ -243,15 +243,15 @@ class Results extends React.Component{
 
           <div className="results__socialmedia" ref="socialmedia" >
           Deel je score op 
-            <TwitterButton url={url} message={"Ik heb een " + this.props.userScore + " bij de Tegenlicht Arbeidsvreugdetest"}>
+            <TwitterButton url={url} message={"Ik geef mezelf een score van" + this.props.userScore + ". Hoe gelukkig ben jij op je werk? Test jezelf op tegenlicht.vpro.nl/geluk. #tegenlicht"}>
               <img className="results__socialmedia-icon" src={twitterimg}/>
             </TwitterButton>
-            <FacebookButton url={url} message={"Ik heb een " + this.props.userScore + " bij de Tegenlicht Arbeidsvreugdetest"}>
+            <FacebookButton className="results__button" url={url} message={"Ik geef mezelf een score van" + this.props.userScore + ". Hoe gelukkig ben jij op je werk? Test jezelf op tegenlicht.vpro.nl/geluk."}>
               <img className="results__socialmedia-icon" src={facebookimg}/>
             </FacebookButton>   
           </div>  
                       
-          <span className="results__showResults" ref="generalResults" onClick={this.switcher.bind(this, 'showGeneral')}>hoe scoren anderen?</span>
+          <span className="results__showResults" ref="generalResults" onClick={this.switcher.bind(this, 'showGeneral')}>hoe scoren anderen? ></span>
 
             <div className="results__scalegraph-controller" ref="scalegraphcontroller">
                 <img className="results__scalegraph-controller-arrow" src={whitearrow}/>
